@@ -9,3 +9,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+#.....{ Dashboard Page }.....#
+Route::prefix('dashboard')
+    ->middleware(['auth:admin', 'verified'])
+    ->group(function () {
+        // Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    });

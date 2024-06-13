@@ -14,9 +14,9 @@ class AuthenticatedSessionController extends Controller
 {
     public $guard = 'web';
 
-    public function __construct($guard)
+    public function __construct(Request $request)
     {
-        $this->guard = $guard;
+        $request->is('admin/*') ? $this->guard = 'admin' : $this->guard;
     }
 
     /**
@@ -49,6 +49,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        session()->flash('success', trans('You have logged out'));
 
         return redirect($this->guard == 'admin' ? 'admin.login' : 'login');
     }
