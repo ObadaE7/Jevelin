@@ -33,4 +33,13 @@ return [
     'Verify your email status' => 'A new verification link has been sent to the email address you provided during registration.',
     'Resend' => 'Resend',
     'Later' => 'Later',
+    'Create a new account' => 'Create a new account',
+    'First name' => 'First name',
+    'Last name' => 'Last name',
+    'User name' => 'User name',
+    'Enter your first name' => 'Enter your first name',
+    'Enter your last name' => 'Enter your last name',
+    'Enter your username' => 'Enter your username',
+    'Create Later' => 'Create Later',
+    'Register' => 'Register',
 ];

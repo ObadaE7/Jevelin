@@ -33,5 +33,14 @@ return [
     'Verify your email status' => 'تم إرسال رابط تحقق جديد إلى عنوان البريد الإلكتروني الذي قدمته أثناء التسجيل.',
     'Resend' => 'إعادة الإرسال',
     'Later' => 'لاحقاً',
+    'Create a new account' => 'انشاء حساب جديد',
+    'First name' => 'الاسم الأول',
+    'Last name' => 'الاسم الأخير',
+    'User name' => 'اسم المستخدم',
+    'Enter your first name' => 'أدخل اسمك الأول',
+    'Enter your last name' => 'أدخل اسمك الأخير',
+    'Enter your username' => 'أدخل اسم المستخدم الخاص بك',
+    'Create Later' => 'أنشئ لاحقاً',
+    'Register' => 'التسجيل',
 
 ];

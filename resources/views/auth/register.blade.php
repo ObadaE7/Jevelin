@@ -1,52 +1,80 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+    <section class="auth__wrapper">
+        <div class="auth__wrapper-main w-50">
+            <span class="fs-4 mb-3">{{ trans('string.Create a new account') }}</span>
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <div class="auth__wrapper-form">
+                    <div class="row row-cols-md-2 row-cols-1">
+                        <div class="col">
+                            <label for="fname">{{ trans('string.First name') }}</label>
+                            <input type="text" name="fname" id="fname" class="form-control"
+                                value="{{ old('fname') }}" placeholder="{{ trans('string.Enter your first name') }}"
+                                autofocus>
+                            <x-error name="fname" />
+                        </div>
+
+                        <div class="col">
+                            <label for="lname">{{ trans('string.Last name') }}</label>
+                            <input type="text" name="lname" id="lname" class="form-control"
+                                value="{{ old('lname') }}" placeholder="{{ trans('string.Enter your last name') }}">
+                            <x-error name="lname" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="uname">{{ trans('string.User name') }}</label>
+                        <input type="text" name="uname" id="uname" class="form-control"
+                            value="{{ old('uname') }}" placeholder="{{ trans('string.Enter your username') }}">
+                        <x-error name="uname" />
+                    </div>
+
+                    <div>
+                        <label for="email">{{ trans('string.E-mail') }}</label>
+                        <input type="email" id="email" name="email" class="form-control"
+                            value="{{ old('email') }}" placeholder="{{ trans('string.Enter your email address') }}"
+                            required />
+                        <x-error name="email" />
+                    </div>
+
+                    <div>
+                        <label for="password">{{ trans('string.Password') }}</label>
+                        <div class="input-password">
+                            <input type="password" id="password" name="password" class="form-control"
+                                placeholder="{{ trans('string.Enter the password') }}" required />
+                            <span class="material-icons-outlined input-password-icon">visibility</span>
+                        </div>
+                        <x-error name="password" />
+                    </div>
+
+                    <div>
+                        <label for="password_confirmation">{{ trans('string.Confirm password') }}</label>
+                        <div class="input-password">
+                            <input type="password" name="password_confirmation" id="password_confirmation"
+                                class="form-control" placeholder="{{ trans('string.Retype the password') }}">
+                            <span class="material-icons-outlined input-password-icon">visibility</span>
+                        </div>
+                        <x-error name="password_confirmation" />
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ route('index') }}" class="text-muted">{{ trans('string.Create Later') }}</a>
+                        <button class="btn btn-primary w-25">{{ trans('string.Register') }}</button>
+                    </div>
+                </div>
+            </form>
         </div>
+    </section>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+    @push('css')
+        <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+    @endpush
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
+    @push('scripts')
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+        <script>
+            togglePassword()
+        </script>
+    @endpush
 </x-guest-layout>
