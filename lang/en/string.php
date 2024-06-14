@@ -42,4 +42,13 @@ return [
     'Enter your username' => 'Enter your username',
     'Create Later' => 'Create Later',
     'Register' => 'Register',
+
+    'Homepage' => 'Homepage',
+    'Categories' => 'Categories',
+    'Posts' => 'Posts',
+    'Dashboard' => 'Dashboard',
+
+    'Hero title' => 'Welcome to Our Blog',
+    'Hero subtitle' => 'Discover the latest news, tips, and stories from our community',
+    'Explore Posts' => 'Explore Posts',
 ];
