@@ -19,7 +19,13 @@ return [
     'Dont have an account' => 'Don\'t have an account?',
     'Create account' => 'Create account',
     'Register later' => 'Register later',
-    // 'Login' => 'Login',
-    // 'Login' => 'Login',
-
+    'Forget Password' => 'Forget Password?',
+    'Forget Password text' => 'No problem, Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.',
+    'Forget Password status' => 'A new verification link has been sent to the email address you provided during registration.',
+    'Cancel' => 'Cancel',
+    'Reset Link' => 'Reset Link',
+    'Create A New Password' => 'Create A New Password',
+    'Confirm password' => 'Confirm password',
+    'Retype the password' => 'Retype the password',
+    'Reset password' => 'Reset password',
 ];

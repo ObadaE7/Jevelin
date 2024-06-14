@@ -1,25 +1,39 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-    </div>
+    <section class="auth__wrapper">
+        <div class="auth__wrapper-main">
+            <span class="fs-4">{{ trans('string.Forget Password') }}</span>
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+            <div class="mt-3">
+                @if (session('status'))
+                    <div class="text-success bg-success-subtle p-3 rounded-3">
+                        {{ trans('string.Forget Password status') }}
+                    </div>
+                @else
+                    <span>{{ trans('string.Forget Password text') }}</span>
+                @endif
+            </div>
 
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
+            <div class="auth__wrapper-form mt-3">
+                <form method="POST" action="{{ route('password.email') }}">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="email">{{ trans('string.E-mail') }}</label>
+                        <input type="email" name="email" id="email" class="form-control"
+                            value="{{ old('email') }}" placeholder="{{ trans('string.Enter your email address') }}"
+                            required autofocus>
+                        <x-error name="email" />
+                    </div>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    <div class="d-flex justify-content-end gap-2">
+                        <a href="{{ route('login') }}" class="btn btn-secondary">{{ trans('string.Cancel') }}</a>
+                        <button type="submit" class="btn btn-primary">{{ trans('string.Reset Link') }}</button>
+                    </div>
+                </form>
+            </div>
         </div>
+    </section>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
+    @push('css')
+        <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+    @endpush
 </x-guest-layout>

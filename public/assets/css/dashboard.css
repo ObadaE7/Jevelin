@@ -68,6 +68,7 @@ a {
     padding: var(--p-sm);
     border-radius: calc(var(--border-radius-sm) + .5rem);
     box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    transition: width .5s ease-in-out;
 }
 
 .auth__wrapper-form {
@@ -138,4 +139,16 @@ a {
     flex: 1;
     border-top: 1px solid #dee2e6;
     margin: 0 10px;
+}
+
+@media screen and (max-width:768px) {
+    .auth__wrapper-main {
+        width: calc(var(--m-width-100) - 40%);
+    }
+}
+
+@media screen and (max-width:576px) {
+    .auth__wrapper-main {
+        width: calc(var(--m-width-100) - 20%);
+    }
 }

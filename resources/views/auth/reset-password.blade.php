@@ -1,39 +1,59 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+    <section class="auth__wrapper">
+        <div class="auth__wrapper-main">
+            <span class="fs-4">{{ trans('string.Create A New Password') }}</span>
+            <x-alert status="error" color="danger" />
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+            <div class="auth__wrapper-form mt-3">
+                <form method="POST" action="{{ route('password.store') }}">
+                    @csrf
+                    <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    <div class="mb-3">
+                        <label for="email">{{ trans('string.E-mail') }}</label>
+                        <input type="email" name="email" id="email" class="form-control"
+                            placeholder="{{ trans('string.Enter your email address') }}"
+                            value="{{ old('email', $request->email) }}" required autofocus>
+                        <x-error name="email" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password">{{ trans('string.Password') }}</label>
+                        <div class="input-password">
+                            <input type="password" name="password" id="password" class="form-control"
+                                placeholder="{{ trans('string.Enter the password') }}">
+                            <span class="material-icons-outlined input-password-icon">visibility</span>
+                        </div>
+                        <x-error name="password" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password_confirmation">{{ trans('string.Confirm password') }}</label>
+                        <div class="input-password">
+                            <input type="password" name="password_confirmation" id="password_confirmation"
+                                class="form-control" placeholder="{{ trans('string.Retype the password') }}">
+                            <span class="material-icons-outlined input-password-icon">visibility</span>
+                        </div>
+                        <x-error name="password_confirmation" />
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <a href="{{ route('login') }}" class="btn btn-secondary">{{ trans('string.Cancel') }}</a>
+                        <button type="submit" class="btn btn-primary">{{ trans('string.Reset password') }}</button>
+                    </div>
+                </form>
+            </div>
         </div>
+    </section>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+    @push('css')
+        <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+    @endpush
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
+    @push('scripts')
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+        <script>
+            togglePassword();
+        </script>
+    @endpush
 </x-guest-layout>
