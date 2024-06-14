@@ -50,7 +50,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        session()->flash('success', trans('You have logged out'));
+        session()->flash('success', trans('auth.You have logged out'));
 
         return redirect($this->guard == 'admin' ? 'admin.login' : 'login');
     }

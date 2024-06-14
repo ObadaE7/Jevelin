@@ -1,48 +1,83 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    {{-- <x-auth-session-status class="mb-4" :status="session('status')" /> --}}
+    <section class="auth__wrapper">
+        <div class="auth__wrapper-main">
+            <span class="d-flex justify-content-center fs-4 mb-3">{{ trans('string.Login') }}</span>
+            <x-alert status="success" color="success" />
+            <x-alert status="error" color="danger" />
 
-    <form method="POST" action="{{ route($routePrefix . 'login') }}">
-        @csrf
+            <form method="POST" action="{{ route($routePrefix . 'login') }}">
+                @csrf
+                <div class="auth__wrapper-form">
+                    <div>
+                        <label for="email">{{ trans('string.E-mail') }}</label>
+                        <input type="email" id="email" name="email" class="form-control"
+                            value="{{ old('email') }}" placeholder="{{ trans('string.Enter your email address') }}"
+                            required autofocus />
+                    </div>
 
-        <!-- Email Address -->
-        <div>
-            <label for="email" :value="__('Email')" />
-            <input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-                autofocus autocomplete="username" />
-            <error :messages="$errors - > get('email')" class="mt-2" />
+                    <div>
+                        <label for="password">{{ trans('string.Password') }}</label>
+                        <div class="input-password">
+                            <input type="password" id="password" name="password" class="form-control"
+                                placeholder="{{ trans('string.Enter the password') }}" required />
+                            <span class="material-icons-outlined input-password-icon">visibility</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex align-items-center gap-2">
+                            <input id="remember" type="checkbox" class="form-check-input m-0" name="remember">
+                            <label for="remember">{{ trans('string.Remember me') }}</label>
+                        </div>
+                        <div>
+                            @if (Route::has('password.request'))
+                                <a href="{{ route('password.request') }}">
+                                    {{ trans('string.Forgot your password') }}
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column gap-3">
+                        <button class="btn btn-primary w-100 fs-5">
+                            {{ trans('string.Login') }}
+                        </button>
+
+                        <div class="divider"><span>{{ trans('string.Or') }}</span></div>
+
+                        <div class="d-flex justify-content-center gap-4">
+                            <div class="social__links">
+                                <a href="#" class="social__google"></a>
+                            </div>
+                            <div class="social__links">
+                                <a href="#" class="social__twitter"></a>
+                            </div>
+                            <div class="social__links">
+                                <a href="#" class="social__facebook"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center gap-1">
+                        <div>
+                            <span>{{ trans('string.Dont have an account') }}</span>
+                            <a href="{{ route('register') }}">{{ trans('string.Create account') }}</a>
+                        </div>
+                        <small><a href="{{ route('index') }}" class="text-muted">{{ trans('string.Register later') }}</a></small>
+                    </div>
+                </div>
+            </form>
         </div>
+    </section>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <label for="password" :value="__('Password')" />
+    @push('css')
+        <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+    @endpush
 
-            <input id="password" class="block mt-1 w-full" type="password" name="password" required
-                autocomplete="current-password" />
-
-            <error :messages="$errors - > get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox"
-                    class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <button class="ms-3">
-                {{ __('Log in') }}
-            </button>
-        </div>
-    </form>
+    @push('scripts')
+        <script src="{{ asset('assets/js/scripts.js') }}"></script>
+        <script>
+            togglePassword()
+        </script>
+    @endpush
 </x-guest-layout>
