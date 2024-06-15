@@ -48,7 +48,7 @@ body {
     font-family: var(--primary-font-family);
     font-weight: var(--font-weight);
     font-style: var(--font-style);
-    background: var(--bs-light);
+    background: url('/assets/img/svg/stacked-waves-haikei.svg');
 }
 
 a {

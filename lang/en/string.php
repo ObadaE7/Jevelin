@@ -45,10 +45,16 @@ return [
 
     'Homepage' => 'Homepage',
     'Categories' => 'Categories',
-    'Posts' => 'Posts',
+    'Articles' => 'Articles',
     'Dashboard' => 'Dashboard',
 
     'Hero title' => 'Welcome to Our Blog',
     'Hero subtitle' => 'Discover the latest news, tips, and stories from our community',
-    'Explore Posts' => 'Explore Posts',
+    'Explore Articles' => 'Explore Articles',
+
+    'Section one title' => 'New articles, don\'t miss them!',
+    'Section one subtitle' => 'Explore our new and distinctive articles, and learn about the latest ideas and information that may enrich your life and open a new horizon for understanding the world around you.',
+    'Read more' => 'Read More',
+    'By' => 'By',
+
 ];
