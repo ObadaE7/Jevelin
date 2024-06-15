@@ -56,5 +56,7 @@ return [
     'Section one subtitle' => 'Explore our new and distinctive articles, and learn about the latest ideas and information that may enrich your life and open a new horizon for understanding the world around you.',
     'Read more' => 'Read More',
     'By' => 'By',
+    'Subscribe text' => 'Subscribe to our mailing list to get the latest updates.',
+    'Subscribe' => 'Subscribe',
 
 ];

@@ -137,14 +137,17 @@ img {
 .wrapper__main {
     grid-area: main;
     display: grid;
-    grid-template-rows: repeat(5, max-content);
+    grid-template-rows: repeat(7, max-content);
     grid-template-columns: 1fr;
     grid-template-areas:
         'hero'
         'row-one-wave-up'
         'row-one'
         'row-one-wave-down'
+        'subscribe'
+        'row-two-wave-up'
         'row-two'
+        'row-two-wave-down'
         'row-three'
     ;
 }
@@ -159,7 +162,7 @@ img {
     height: max-content;
 }
 
-.wrapper__main> :not(.main__hero, .waves__up, .waves__down) {
+.wrapper__main> :not(.main__hero, .waves__up, .waves__down, .row__two-wave-up) {
     padding: var(--wrapper-p-lg);
 }
 
@@ -244,7 +247,7 @@ img {
     gap: var(--gap-xsm);
 }
 
-.section__title::before {
+.main__section-one .section__title::before {
     content: "\ef49";
     font-family: var(--font-icons);
 }
@@ -408,17 +411,67 @@ img {
     direction: rtl;
 }
 
+.main__subscribe {
+    grid-area: subscribe;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 'form img';
+    place-items: center;
+}
+
+.main__subscribe-form {
+    grid-area: form;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: calc(var(--m-width-100) - 25%);
+    gap: calc(var(--gap-md) - .5rem);
+}
+
+.subscribe__form {
+    display: flex;
+    width: calc(var(--m-width-100) - 10%);
+    gap: calc(var(--gap-sm) - .5rem);
+}
+
+.subscribe__text {
+    font-size: 30px;
+}
+
+.main__subscribe-form .form-control {
+    line-height: 3;
+    background: var(--bs-white);
+}
+
+.main__subscribe-img {
+    grid-area: img;
+}
 
 
 
 
 
+
+
+
+
+
+.row__two-wave-up {
+    grid-area: row-two-wave-up;
+}
 
 .main__section-two {
     grid-area: row-two;
     background: var(--bs-white);
 }
 
+.main__section-two .section__title::before {
+    content: "\e8e5";
+    font-family: var(--font-icons);
+}
 
 .main__section-three {
     grid-area: row-three;
