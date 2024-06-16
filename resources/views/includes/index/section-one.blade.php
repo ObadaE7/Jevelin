@@ -1,5 +1,5 @@
-<section class="waves__up">
-    <img src="{{ asset('assets/img/svg/wave-up.svg') }}" alt="">
+<section class="one__waves-up">
+    <img src="{{ asset('assets/img/svg/one-wave-up.svg') }}" alt="">
 </section>
 
 <section class="main__section-one" id="explore">
@@ -193,7 +193,8 @@
         </article>
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -212,6 +213,6 @@
     </div>
 </section>
 
-<section class="waves__down">
-    <img src="{{ asset('assets/img/svg/wave-down.svg') }}" alt="">
+<section class="one__waves-down">
+    <img src="{{ asset('assets/img/svg/one-wave-down.svg') }}" alt="">
 </section>

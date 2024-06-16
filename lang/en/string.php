@@ -54,9 +54,12 @@ return [
 
     'Section one title' => 'New articles, don\'t miss them!',
     'Section one subtitle' => 'Explore our new and distinctive articles, and learn about the latest ideas and information that may enrich your life and open a new horizon for understanding the world around you.',
+    'Section two title' => 'Find out the most read articles',
+    'Section two subtitle' => 'Enjoy reading the articles that achieved the highest reading rates and were admired by many readers, and benefit from the valuable ideas and information they provide',
     'Read more' => 'Read More',
     'By' => 'By',
     'Subscribe text' => 'Subscribe to our mailing list to get the latest updates.',
     'Subscribe' => 'Subscribe',
+    'Most liked' => 'Most liked',
 
 ];

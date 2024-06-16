@@ -5,16 +5,33 @@
 
     <div class="wrapper__header-menu">
         <ul class="header__menu">
-            <li><a href="{{ route('index') }}">{{ trans('string.Homepage') }}</a></li>
-            <li><a href="">{{ trans('string.Categories') }}</a></li>
-            <li><a href="">{{ trans('string.Articles') }}</a></li>
+            <li>
+                <a href="{{ route('index') }}" class="{{ Route::is('index') ? 'active' : '' }}">
+                    {{ trans('string.Homepage') }}
+                </a>
+            </li>
+            <li>
+                <a href="" class="{{ Route::is('categories') ? 'active' : '' }}">
+                    {{ trans('string.Categories') }}
+                </a>
+            </li>
+            <li>
+                <a href="" class="{{ Route::is('articles') ? 'active' : '' }}">
+                    {{ trans('string.Articles') }}
+                </a>
+            </li>
             @auth
                 <li>
-                    <a href="{{ route('dashboard') }}">{{ trans('string.Dashboard') }}
+                    <a href="{{ route('dashboard') }}" class="{{ Route::is('dashboard') ? 'active' : '' }}">
+                        {{ trans('string.Dashboard') }}
                     </a>
                 </li>
             @else
-                <li><a href="{{ route('login') }}">{{ trans('string.Login') }}</a></li>
+                <li>
+                    <a href="{{ route('login') }}" class="{{ Route::is('login') ? 'active' : '' }}">
+                        {{ trans('string.Login') }}
+                    </a>
+                </li>
             @endauth
         </ul>
     </div>
