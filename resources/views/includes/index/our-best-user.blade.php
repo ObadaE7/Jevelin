@@ -3,7 +3,7 @@
         <span class="section__title">{!! trans('string.Our best writer') !!}</span>
     </div>
 
-    <div class="section__three-content">
+    <div class="best__user-content">
         <div class="avatar-confetti">
             <img src="{{ asset('assets/img/others/avatar.jpg') }}" class="avatar" alt="">
         </div>
