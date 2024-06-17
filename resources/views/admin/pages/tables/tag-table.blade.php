@@ -64,4 +64,8 @@
     <div class="table__paginate">
         {{ $rows->links() }}
     </div>
+
+    <div class="table__modals">
+        @include('admin.pages.modals.tags.modal-create')
+    </div>
 </div>

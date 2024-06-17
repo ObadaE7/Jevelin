@@ -11,17 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+        Schema::create('post_translations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('post_id')->unsigned();
+            $table->string('locale')->index();
+
             $table->string('title');
             $table->string('subtitle');
             $table->string('slug')->unique();
             $table->longText('content');
-            $table->enum('status', ['draft', 'published'])->default('draft');
-            $table->string('image')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
+
+            $table->unique(['post_id', 'locale']);
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('post_translations');
     }
 };
