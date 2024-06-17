@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexController;
+use App\Livewire\User\{Dashboard, Profile, Analysis, Posts, CreatePost};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,14 +16,14 @@ Route::get('/', IndexController::class)->name('index');
 
 #.....{ Dashboard Page }.....#
 Route::prefix('dashboard')
-    ->as('dashboard.')
+    ->as('user.')
     ->middleware(['auth', 'verified'])
     ->group(function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('profile', [DashboardController::class, 'index'])->name('profile');
-        Route::get('analysis', [DashboardController::class, 'analysis'])->name('analysis');
-        Route::get('posts', [DashboardController::class, 'index'])->name('posts');
-        Route::get('create-post', [DashboardController::class, 'index'])->name('create.post');
+        Route::get('/', Dashboard::class)->name('dashboard');
+        Route::get('profile', Profile::class)->name('profile');
+        Route::get('analysis', Analysis::class)->name('analysis');
+        Route::get('posts', Posts::class)->name('posts');
+        Route::get('create-post', CreatePost::class)->name('create.post');
     });
 
 require __DIR__ . '/auth.php';

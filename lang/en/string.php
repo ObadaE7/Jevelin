@@ -80,6 +80,11 @@ return [
     'Tags' => 'Tags',
     'Users' => 'Users',
     'Logout' => 'Logout',
+    'Table' => 'Table',
     'Basic tables' => 'Basic tables',
     'Secondary tables' => 'Secondary tables',
+    'My Profile' => 'My Profile',
+    'Site Settings' => 'Site Settings',
+    'Articles section' => 'Articles section',
+    'Show' => 'Show',
 ];

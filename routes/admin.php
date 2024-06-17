@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
+use App\Livewire\Admin\Pages\{Dashboard, Profile, Settings};
 use App\Livewire\Admin\Tables\{CategoryTable, CountryTable, PostTable, RoleTable, TagTable, UserTable};
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +15,9 @@ Route::prefix('admin')
     ->as('admin.')
     ->middleware(['auth:admin', 'verified'])
     ->group(function () {
-        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('profile', [DashboardController::class, 'index'])->name('profile');
-        Route::get('settings', [DashboardController::class, 'index'])->name('settings');
+        Route::get('dashboard', Dashboard::class)->name('dashboard');
+        Route::get('profile', Profile::class)->name('profile');
+        Route::get('settings', Settings::class)->name('settings');
 
         Route::prefix('table')->group(function () {
             Route::get('roles', RoleTable::class)->name('roles');

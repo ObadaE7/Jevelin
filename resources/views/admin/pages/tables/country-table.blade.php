@@ -1,3 +1,10 @@
+@section('breadcrumb')
+    <x-breadcrumb>
+        <li class="breadcrumb-item"><a href="{{ route('admin.countries') }}">{{ trans('string.Table') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('string.Countries') }}</a></li>
+    </x-breadcrumb>
+@endsection
+
 <div>
     <table class="table">
         <thead>

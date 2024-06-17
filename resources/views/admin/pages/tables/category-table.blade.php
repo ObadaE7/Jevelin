@@ -1,3 +1,10 @@
+@section('breadcrumb')
+    <x-breadcrumb>
+        <li class="breadcrumb-item"><a href="{{ route('admin.categories') }}">{{ trans('string.Table') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('string.Categories') }}</a></li>
+    </x-breadcrumb>
+@endsection
+
 <div>
     <table class="table">
         <thead>

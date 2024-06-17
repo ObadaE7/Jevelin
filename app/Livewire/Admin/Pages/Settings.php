@@ -9,7 +9,7 @@ class Settings extends Component
     public function render()
     {
         return view('admin.pages.settings')
-            ->extends('admin.pages.dashboard')
+            ->extends('layouts.dashboard')
             ->section('content');
     }
 }

@@ -81,6 +81,11 @@ return [
     'Countries' => 'الدول',
     'Tags' => 'الوسوم',
     'Users' => 'المستخدمين',
+    'Table' => 'جدول',
     'Basic tables' => 'الجداول الأساسية',
     'Secondary tables' => 'الجداول الثانوية',
+    'My Profile' => 'ملفي',
+    'Site Settings' => 'إعدادات الموقع',
+    'Articles section' => 'قسم المقالات',
+    'Show' => 'عرض',
 ];

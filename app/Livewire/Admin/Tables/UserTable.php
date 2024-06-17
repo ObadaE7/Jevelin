@@ -9,7 +9,7 @@ class UserTable extends Component
     public function render()
     {
         return view('admin.pages.tables.user-table')
-            ->extends('admin.pages.dashboard')
+            ->extends('layouts.dashboard')
             ->section('content');
     }
 }

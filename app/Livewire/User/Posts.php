@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Livewire\Admin\Tables;
+namespace App\Livewire\User;
 
 use Livewire\Component;
 
-class CountryTable extends Component
+class Posts extends Component
 {
     public function render()
     {
-        return view('admin.pages.tables.country-table')
+        return view('pages.posts')
             ->extends('layouts.dashboard')
             ->section('content');
     }
