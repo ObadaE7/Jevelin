@@ -15,13 +15,8 @@
             @endif
 
             <div class="dashboard__main-container">
-                <div class="dashboard__breadcrumb">
-                    @yield('breadcrumb')
-                </div>
-
-                <div class="dashboard__main-content">
-                    @yield('content')
-                </div>
+                <div class="dashboard__breadcrumb">@yield('breadcrumb')</div>
+                <div class="dashboard__main-content">@yield('content')</div>
             </div>
         </main>
     </section>

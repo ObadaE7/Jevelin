@@ -5,34 +5,65 @@
     </x-breadcrumb>
 @endsection
 
-<div>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
+<div class="table__wrapper">
+    <div class="table__filter">
+        <x-table-filter :columns="$this->columns" :searchBy="$this->searchBy" :perPages="$this->perPages" optCreate="true" />
+    </div>
+
+    <div class="table__body">
+        <x-table>
+            @section('thead')
+                @foreach ($headers as $header)
+                    <th scope="col"
+                        @unless ($header === 'Actions')
+                            wire:click="setOrderBy('{{ $header }}')" style="cursor: pointer;"
+                        @endunless>
+
+                        <div class="d-flex align-items-center justify-content-between">
+                            <span>{{ ucfirst($header) }}</span>
+                            @unless ($header === 'Actions')
+                                <span class="material-icons-outlined">
+                                    {{ $orderBy === $header ? ($orderDir === 'asc' ? 'expand_less' : 'expand_more') : 'unfold_more' }}
+                                </span>
+                            @endunless
+                        </div>
+                    </th>
+                @endforeach
+            @endsection
+
+            @section('tbody')
+                @forelse ($rows as $row)
+                    <tr wire:key="{{ $row->id }}">
+                        <td>{{ $row->image }}</td>
+                        <td>{{ $row->name }}</td>
+                        <td>{{ $row->slug }}</td>
+                        <td>{{ $row->description }}</td>
+                        <td>
+                            <div class="actions__btn">
+                                <button wire:click="show({{ $row->id }})" class="btn__show" data-bs-toggle="modal"
+                                    data-bs-target="#showModal">
+                                </button>
+                                <button wire:click="edit({{ $row->id }})" class="btn__edit" data-bs-toggle="modal"
+                                    data-bs-target="#editModal">
+                                </button>
+                                <button wire:click="$set('rowId', {{ $row->id }})" class="btn__delete"
+                                    data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="{{ count($headers) }}" class="text-center">
+                            {{ trans('No Result Found') }}
+                        </td>
+                    </tr>
+                @endforelse
+            @endsection
+        </x-table>
+    </div>
+
+    <div class="table__paginate">
+        {{ $rows->links() }}
+    </div>
 </div>
