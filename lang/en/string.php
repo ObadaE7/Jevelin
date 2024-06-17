@@ -74,5 +74,12 @@ return [
     'Profile' => 'Profile',
     'Analysis' => 'Analysis',
     'Create' => 'Create',
+    'Main' => 'Main',
+    'Roles' => 'Roles',
+    'Countries' => 'Countries',
+    'Tags' => 'Tags',
+    'Users' => 'Users',
     'Logout' => 'Logout',
+    'Basic tables' => 'Basic tables',
+    'Secondary tables' => 'Secondary tables',
 ];

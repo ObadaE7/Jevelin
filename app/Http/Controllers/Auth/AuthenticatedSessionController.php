@@ -52,6 +52,6 @@ class AuthenticatedSessionController extends Controller
 
         session()->flash('success', trans('auth.Logout'));
 
-        return redirect($this->guard == 'admin' ? 'admin.login' : 'login');
+        return to_route($this->guard == 'admin' ? 'admin.login' : 'login');
     }
 }
