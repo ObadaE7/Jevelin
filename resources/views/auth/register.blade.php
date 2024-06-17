@@ -58,7 +58,7 @@
                         <x-error name="password_confirmation" />
                     </div>
 
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between align-items-center">
                         <a href="{{ route('index') }}" class="text-muted">{{ trans('string.Create Later') }}</a>
                         <button class="btn btn-primary w-25">{{ trans('string.Register') }}</button>
                     </div>

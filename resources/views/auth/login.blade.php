@@ -47,13 +47,19 @@
 
                         <div class="d-flex justify-content-center gap-4">
                             <div class="social__links">
-                                <a href="#" class="social__google"></a>
+                                <a href="#">
+                                    <img src="{{ asset('assets/img/svg/google.svg') }}" alt="">
+                                </a>
                             </div>
                             <div class="social__links">
-                                <a href="#" class="social__twitter"></a>
+                                <a href="#">
+                                    <img src="{{ asset('assets/img/svg/twitterx.svg') }}" alt="">
+                                </a>
                             </div>
                             <div class="social__links">
-                                <a href="#" class="social__facebook"></a>
+                                <a href="#">
+                                    <img src="{{ asset('assets/img/svg/facebook.svg') }}" alt="">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -63,7 +69,11 @@
                             <span>{{ trans('string.Dont have an account') }}</span>
                             <a href="{{ route('register') }}">{{ trans('string.Create account') }}</a>
                         </div>
-                        <small><a href="{{ route('index') }}" class="text-muted">{{ trans('string.Register later') }}</a></small>
+                        <small>
+                            <a href="{{ route('index') }}" class="text-muted">
+                                {{ trans('string.Register later') }}
+                            </a>
+                        </small>
                     </div>
                 </div>
             </form>

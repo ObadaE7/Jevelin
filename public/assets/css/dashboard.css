@@ -92,26 +92,8 @@ img {
     gap: calc(var(--gap-sm) - .5rem);
 }
 
-.social__twitter,
-.social__google,
-.social__facebook {
-    font-size: 20px;
-    font-family: var(--font-icons);
-}
-
-.social__twitter::before {
-    content: '\F8DB';
-    color: var(--bs-dark);
-}
-
-.social__google::before {
-    content: '\F3F0';
-    color: var(--bs-purple);
-}
-
-.social__facebook::before {
-    content: '\F344';
-    color: var(--bs-primary);
+.social__links{
+    width: 32px;
 }
 
 .form-control {
