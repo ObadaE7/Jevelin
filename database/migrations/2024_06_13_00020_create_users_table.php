@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('country_id')->nullable()->constrained('countries')->onDelete('cascade');
+            $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('cascade');
             $table->string('uname')->unique();
             $table->string('fname');
             $table->string('lname');
@@ -25,6 +26,9 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->string('cover')->nullable();
             $table->string('password');
+            $table->string('facebook_id')->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('twitter_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
@@ -36,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('users');
     }
 };

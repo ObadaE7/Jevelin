@@ -67,4 +67,12 @@ return [
     'Section three title' => 'Browse articles based on your personal interests',
     'Section three subtitle' => 'Browse and discover our carefully curated articles in a variety of categories that cater to your personal interests and enjoy content tailored specifically to you.',
     'View article' => 'View Article',
+
+    'ALL Notification' => 'ALL Notification',
+    'All Messages' => 'All Messages',
+    'Settings' => 'Settings',
+    'Profile' => 'Profile',
+    'Analysis' => 'Analysis',
+    'Create' => 'Create',
+    'Logout' => 'Logout',
 ];

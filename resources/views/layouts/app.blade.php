@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/core.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/lib/bs-icons/font/bootstrap-icons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"> --}}
     @stack('css')
     <livewire:styles>
 </head>
