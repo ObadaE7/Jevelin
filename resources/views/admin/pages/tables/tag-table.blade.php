@@ -11,6 +11,9 @@
     </div>
 
     <div class="table__body">
+        <x-alert status="success" color="success" />
+        <x-alert status="error" color="danger" />
+
         <x-table>
             @section('thead')
                 @foreach ($headers as $header)
@@ -34,8 +37,10 @@
             @section('tbody')
                 @forelse ($rows as $row)
                     <tr wire:key="{{ $row->id }}">
+                        <td>{{ $row->id }}</td>
                         <td>{{ $row->name }}</td>
                         <td>{{ $row->slug }}</td>
+                        <td>{{ $row->posts_count }}</td>
                         <td>
                             <div class="actions__btn">
                                 <button wire:click="show({{ $row->id }})" class="btn__show" data-bs-toggle="modal"
@@ -69,3 +74,11 @@
         @include('admin.pages.modals.tags.modal-create')
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        document.addEventListener('closeModal', event => {
+            $('#' + event.detail.modalId).modal('hide');
+        });
+    </script>
+@endpush
