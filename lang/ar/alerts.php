@@ -8,5 +8,5 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'Tag created' => 'The tag has been created successfully',
+    'Tag created' => 'تم إنشاء الوسم بنجاح',
 ];

@@ -33,44 +33,68 @@
             @if ($optCreate)
                 <li>
                     <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createModal">
-                        <i class="bi bi-plus me-2"></i>{{ trans('Create') }}
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="material-icons-outlined text-muted">add</span>
+                            <span>إضافة</span>
+                        </div>
                     </button>
                 </li>
             @endif
             <li>
                 <button wire:click='$refresh' class="dropdown-item">
-                    <i class="bi bi-arrow-clockwise me-2"></i>{{ trans('Refresh') }}
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="material-icons-outlined text-muted">refresh</span>
+                        <span>تحديث</span>
+                    </div>
                 </button>
             </li>
             <li>
                 <button wire:click='resetFilters' class="dropdown-item">
-                    <i class="bi bi-funnel me-2"></i>{{ trans('Reset') }}
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="material-icons-outlined text-muted">youtube_searched_for</span>
+                        <span>إعادة ضبط</span>
+                    </div>
                 </button>
             </li>
             <li>
                 <div class="dropdown-divider"></div>
                 <div class="dropdown-item-text">
-                    <small class="text-muted">{{ trans('Export') }}</small>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="material-icons-outlined text-muted">file_download</span>
+                        <small class="text-muted">تصدير</small>
+                    </div>
                 </div>
             </li>
             <li>
                 <button class="dropdown-item">
-                    <i class="bi bi-filetype-pdf me-2"></i>{{ trans('Pdf') }}
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="material-icons-outlined text-muted">description</span>
+                        <span>بي دي إف</span>
+                    </div>
                 </button>
             </li>
             <li>
                 <button class="dropdown-item">
-                    <i class="bi bi-filetype-xlsx me-2"></i>{{ trans('Excel') }}
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="material-icons-outlined text-muted">description</span>
+                        <span>اكسل</span>
+                    </div>
                 </button>
             </li>
             <li>
                 <button class="dropdown-item">
-                    <i class="bi bi-filetype-csv me-2"></i>{{ trans('Csv') }}
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="material-icons-outlined text-muted">description</span>
+                        <span>سي اس في</span>
+                    </div>
                 </button>
             </li>
             <li>
                 <button class="dropdown-item">
-                    <i class="bi bi-printer me-2"></i>{{ trans('Print') }}
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="material-icons-outlined text-muted">print</span>
+                        <span>طباعة</span>
+                    </div>
                 </button>
             </li>
         </ul>

@@ -1,12 +1,17 @@
 <x-modal>
     <x-slot:id>createModal</x-slot:id>
-    <x-slot:title>إنشاء وسم جديد</x-slot:title>
+    <x-slot:title>
+        <div class="d-flex align-items-center gap-2">
+            <span class="material-icons-outlined">bookmarks</span>
+            <span>إنشاء وسم جديد</span>
+        </div>
+    </x-slot:title>
     <x-slot:body>
         <div class="tab-content" id="pills-tabContent">
             <form>
                 <div class="mb-3 mt-3">
                     <label for="name">الإسم</label>
-                    <input wire:model.live.debounce='name' type="text" id="name" class="form-control"
+                    <input wire:model.live='name' type="text" id="name" class="form-control"
                         placeholder="أدخل اسم الوسم">
                     <x-error name="name" />
                 </div>
@@ -23,7 +28,10 @@
                         data-bs-dismiss="modal">{{ trans('إغلاق') }}
                     </button>
                     <button wire:click.prevent='create' type="button" class="btn btn-primary">
-                        <i class="bi bi-plus ms-2"></i>{{ trans('إضافة') }}
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="material-icons-outlined fs-6">add</span>
+                            <span>إضافة</span>
+                        </div>
                     </button>
                 </x-slot:button>
             </form>

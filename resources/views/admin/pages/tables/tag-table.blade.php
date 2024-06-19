@@ -58,7 +58,7 @@
                 @empty
                     <tr>
                         <td colspan="{{ count($headers) }}" class="text-center">
-                            {{ trans('No Result Found') }}
+                            لم يتم العثور على نتائج
                         </td>
                     </tr>
                 @endforelse
@@ -66,9 +66,7 @@
         </x-table>
     </div>
 
-    <div class="table__paginate">
-        {{ $rows->links() }}
-    </div>
+    <div class="table__paginate">{{ $rows->links() }}</div>
 
     <div class="table__modals">
         @include('admin.pages.modals.tags.modal-create')
@@ -77,6 +75,12 @@
 
 @push('scripts')
     <script>
+        document.addEventListener('livewire:navigated', () => {
+            Livewire.on('urlReset', url => {
+                history.pushState(null, null, url);
+            });
+        });
+
         document.addEventListener('closeModal', event => {
             $('#' + event.detail.modalId).modal('hide');
         });
