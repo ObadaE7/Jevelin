@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -16,9 +17,9 @@ class CountryFactory extends Factory
      */
     public function definition(): array
     {
+        $faker = FakerFactory::create('ar_SA');
         return [
-            'cname' => fake()->unique()->country(),
-            // 'flag' => '',
+            'name' => $faker->unique()->country,
         ];
     }
 }
