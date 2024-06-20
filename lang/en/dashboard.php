@@ -77,5 +77,7 @@ return [
         'Print' => 'Print',
         'Table' => 'Table',
         'Roles' => 'Roles',
+        'Countries' => 'Countries',
+        'Flag' => 'Flag',
     ],
 ];

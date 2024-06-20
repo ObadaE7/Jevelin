@@ -18,6 +18,16 @@ return [
         'Not found' => 'Role not found',
     ],
 
+    'country' => [
+        'Created' => 'The country has been created successfully',
+        'Failed create' => 'Failed to create country',
+        'Updated' => 'The country has been updated successfully',
+        'Failed update' => 'Failed to update country',
+        'Deleted' => 'The country has been deleted successfully',
+        'Failed delete' => 'Failed to delete country',
+        'Not found' => 'Country not found',
+    ],
+
 
 
     'Tag created' => 'The tag has been created successfully',
