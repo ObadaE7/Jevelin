@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Notifications\CustomPasswordResetLinkNotification;
+use App\Notifications\CustomVerifyEmailNotification;
 
 class Admin extends Authenticatable implements MustVerifyEmail
 {
@@ -54,5 +56,15 @@ class Admin extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomPasswordResetLinkNotification($token));
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new CustomVerifyEmailNotification());
     }
 }
