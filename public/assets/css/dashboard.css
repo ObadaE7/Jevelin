@@ -569,6 +569,9 @@ img {
     grid-template-columns: 1fr;
     grid-template-areas: 'filter' 'table' 'paginate';
     gap: var(--gap-sm);
+    padding: var(--p-sm);
+    background: var(--bs-white);
+    border-radius: var(--border-radius-xsm);
 }
 
 .table__filter {
@@ -818,10 +821,6 @@ img {
     font-weight: var(--fw-500);
 }
 
-
-
-
-
 .profile__right {
     grid-area: col-right;
     display: grid;
@@ -864,6 +863,80 @@ img {
         grid-template-areas: 'profile' 'content';
     }
 }
+
+.create__post-wrapper {
+    display: grid;
+    grid-template-rows: repeat(2, max-content);
+    grid-template-columns: 1fr;
+    gap: var(--gap-sm);
+}
+
+.create__post-top {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--gap-sm);
+}
+
+.create__post-right {
+    padding: var(--p-sm);
+    background: var(--bs-white);
+    border-radius: var(--border-radius-xsm);
+    height: 300px;
+}
+
+.create__post-right label {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed var(--bs-border-color);
+    border-radius: var(--border-radius-xsm);
+    cursor: pointer;
+}
+
+.label__img-text {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--muted-color);
+}
+
+.create__post-left {
+    padding: var(--p-sm);
+    background: var(--bs-white);
+    border-radius: var(--border-radius-xsm);
+}
+
+.create__post-bottom {
+    display: grid;
+    grid-template-rows: repeat(2, max-content);
+    grid-template-columns: 1fr;
+    gap: var(--gap-sm);
+
+}
+
+.create__post-bottom-row {
+    padding: var(--p-sm);
+    background: var(--bs-white);
+    border-radius: var(--border-radius-xsm);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .tooltip-hint span {
     color: var(--bs-info);
@@ -922,7 +995,7 @@ img {
     content: "";
     grid-area: 1/1;
     --c: no-repeat radial-gradient(farthest-side, #25b09b 92%, #0000);
-    background: var(--c) 50% 0,var(--c) 50% 100%,var(--c) 100% 50%,var(--c) 0 50%;
+    background: var(--c) 50% 0, var(--c) 50% 100%, var(--c) 100% 50%, var(--c) 0 50%;
     background-size: 12px 12px;
     animation: loader-frames 1s infinite;
 }

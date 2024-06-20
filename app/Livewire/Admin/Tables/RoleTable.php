@@ -3,11 +3,10 @@
 namespace App\Livewire\Admin\Tables;
 
 use App\Models\Role;
-use App\Traits\FilterTrait;
-use App\Traits\ModalTrait;
+use Livewire\{Component, WithPagination};
+use App\Traits\{FilterTrait, ModalTrait};
 use Exception;
 use Illuminate\Support\Facades\Log;
-use Livewire\{Component, WithPagination};
 
 class RoleTable extends Component
 {
@@ -16,8 +15,6 @@ class RoleTable extends Component
     public $rowId;
     public $name;
     public $description;
-    public $columns;
-    public $perPages;
 
     public function create()
     {
@@ -28,12 +25,12 @@ class RoleTable extends Component
 
         try {
             Role::create($validated);
-            session()->flash('success', trans('Role created'));
-            // $this->resetField();
+            session()->flash('success', trans('alerts.role.Created'));
+            $this->resetFields();
             $this->closeModal('createModal');
         } catch (Exception $e) {
             Log::error('[createRole]: ' . $e->getMessage());
-            session()->flash('error', trans('Failed to create role'));
+            session()->flash('error', trans('alerts.role.Failed create'));
         }
     }
 
@@ -42,7 +39,7 @@ class RoleTable extends Component
         $role = Role::findOrFail($id);
         $this->rowId = $role->id;
         $this->name = $role->name;
-        $this->description = $role->slug;
+        $this->description = $role->description;
     }
 
     public function update($id)
@@ -55,43 +52,54 @@ class RoleTable extends Component
 
         try {
             $role->update($validated);
-            session()->flash('success', trans('The role has been updated successfully'));
+            session()->flash('success', trans('alerts.role.Updated'));
+            $this->resetFields();
             $this->closeModal('editModal');
         } catch (Exception $e) {
             Log::error('[updateRole]: ' . $e->getMessage());
-            session()->flash('error', trans('Failed to update role'));
+            session()->flash('error', trans('alerts.role.Failed update'));
         }
     }
 
     public function delete($id)
     {
-        $tag = Tag::findOrFail($id);
+        $role = Role::findOrFail($id);
         try {
-            if ($tag) {
-                $tag->delete();
-                session()->flash('success', trans('The tag has been deleted successfully'));
+            if ($role) {
+                $role->delete();
+                session()->flash('success', trans('alerts.role.Deleted'));
                 $this->closeModal('deleteModal');
             } else {
-                session()->flash('error', trans('Tag not found'));
+                session()->flash('error', trans('alerts.role.Not found'));
             }
         } catch (Exception $e) {
-            Log::error('[deleteTag]: ' . $e->getMessage());
-            session()->flash('error', trans('Failed to delete tag'));
+            Log::error('[deleteRole]: ' . $e->getMessage());
+            session()->flash('error', trans('alerts.role.Failed delete'));
         }
     }
 
+    public function resetFields()
+    {
+        $this->reset();
+        $this->resetValidation();
+    }
 
+    public function resetFilters()
+    {
+        $this->resetFields();
+        $this->dispatch('urlReset', route('admin.roles'));
+    }
 
     public function render()
     {
-        $this->columns = ['id', 'name', 'description'];
-        $headers = ['Id', 'Name', 'Description', 'Actions'];
-        $this->perPages = [5, 10, 20, 50];
+        $columns = ['id', 'name', 'description'];
+        $headers = [trans('dashboard.table.Id'), trans('dashboard.table.Name'), trans('dashboard.table.Description'), trans('dashboard.table.Actions')];
+        $perPages = [5, 10, 20, 50];
         $rows = Role::where($this->searchBy, 'like', "%{$this->search}%")
             ->orderBy($this->orderBy, $this->orderDir)
             ->paginate($this->perPage);
 
-        return view('admin.pages.tables.role-table', compact('headers', 'rows',))
+        return view('admin.pages.tables.role-table', compact('headers', 'columns', 'rows', 'perPages'))
             ->extends('layouts.dashboard')
             ->section('content');
     }

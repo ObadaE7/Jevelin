@@ -34,6 +34,7 @@ class CategoryFactory extends Factory
 
         return [
             'name' => $name,
+            'description' => fake()->text(),
             'slug' => $slug,
         ];
     }

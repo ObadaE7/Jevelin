@@ -22,7 +22,7 @@
             </div>
 
             <x-slot:button>
-                <button wire:click="resetField" type="button" class="btn btn-secondary"
+                <button wire:click="resetFields" type="button" class="btn btn-secondary"
                     data-bs-dismiss="modal">{{ trans('إغلاق') }}
                 </button>
                 <button wire:click.prevent='create' type="button" class="btn btn-primary">
