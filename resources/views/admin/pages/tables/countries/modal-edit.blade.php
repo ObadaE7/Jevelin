@@ -3,31 +3,33 @@
     <x-slot:title>
         <div class="d-flex align-items-center gap-2">
             <span class="material-icons-outlined">flag</span>
-            <span>تعديل الدولة</span>
+            <span>{{ trans('dashboard.modal.countries.Edit country title') }}</span>
         </div>
     </x-slot:title>
     <x-slot:body>
         <form>
             <div class="mb-3 mt-3">
-                <label for="name">الإسم</label>
-                <input wire:model='name' type="text" id="name" class="form-control" placeholder="أدخل اسم الدور">
+                <label for="name">{{ trans('dashboard.modal.countries.Name') }}</label>
+                <input wire:model='name' type="text" id="name" class="form-control"
+                    placeholder="{{ trans('dashboard.modal.countries.Name placeholder') }}">
                 <x-error name="name" />
             </div>
 
             <div class="mb-3">
-                <label for="flag">العلم</label>
-                <input wire:model='flag' id="flag" type="file" class="form-control" accept="image/png, image/jpg, image/jpeg">
+                <label for="flag">{{ trans('dashboard.modal.countries.Flag') }}</label>
+                <input wire:model='flag' id="flag" type="file" class="form-control"
+                    accept="image/png, image/jpg, image/jpeg">
                 <x-error name="flag" />
             </div>
 
             <x-slot:button>
-                <button wire:click="resetFields" type="button" class="btn btn-secondary"
-                    data-bs-dismiss="modal">{{ trans('إغلاق') }}
+                <button wire:click="resetFields" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    {{ trans('dashboard.modal.Close') }}
                 </button>
                 <button wire:click.prevent='update({{ $rowId }})' type="button" class="btn btn-primary">
                     <div class="d-flex align-items-center gap-2">
                         <span class="material-icons-outlined fs-6">update</span>
-                        <span>تحديث</span>
+                        <span>{{ trans('dashboard.modal.Update') }}</span>
                     </div>
                 </button>
             </x-slot:button>

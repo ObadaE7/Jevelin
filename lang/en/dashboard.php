@@ -101,6 +101,16 @@ return [
             'Delete role warning' => 'Are you sure you want to delete this role?',
             'Edit role title' => 'Edit role',
         ],
+
+        'countries' => [
+            'Create country title' => 'Create a new country',
+            'Name' => 'Name',
+            'Name placeholder' => 'Enter the country name',
+            'Flag' => 'Flag',
+            'Delete country title' => 'Delete country',
+            'Delete country warning' => 'Are you sure you want to delete this country?',
+            'Edit country title' => 'Edit country',
+        ],
     ],
 
 
