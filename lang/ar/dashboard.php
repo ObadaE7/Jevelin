@@ -91,6 +91,17 @@ return [
         'Delete' => 'حذف',
         'Update' => 'تحديث',
         'Create' => 'إنشاء',
+
+        'roles' => [
+            'Create role title' => 'إنشاء دور جديد',
+            'Name' => 'الاسم',
+            'Name placeholder' => 'أدخل اسم الدور',
+            'Description' => 'الوصف',
+            'Description placeholder' => 'وصف هذا الدور',
+            'Delete role title' => 'حذف الدور',
+            'Delete role warning' => 'هل أنت متأكد أنك تريد حذف هذا الدور؟',
+            'Edit role title' => 'تعديل الدور',
+        ],
     ],
 
 

@@ -90,6 +90,17 @@ return [
         'Delete' => 'Delete',
         'Update' => 'Update',
         'Create' => 'Create',
+
+        'roles' => [
+            'Create role title' => 'Create a new role',
+            'Name' => 'Name',
+            'Name placeholder' => 'Enter the role name',
+            'Description' => 'Description',
+            'Description placeholder' => 'Describe this role',
+            'Delete role title' => 'Delete role',
+            'Delete role warning' => 'Are you sure you want to delete this role?',
+            'Edit role title' => 'Edit role',
+        ],
     ],
 
 
