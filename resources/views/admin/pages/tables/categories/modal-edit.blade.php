@@ -4,46 +4,47 @@
     <x-slot:title>
         <div class="d-flex align-items-center gap-2">
             <span class="material-icons-outlined">category</span>
-            <span>تعديل الفئة</span>
+            <span>{{ trans('dashboard.modal.categories.Edit category title') }}</span>
         </div>
     </x-slot:title>
     <x-slot:body>
         <form>
             <div class="mb-3 mt-3">
-                <label for="name">الإسم</label>
-                <input wire:model.blur='name' type="text" id="name" class="form-control" placeholder="أدخل اسم الفئة">
+                <label for="name">{{ trans('dashboard.modal.categories.Name') }}</label>
+                <input wire:model.blur='name' type="text" id="name" class="form-control"
+                    placeholder="{{ trans('dashboard.modal.categories.Name placeholder') }}">
                 <x-error name="name" />
             </div>
 
             <div class="mb-3 mt-3">
-                <label for="slug">الرابط</label>
+                <label for="slug">{{ trans('dashboard.modal.categories.Slug') }}</label>
                 <input wire:model='slug' type="text" id="slug" class="form-control"
-                    placeholder="أدخل-المعرف-النصي">
+                    placeholder="{{ trans('dashboard.modal.categories.Slug placeholder') }}">
                 <x-error name="slug" />
             </div>
 
             <div class="mb-3 mt-3">
-                <label for="description">الوصف</label>
-                <textarea wire:model='description' id="description" class="form-control" placeholder="أدخل وصف لهذه الفئة"
-                    cols="30" rows="5"></textarea>
+                <label for="description">{{ trans('dashboard.modal.categories.Description') }}</label>
+                <textarea wire:model='description' id="description" class="form-control"
+                    placeholder="{{ trans('dashboard.modal.categories.Description placeholder') }}" cols="30" rows="5"></textarea>
                 <x-error name="description" />
             </div>
 
             <div class="mb-3">
-                <label for="image">الصورة</label>
+                <label for="image">{{ trans('dashboard.modal.categories.Image') }}</label>
                 <input wire:model='image' id="image" type="file" class="form-control"
                     accept="image/png, image/jpg, image/jpeg">
                 <x-error name="image" />
             </div>
 
             <x-slot:button>
-                <button wire:click="resetFields" type="button" class="btn btn-secondary"
-                    data-bs-dismiss="modal">{{ trans('إغلاق') }}
+                <button wire:click="resetFields" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    {{ trans('dashboard.modal.Close') }}
                 </button>
                 <button wire:click.prevent='update({{ $rowId }})' type="button" class="btn btn-primary">
                     <div class="d-flex align-items-center gap-2">
                         <span class="material-icons-outlined fs-6">update</span>
-                        <span>تحديث</span>
+                        <span>{{ trans('dashboard.modal.Update') }}</span>
                     </div>
                 </button>
             </x-slot:button>

@@ -111,6 +111,20 @@ return [
             'Delete country warning' => 'هل أنت متأكد أنك تريد حذف هذا البلد؟',
             'Edit country title' => 'تحرير البلد',
         ],
+
+        'categories' => [
+            'Create category title' => 'إنشاء فئة جديدة',
+            'Name' => 'الاسم',
+            'Name placeholder' => 'أدخل اسم الفئة',
+            'Slug' => 'العلامة',
+            'Slug placeholder' => 'أدخل العلامة',
+            'Description' => 'الوصف',
+            'Description placeholder' => 'وصف هذه الفئة',
+            'Image' => 'الصورة',
+            'Delete category title' => 'حذف الفئة',
+            'Delete category warning' => 'هل أنت متأكد أنك تريد حذف هذه الفئة؟',
+            'Edit category title' => 'تحرير الفئة',
+        ]
     ],
 
 

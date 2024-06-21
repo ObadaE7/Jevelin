@@ -111,6 +111,20 @@ return [
             'Delete country warning' => 'Are you sure you want to delete this country?',
             'Edit country title' => 'Edit country',
         ],
+
+        'categories' => [
+            'Create category title' => 'Create a new category',
+            'Name' => 'Name',
+            'Name placeholder' => 'Enter the category name',
+            'Slug' => 'Slug',
+            'Slug placeholder' => 'Enter the slug',
+            'Description' => 'Description',
+            'Description placeholder' => 'Describe this category',
+            'Image' => 'Image',
+            'Delete category title' => 'Delete category',
+            'Delete category warning' => 'Are you sure you want to delete this category?',
+            'Edit category title' => 'Edit category',
+        ]
     ],
 
 
