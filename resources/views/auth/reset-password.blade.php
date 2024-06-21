@@ -46,10 +46,6 @@
         </div>
     </section>
 
-    @push('css')
-        <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
-    @endpush
-
     @push('scripts')
         <script src="{{ asset('assets/js/scripts.js') }}"></script>
         <script>

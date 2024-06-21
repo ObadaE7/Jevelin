@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 :root,
 [data-bs-theme=light] {
     --bs-blue: #3b7ddd;
@@ -13890,4 +13891,87 @@ fieldset:disabled .btn {
     }
 }
 
-/*# sourceMappingURL=bootstrap.min.css.map */
+/* Custom style */
+
+.input-password {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.input-password-icon {
+    position: absolute;
+    margin-left: var(--m-xsm);
+    font-size: 20px;
+    padding: calc(var(--p-xsm) - .25rem);
+    background: var(--bs-light);
+    color: var(--bs-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.input-password-icon:hover {
+    color: var(--bs-primary);
+    background: #f3f3f3;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-top: 1px solid #dee2e6;
+    margin: 0 10px;
+}
+
+.tooltip-hint span {
+    color: var(--bs-info);
+    cursor: pointer;
+}
+
+.info-tooltip {
+    --bs-tooltip-bg: var(--bs-info);
+    --bs-tooltip-color: var(--bs-white);
+}
+
+.primary-tooltip {
+    --bs-tooltip-bg: var(--bs-primary);
+    --bs-tooltip-color: var(--bs-white);
+}
+
+.dark-tooltip {
+    --bs-tooltip-bg: var(--bs-dark);
+    --bs-tooltip-color: var(--bs-white);
+}
+
+.light-tooltip {
+    --bs-tooltip-bg: var(--bs-light);
+    --bs-tooltip-color: var(--bs-dark);
+}
+
+.secondary-tooltip {
+    --bs-tooltip-bg: var(--bs-secondary);
+    --bs-tooltip-color: var(--bs-white);
+}
+
+.success-tooltip {
+    --bs-tooltip-bg: var(--bs-success);
+    --bs-tooltip-color: var(--bs-white);
+}
+
+.danger-tooltip {
+    --bs-tooltip-bg: var(--bs-danger);
+    --bs-tooltip-color: var(--bs-white);
+}
+
+.warning-tooltip {
+    --bs-tooltip-bg: var(--bs-warning);
+    --bs-tooltip-color: var(--bs-white);
+}

@@ -28,8 +28,4 @@
             </div>
         </div>
     </section>
-
-    @push('css')
-        <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
-    @endpush
 </x-guest-layout>
