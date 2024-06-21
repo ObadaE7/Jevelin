@@ -28,8 +28,13 @@ return [
         'Not found' => 'Country not found',
     ],
 
-
-
-    'Tag created' => 'The tag has been created successfully',
-
+    'category' => [
+        'Created' => 'The category has been created successfully',
+        'Failed create' => 'Failed to create category',
+        'Updated' => 'The category has been updated successfully',
+        'Failed update' => 'Failed to update category',
+        'Deleted' => 'The category has been deleted successfully',
+        'Failed delete' => 'Failed to delete category',
+        'Not found' => 'Category not found',
+    ],
 ];

@@ -79,5 +79,8 @@ return [
         'Roles' => 'Roles',
         'Countries' => 'Countries',
         'Flag' => 'Flag',
+        'Categories' => 'Categories',
+        'Image' => 'Image',
+        'Slug' => 'Slug',
     ],
 ];

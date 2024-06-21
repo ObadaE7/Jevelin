@@ -80,5 +80,8 @@ return [
         'Roles' => 'الأدوار',
         'Countries' => 'الدول',
         'Flag' => 'العلم',
+        'Categories' => 'الفئات',
+        'Image' => 'الصورة',
+        'Slug' => 'الرابط',
     ],
 ];
