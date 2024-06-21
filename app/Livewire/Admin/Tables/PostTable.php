@@ -23,7 +23,7 @@ class PostTable extends Component
         $rows = Post::where($this->searchBy, 'like', "%{$this->search}%")
             ->orderBy($this->orderBy, $this->orderDir)
             ->paginate($this->perPage);
-        return view('admin.pages.tables.post-table', compact('rows', 'headers'))
+        return view('admin.pages.tables.posts.post-table', compact('rows', 'headers'))
             ->extends('layouts.dashboard')
             ->section('content');
     }

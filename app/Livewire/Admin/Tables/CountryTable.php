@@ -107,7 +107,7 @@ class CountryTable extends Component
             ->orderBy($this->orderBy, $this->orderDir)
             ->paginate($this->perPage);
 
-        return view('admin.pages.tables.country-table', compact('headers', 'columns', 'rows', 'perPages'))
+        return view('admin.pages.tables.countries.country-table', compact('headers', 'columns', 'rows', 'perPages'))
             ->extends('layouts.dashboard')
             ->section('content');
     }

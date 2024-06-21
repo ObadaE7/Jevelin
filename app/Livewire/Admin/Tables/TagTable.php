@@ -110,7 +110,7 @@ class TagTable extends Component
             ->orderBy($this->orderBy, $this->orderDir)
             ->paginate($this->perPage);
 
-        return view('admin.pages.tables.tag-table', compact('headers', 'columns', 'rows', 'perPages'))
+        return view('admin.pages.tables.tags.tag-table', compact('headers', 'columns', 'rows', 'perPages'))
             ->extends('layouts.dashboard')
             ->section('content');
     }

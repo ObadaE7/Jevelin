@@ -1,7 +1,7 @@
 @section('breadcrumb')
     <x-breadcrumb>
-        <li class="breadcrumb-item"><a href="{{ route('admin.countries') }}">{{ trans('dashboard.table.Table') }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('dashboard.table.Countries') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.roles') }}">{{ trans('dashboard.table.Table') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('dashboard.table.Roles') }}</a></li>
     </x-breadcrumb>
 @endsection
 
@@ -36,8 +36,7 @@
                     <tr wire:key="{{ $row->id }}">
                         <td>{{ $row->id }}</td>
                         <td>{{ $row->name }}</td>
-                        <td><img src="{{ asset('storage/' . $row->flag) }}" alt="{{ $row->name }}" style="width: 5%">
-                        </td>
+                        <td>{{ $row->description }}</td>
                         <td>
                             <div class="actions__btn">
                                 <button wire:click="edit({{ $row->id }})" class="btn__edit" data-bs-toggle="modal"
@@ -63,9 +62,9 @@
     <div class="table__paginate">{{ $rows->links() }}</div>
 
     <div class="table__modals">
-        @include('admin.pages.modals.countries.modal-create')
-        @include('admin.pages.modals.countries.modal-edit')
-        @include('admin.pages.modals.countries.modal-delete')
+        @include('admin.pages.tables.roles.modal-create')
+        @include('admin.pages.tables.roles.modal-edit')
+        @include('admin.pages.tables.roles.modal-delete')
     </div>
 </section>
 

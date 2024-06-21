@@ -99,7 +99,7 @@ class RoleTable extends Component
             ->orderBy($this->orderBy, $this->orderDir)
             ->paginate($this->perPage);
 
-        return view('admin.pages.tables.role-table', compact('headers', 'columns', 'rows', 'perPages'))
+        return view('admin.pages.tables.roles.role-table', compact('headers', 'columns', 'rows', 'perPages'))
             ->extends('layouts.dashboard')
             ->section('content');
     }

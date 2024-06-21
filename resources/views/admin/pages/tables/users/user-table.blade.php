@@ -1,7 +1,7 @@
 @section('breadcrumb')
     <x-breadcrumb>
-        <li class="breadcrumb-item"><a href="{{ route('admin.categories') }}">{{ trans('dashboard.table.Table') }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('dashboard.table.Categories') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.users') }}">{{ trans('dashboard.table.Table') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('dashboard.table.Users') }}</a></li>
     </x-breadcrumb>
 @endsection
 
@@ -18,14 +18,10 @@
             @section('thead')
                 @foreach ($headers as $index => $header)
                     <th scope="col"
-                        @if (isset($columns[$index]) &&
-                                $header !== trans('dashboard.table.Actions') &&
-                                $header !== trans('dashboard.table.Image')) wire:click="setOrderBy('{{ $columns[$index] }}')" style="cursor: pointer;" @endif>
+                        @if (isset($columns[$index]) && $header !== trans('dashboard.table.Actions')) wire:click="setOrderBy('{{ $columns[$index] }}')" style="cursor: pointer;" @endif>
                         <div class="d-flex align-items-center justify-content-between">
                             <span>{{ ucfirst($header) }}</span>
-                            @if (isset($columns[$index]) &&
-                                    $header !== trans('dashboard.table.Actions') &&
-                                    $header !== trans('dashboard.table.Image'))
+                            @if (isset($columns[$index]) && $header !== trans('dashboard.table.Actions'))
                                 <span class="material-icons-outlined">
                                     {{ $orderBy === $columns[$index] ? ($orderDir === 'asc' ? 'expand_less' : 'expand_more') : 'unfold_more' }}
                                 </span>
@@ -38,10 +34,17 @@
             @section('tbody')
                 @forelse ($rows as $row)
                     <tr wire:key="{{ $row->id }}">
-                        <td>{{ $row->id }}</td>
-                        <td><img src="{{ asset('storage/' . $row->image) }}" class="img-thumbnail" style="width: 10%; height: 10%;"></td>
-                        <td>{{ $row->name }}</td>
-                        <td>{{ $row->slug }}</td>
+                        <td>
+                            <img src="{{ asset('storage/' . $row->avatar) }}" class="img-thumbnail"
+                                style="width: 35%; height: 35%;" alt="">
+                        </td>
+                        <td>
+                            <div class="d-flex flex-column">
+                                <span>{{ $row->fname . ' ' . $row->lname }}</span>
+                                <span class="text-muted">{{ $row->uname }}</span>
+                            </div>
+                        </td>
+                        <td>{{ $row->email }}</td>
                         <td>
                             <div class="actions__btn">
                                 <button wire:click="show({{ $row->id }})" class="btn__show" data-bs-toggle="modal"
@@ -70,13 +73,15 @@
     <div class="table__paginate">{{ $rows->links() }}</div>
 
     <div class="table__modals">
-        @include('admin.pages.modals.categories.modal-create')
-        @include('admin.pages.modals.categories.modal-edit')
-        @include('admin.pages.modals.categories.modal-delete')
+        @include('admin.pages.tables.users.modal-create')
+        @include('admin.pages.tables.users.modal-show')
+        @include('admin.pages.tables.users.modal-edit')
+        @include('admin.pages.tables.users.modal-delete')
     </div>
 </section>
 
 @push('scripts')
+    <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script>
         document.addEventListener('livewire:navigated', () => {
             Livewire.on('urlReset', url => {
@@ -87,5 +92,7 @@
         document.addEventListener('closeModal', event => {
             $('#' + event.detail.modalId).modal('hide');
         });
+
+        togglePassword()
     </script>
 @endpush
