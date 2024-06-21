@@ -3,16 +3,18 @@
     <x-slot:title>
         <div class="d-flex align-items-center gap-2">
             <span class="material-icons-outlined">bookmarks</span>
-            <span>حذف الوسم</span>
+            <span>{{ trans('dashboard.modal.tags.Delete tag title') }}</span>
         </div>
     </x-slot:title>
-    <x-slot:body>هل أنت متأكد أنك تريد حذف هذا الوسم؟</x-slot:body>
+    <x-slot:body>{{ trans('dashboard.modal.tags.Delete tag warning') }}</x-slot:body>
     <x-slot:button>
         <button wire:click="resetFields" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            إغلاق
+            {{ trans('dashboard.modal.Close') }}
         </button>
         <button wire:click='delete({{ $rowId }})' type="button" class="btn btn-danger">
-            <div class="d-flex align-items-center gap-2"><span class="material-icons-outlined fs-6">delete</span>حذف
+            <div class="d-flex align-items-center gap-2">
+                <span class="material-icons-outlined fs-6">delete</span>
+                <span>{{ trans('dashboard.modal.Delete') }}</span>
             </div>
         </button>
     </x-slot:button>

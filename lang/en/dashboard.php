@@ -124,7 +124,18 @@ return [
             'Delete category title' => 'Delete category',
             'Delete category warning' => 'Are you sure you want to delete this category?',
             'Edit category title' => 'Edit category',
-        ]
+        ],
+
+        'tags' => [
+            'Create tag title' => 'Create a new tag',
+            'Name' => 'Name',
+            'Name placeholder' => 'Enter the tag name',
+            'Slug' => 'Slug',
+            'Slug placeholder' => 'Enter the slug',
+            'Delete tag title' => 'Delete tag',
+            'Delete tag warning' => 'Are you sure you want to delete this tag?',
+            'Edit tag title' => 'Edit tag',
+        ],
     ],
 
 

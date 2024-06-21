@@ -124,7 +124,18 @@ return [
             'Delete category title' => 'حذف الفئة',
             'Delete category warning' => 'هل أنت متأكد أنك تريد حذف هذه الفئة؟',
             'Edit category title' => 'تحرير الفئة',
-        ]
+        ],
+
+        'tags' => [
+            'Create tag title' => 'إنشاء وسم جديد',
+            'Name' => 'الاسم',
+            'Name placeholder' => 'أدخل اسم الوسم',
+            'Slug' => 'العلامة',
+            'Slug placeholder' => 'أدخل العلامة',
+            'Delete tag title' => 'حذف الوسم',
+            'Delete tag warning' => 'هل أنت متأكد أنك تريد حذف هذا الوسم؟',
+            'Edit tag title' => 'تحرير الوسم',
+        ],
     ],
 
 
