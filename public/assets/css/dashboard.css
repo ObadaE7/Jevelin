@@ -1,11 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Kufam:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&display=swap');
 
 :root {
     --primary-font-family: 'Tajawal', sans-serif;
-    /* --secondary-font-family: 'El Messiri', sans-serif; */
-    /* --secondary-font-family: 'Kufam', sans-serif; */
     --font-weight: 600;
     --font-style: normal;
     --font-icons: 'Material Icons Outlined';
@@ -558,9 +554,6 @@ img {
 
 .dashboard__main-content {
     grid-area: content;
-    /* padding: var(--p-sm); */
-    /* background: var(--bs-white);
-    border-radius: var(--border-radius-xsm); */
 }
 
 .table__wrapper {
@@ -715,6 +708,9 @@ img {
     width: 0;
 }
 
+
+/*............... { PROFILE PAGE } ...............*/
+
 .profile__wrapper {
     display: grid;
     grid-template-rows: 1fr;
@@ -723,24 +719,45 @@ img {
     gap: var(--gap-sm);
 }
 
+.profile__right {
+    grid-area: col-right;
+    display: grid;
+    grid-template-rows: repeat(4, max-content);
+    grid-template-columns: 1fr;
+    gap: var(--gap-sm);
+}
+
 .profile__left {
     grid-area: col-left;
     display: grid;
     grid-template-rows: repeat(2, max-content);
     grid-template-columns: 1fr;
+    grid-template-areas: 'banner' 'account';
+    gap: var(--gap-sm);
+}
+
+.profile__banner {
+    grid-area: banner;
+    display: grid;
+    grid-template-rows: repeat(2, max-content);
+    grid-template-columns: 1fr;
     grid-template-areas: 'header' 'info';
-    gap: var(--gap-lg);
 }
 
 .profile__header {
     grid-area: header;
     position: relative;
+    height: calc(var(--height-100) * 2);
 }
 
 .profile__header-cover {
     position: absolute;
     width: var(--m-width-100);
     height: calc(var(--height-100) + 20px);
+}
+
+.profile__header-cover img {
+    border-radius: var(--border-radius-xsm);
 }
 
 .profile__header-avatar {
@@ -779,7 +796,7 @@ img {
 }
 
 .btn__avatar::before {
-    content: '\e3af';
+    content: '\e412';
     font-family: var(--font-icons);
     color: var(--bs-white);
 }
@@ -793,8 +810,8 @@ img {
 .btn__cover {
     width: 25px;
     height: 25px;
-    border-radius: .25rem;
     background: var(--bs-primary);
+    border-radius: var(--border-radius-xsm);
 }
 
 .btn__cover::before {
@@ -816,41 +833,16 @@ img {
     align-items: center;
 }
 
-.profile__info-name {
-    font-size: 20px;
-    font-weight: var(--fw-500);
-}
-
-.profile__right {
-    grid-area: col-right;
-    display: grid;
-    grid-template-rows: repeat(4, max-content);
-    grid-template-columns: 1fr;
-    grid-template-areas: 'information' 'about' 'email' 'password';
+.profile__account {
+    grid-area: account;
+    display: flex;
+    flex-direction: column;
     gap: var(--gap-sm);
 }
 
-.profile__content-information {
-    grid-area: information;
-}
-
-.profile__content-about {
-    grid-area: about;
-}
-
-.profile__content-email {
-    grid-area: email;
-}
-
-.profile__content-password {
-    grid-area: password;
-}
-
-.profile__left,
-.profile__content-information,
-.profile__content-about,
-.profile__content-email,
-.profile__content-password {
+.profile__banner,
+.profile__account,
+.profile__right-row {
     padding: var(--p-sm);
     background: var(--bs-white);
     border-radius: var(--border-radius-xsm);
@@ -860,9 +852,12 @@ img {
     .profile__wrapper {
         grid-template-rows: repeat(2, max-content);
         grid-template-columns: 1fr;
-        grid-template-areas: 'profile' 'content';
+        grid-template-areas: 'col-left' 'col-right';
     }
 }
+
+/*............... { END PROFILE PAGE } ...............*/
+
 
 .create__post-wrapper {
     display: grid;

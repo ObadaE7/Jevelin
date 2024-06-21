@@ -186,6 +186,22 @@ return [
     |
     */
 
-    'attributes' => [],
-
+    'attributes' => [
+        'avatar' => 'الصورة الشخصية',
+        'cover' => 'الغلاف',
+        'fname' => 'الاسم الأول',
+        'lname' => 'الاسم الأخير',
+        'uname' => 'اسم المستخدم',
+        'country_id' => 'معرف البلد',
+        'role_id' => 'معرف الدور',
+        'bio' => 'السيرة الذاتية',
+        'phone' => 'الهاتف',
+        'birthday' => 'تاريخ الميلاد',
+        'email' => 'البريد الإلكتروني',
+        'current_password_email' => 'كلمة المرور الحالية',
+        'current_password' => 'كلمة المرور الحالية',
+        'password' => 'كلمة المرور',
+        'password_confirmation' => 'تأكيد كلمة المرور',
+        'current_password_account' => 'كلمة المرور الحالية',
+    ],
 ];

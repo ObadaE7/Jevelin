@@ -121,6 +121,7 @@ return [
         'numbers' => 'The :attribute field must contain at least one number.',
         'symbols' => 'The :attribute field must contain at least one symbol.',
         'uncompromised' => 'The given :attribute has appeared in a data leak. Please choose a different :attribute.',
+        'regex' => 'The :attribute must contain at least one lowercase letter, one uppercase letter, and one digit.',
     ],
     'present' => 'The :attribute field must be present.',
     'present_if' => 'The :attribute field must be present when :other is :value.',
@@ -186,6 +187,23 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'avatar' => 'avatar',
+        'cover' => 'cover',
+        'fname' => 'first name',
+        'lname' => 'last name',
+        'uname' => 'username',
+        'country_id' => 'country id',
+        'role_id' => 'role id',
+        'bio' => 'bio',
+        'phone' => 'phone',
+        'birthday' => 'birthday',
+        'email' => 'email',
+        'current_password_email' => 'current password',
+        'current_password' => 'current password',
+        'password' => 'password',
+        'password_confirmation' => 'password confirmation',
+        'current_password_account' => 'current password',
+    ],
 
 ];

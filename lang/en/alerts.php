@@ -57,4 +57,22 @@ return [
         'Failed delete' => 'Failed to delete user',
         'Not found' => 'User not found',
     ],
+
+    'profile' => [
+        'Updated' => 'Updated!',
+        'Failed update fname' => 'Failed to update first name',
+        'Failed update lname' => 'Failed to update last name',
+        'Failed update uname' => 'Failed to update username',
+        'Failed update country' => 'Failed to update country',
+        'Failed update role' => 'Failed to update role',
+        'Failed update bio' => 'Failed to update bio',
+        'Failed update phone' => 'Failed to update phone',
+        'Failed update birthday' => 'Failed to update birthday',
+        'Failed update email' => 'Failed to update email',
+        'Failed update password' => 'Failed to update password',
+        'Failed update cover' => 'Failed to update cover',
+        'Failed update avatar' => 'Failed to update avatar',
+        'Deleted' => 'Your account has been successfully deleted permanently',
+        'Failed delete account' => 'Failed to delete account',
+    ],
 ];
