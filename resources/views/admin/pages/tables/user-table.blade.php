@@ -1,31 +1,31 @@
 @section('breadcrumb')
     <x-breadcrumb>
-        <li class="breadcrumb-item"><a href="{{ route('admin.users') }}">{{ trans('string.Table') }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('string.Users') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.users') }}">{{ trans('dashboard.table.Table') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('dashboard.table.Users') }}</a></li>
     </x-breadcrumb>
 @endsection
 
-<div class="table__wrapper">
+<section class="table__wrapper">
     <div class="table__filter">
-        <x-table-filter :columns="$this->columns" :searchBy="$this->searchBy" :perPages="$this->perPages" optCreate="true" />
+        <x-table-filter :columns="$columns" :searchBy="$this->searchBy" :perPages="$perPages" optCreate="true" />
     </div>
 
     <div class="table__body">
+        <x-alert status="success" color="success" />
+        <x-alert status="error" color="danger" />
+
         <x-table>
             @section('thead')
-                @foreach ($headers as $header)
+                @foreach ($headers as $index => $header)
                     <th scope="col"
-                        @unless ($header === 'Actions')
-                            wire:click="setOrderBy('{{ $header }}')" style="cursor: pointer;"
-                        @endunless>
-
+                        @if (isset($columns[$index]) && $header !== trans('dashboard.table.Actions')) wire:click="setOrderBy('{{ $columns[$index] }}')" style="cursor: pointer;" @endif>
                         <div class="d-flex align-items-center justify-content-between">
                             <span>{{ ucfirst($header) }}</span>
-                            @unless ($header === 'Actions')
+                            @if (isset($columns[$index]) && $header !== trans('dashboard.table.Actions'))
                                 <span class="material-icons-outlined">
-                                    {{ $orderBy === $header ? ($orderDir === 'asc' ? 'expand_less' : 'expand_more') : 'unfold_more' }}
+                                    {{ $orderBy === $columns[$index] ? ($orderDir === 'asc' ? 'expand_less' : 'expand_more') : 'unfold_more' }}
                                 </span>
-                            @endunless
+                            @endif
                         </div>
                     </th>
                 @endforeach
@@ -34,8 +34,16 @@
             @section('tbody')
                 @forelse ($rows as $row)
                     <tr wire:key="{{ $row->id }}">
-                        <td>{{ $row->fname }}</td>
-                        <td>{{ $row->lname }}</td>
+                        <td>
+                            <img src="{{ asset('storage/' . $row->avatar) }}" class="img-thumbnail"
+                                style="width: 35%; height: 35%;" alt="">
+                        </td>
+                        <td>
+                            <div class="d-flex flex-column">
+                                <span>{{ $row->fname . ' ' . $row->lname }}</span>
+                                <span class="text-muted">{{ $row->uname }}</span>
+                            </div>
+                        </td>
                         <td>{{ $row->email }}</td>
                         <td>
                             <div class="actions__btn">
@@ -54,7 +62,7 @@
                 @empty
                     <tr>
                         <td colspan="{{ count($headers) }}" class="text-center">
-                            {{ trans('No Result Found') }}
+                            {{ trans('dashboard.table.No results found') }}
                         </td>
                     </tr>
                 @endforelse
@@ -62,7 +70,29 @@
         </x-table>
     </div>
 
-    <div class="table__paginate">
-        {{ $rows->links() }}
+    <div class="table__paginate">{{ $rows->links() }}</div>
+
+    <div class="table__modals">
+        @include('admin.pages.modals.users.modal-create')
+        @include('admin.pages.modals.users.modal-show')
+        @include('admin.pages.modals.users.modal-edit')
+        @include('admin.pages.modals.users.modal-delete')
     </div>
-</div>
+</section>
+
+@push('scripts')
+    <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    <script>
+        document.addEventListener('livewire:navigated', () => {
+            Livewire.on('urlReset', url => {
+                history.pushState(null, null, url);
+            });
+        });
+
+        document.addEventListener('closeModal', event => {
+            $('#' + event.detail.modalId).modal('hide');
+        });
+
+        togglePassword()
+    </script>
+@endpush

@@ -47,4 +47,14 @@ return [
         'Failed delete' => 'Failed to delete tag',
         'Not found' => 'Tag not found',
     ],
+
+    'user' => [
+        'Created' => 'The user has been created successfully',
+        'Failed create' => 'Failed to create user',
+        'Updated' => 'The user has been updated successfully',
+        'Failed update' => 'Failed to update user',
+        'Deleted' => 'The user has been deleted successfully',
+        'Failed delete' => 'Failed to delete user',
+        'Not found' => 'User not found',
+    ],
 ];

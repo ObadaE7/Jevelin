@@ -84,5 +84,8 @@ return [
         'Slug' => 'Slug',
         'Articles' => 'Articles',
         'Tags' => 'Tags',
+        'Avatar' => 'Avatar',
+        'Email' => 'Email',
+        'Users' => 'Users',
     ],
 ];

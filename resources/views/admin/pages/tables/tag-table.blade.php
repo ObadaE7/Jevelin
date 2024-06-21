@@ -5,7 +5,7 @@
     </x-breadcrumb>
 @endsection
 
-<div class="table__wrapper">
+<section class="table__wrapper">
     <div class="table__filter">
         <x-table-filter :columns="$columns" :searchBy="$this->searchBy" :perPages="$perPages" optCreate="true" />
     </div>
@@ -67,7 +67,7 @@
         @include('admin.pages.modals.tags.modal-edit')
         @include('admin.pages.modals.tags.modal-delete')
     </div>
-</div>
+</section>
 
 @push('scripts')
     <script>
