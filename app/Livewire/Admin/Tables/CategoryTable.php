@@ -20,7 +20,6 @@ class CategoryTable extends Component
     public $image;
     public $description;
 
-
     public function updatedName()
     {
         $this->slug = str()->slug($this->name);
@@ -39,7 +38,7 @@ class CategoryTable extends Component
             $validated['image'] = $validated['image']->store('categories', 'public');
             Category::create($validated);
             session()->flash('success', trans('alerts.category.Created'));
-            $this->resetField();
+            $this->resetFields();
             $this->closeModal('createModal');
         } catch (Exception $e) {
             Log::error('[createCategory]: ' . $e->getMessage());
@@ -74,6 +73,7 @@ class CategoryTable extends Component
 
             $category->update($validated);
             session()->flash('success', trans('alerts.category.Updated'));
+            $this->resetFields();
             $this->closeModal('editModal');
         } catch (Exception $e) {
             Log::error('[updateCategory]: ' . $e->getMessage());

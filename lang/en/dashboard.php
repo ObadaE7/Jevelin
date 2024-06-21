@@ -82,5 +82,7 @@ return [
         'Categories' => 'Categories',
         'Image' => 'Image',
         'Slug' => 'Slug',
+        'Articles' => 'Articles',
+        'Tags' => 'Tags',
     ],
 ];

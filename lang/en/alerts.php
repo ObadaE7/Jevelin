@@ -37,4 +37,14 @@ return [
         'Failed delete' => 'Failed to delete category',
         'Not found' => 'Category not found',
     ],
+
+    'tag' => [
+        'Created' => 'The tag has been created successfully',
+        'Failed create' => 'Failed to create tag',
+        'Updated' => 'The tag has been updated successfully',
+        'Failed update' => 'Failed to update tag',
+        'Deleted' => 'The tag has been deleted successfully',
+        'Failed delete' => 'Failed to delete tag',
+        'Not found' => 'Tag not found',
+    ],
 ];

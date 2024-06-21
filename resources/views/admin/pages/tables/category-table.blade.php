@@ -35,7 +35,6 @@
                 @endforeach
             @endsection
 
-
             @section('tbody')
                 @forelse ($rows as $row)
                     <tr wire:key="{{ $row->id }}">

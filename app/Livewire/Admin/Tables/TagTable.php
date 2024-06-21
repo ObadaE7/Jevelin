@@ -12,11 +12,9 @@ class TagTable extends Component
 {
     use WithPagination, ModalTrait, FilterTrait;
 
+    public $rowId;
     public $name;
     public $slug;
-    public $rowId;
-    public $columns;
-    public $perPages;
 
     public function updatedName()
     {
@@ -32,12 +30,12 @@ class TagTable extends Component
 
         try {
             Tag::create($validated);
-            session()->flash('success', trans('alerts.Tag created'));
-            $this->resetField();
+            session()->flash('success', trans('alerts.tag.Created'));
+            $this->resetFields();
             $this->closeModal('createModal');
         } catch (Exception $e) {
             Log::error('[createTag]: ' . $e->getMessage());
-            session()->flash('error', trans('Failed to create tag'));
+            session()->flash('error', trans('alerts.tag.Failed create'));
         }
     }
 
@@ -59,11 +57,12 @@ class TagTable extends Component
 
         try {
             $tag->update($validated);
-            session()->flash('success', trans('The tag has been updated successfully'));
+            session()->flash('success', trans('alerts.tag.Updated'));
+            $this->resetFields();
             $this->closeModal('editModal');
         } catch (Exception $e) {
             Log::error('[updateTag]: ' . $e->getMessage());
-            session()->flash('error', trans('Failed to update tag'));
+            session()->flash('error', trans('alerts.tag.Failed update'));
         }
     }
 
@@ -73,18 +72,18 @@ class TagTable extends Component
         try {
             if ($tag) {
                 $tag->delete();
-                session()->flash('success', trans('The tag has been deleted successfully'));
+                session()->flash('success', trans('alerts.tag.Deleted'));
                 $this->closeModal('deleteModal');
             } else {
-                session()->flash('error', trans('Tag not found'));
+                session()->flash('error', trans('alerts.tag.Not found'));
             }
         } catch (Exception $e) {
             Log::error('[deleteTag]: ' . $e->getMessage());
-            session()->flash('error', trans('Failed to delete tag'));
+            session()->flash('error', trans('alerts.tag.Failed delete'));
         }
     }
 
-    public function resetField()
+    public function resetFields()
     {
         $this->reset();
         $this->resetValidation();
@@ -92,14 +91,15 @@ class TagTable extends Component
 
     public function resetFilters()
     {
-        $this->reset(['search', 'searchBy', 'perPage', 'orderBy', 'orderDir']);
+        $this->resetFields();
         $this->dispatch('urlReset', route('admin.tags'));
     }
 
     public function render()
     {
-        $this->columns = ['id', 'name', 'slug', 'posts_count'];
-        $headers = ['Id', 'Name', 'Slug', 'Posts', 'Actions'];
+        $columns = ['id', 'name', 'slug', 'posts_count'];
+        $headers = [trans('dashboard.table.Id'), trans('dashboard.table.Name'), trans('dashboard.table.Slug'), trans('dashboard.table.Articles'), trans('dashboard.table.Actions')];
+        $perPages = [5, 10, 20, 50];
 
         $rows = Tag::withCount('posts')
             ->when($this->searchBy === 'posts_count', function ($query) {
@@ -110,11 +110,8 @@ class TagTable extends Component
             ->orderBy($this->orderBy, $this->orderDir)
             ->paginate($this->perPage);
 
-        $this->perPages = [5, 10, 20, 50];
-
-        return view('admin.pages.tables.tag-table', [
-            'headers' => $headers,
-            'rows' => $rows,
-        ])->extends('layouts.dashboard')->section('content');
+        return view('admin.pages.tables.tag-table', compact('headers', 'columns', 'rows', 'perPages'))
+            ->extends('layouts.dashboard')
+            ->section('content');
     }
 }

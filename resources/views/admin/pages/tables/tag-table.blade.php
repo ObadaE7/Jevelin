@@ -1,13 +1,13 @@
 @section('breadcrumb')
     <x-breadcrumb>
-        <li class="breadcrumb-item"><a href="{{ route('admin.tags') }}">{{ trans('string.Table') }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('string.Tags') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.tags') }}">{{ trans('dashboard.table.Table') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('dashboard.table.Tags') }}</a></li>
     </x-breadcrumb>
 @endsection
 
 <div class="table__wrapper">
     <div class="table__filter">
-        <x-table-filter :columns="$this->columns" :searchBy="$this->searchBy" :perPages="$this->perPages" optCreate="true" />
+        <x-table-filter :columns="$columns" :searchBy="$this->searchBy" :perPages="$perPages" optCreate="true" />
     </div>
 
     <div class="table__body">
@@ -16,19 +16,16 @@
 
         <x-table>
             @section('thead')
-                @foreach ($headers as $header)
+                @foreach ($headers as $index => $header)
                     <th scope="col"
-                        @unless ($header === 'Actions')
-                            wire:click="setOrderBy('{{ $header }}')" style="cursor: pointer;"
-                        @endunless>
-
+                        @if (isset($columns[$index]) && $header !== trans('dashboard.table.Actions')) wire:click="setOrderBy('{{ $columns[$index] }}')" style="cursor: pointer;" @endif>
                         <div class="d-flex align-items-center justify-content-between">
                             <span>{{ ucfirst($header) }}</span>
-                            @unless ($header === 'Actions')
+                            @if (isset($columns[$index]) && $header !== trans('dashboard.table.Actions'))
                                 <span class="material-icons-outlined">
-                                    {{ $orderBy === $header ? ($orderDir === 'asc' ? 'expand_less' : 'expand_more') : 'unfold_more' }}
+                                    {{ $orderBy === $columns[$index] ? ($orderDir === 'asc' ? 'expand_less' : 'expand_more') : 'unfold_more' }}
                                 </span>
-                            @endunless
+                            @endif
                         </div>
                     </th>
                 @endforeach
@@ -43,9 +40,6 @@
                         <td>{{ $row->posts_count }}</td>
                         <td>
                             <div class="actions__btn">
-                                <button wire:click="show({{ $row->id }})" class="btn__show" data-bs-toggle="modal"
-                                    data-bs-target="#showModal">
-                                </button>
                                 <button wire:click="edit({{ $row->id }})" class="btn__edit" data-bs-toggle="modal"
                                     data-bs-target="#editModal">
                                 </button>
@@ -58,7 +52,7 @@
                 @empty
                     <tr>
                         <td colspan="{{ count($headers) }}" class="text-center">
-                            لم يتم العثور على نتائج
+                            {{ trans('dashboard.table.No results found') }}
                         </td>
                     </tr>
                 @endforelse
@@ -70,6 +64,8 @@
 
     <div class="table__modals">
         @include('admin.pages.modals.tags.modal-create')
+        @include('admin.pages.modals.tags.modal-edit')
+        @include('admin.pages.modals.tags.modal-delete')
     </div>
 </div>
 
