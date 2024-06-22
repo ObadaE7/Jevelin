@@ -5,10 +5,9 @@ namespace App\Livewire\Admin\Tables;
 use App\Models\Category;
 use Livewire\{Component, WithPagination};
 use App\Traits\{FilterTrait, ModalTrait};
-use Exception;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\{Storage, Log};
 use Livewire\Features\SupportFileUploads\WithFileUploads;
+use Exception;
 
 class CategoryTable extends Component
 {
