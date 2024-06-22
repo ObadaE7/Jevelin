@@ -154,12 +154,14 @@ img {
 
 .wrapper__header-offcanvas {
     display: none;
+    justify-self: end;
+
 }
 
 .header__toggle-btn {
     font-size: 25px;
     display: flex;
-    padding: 0 var(--p-xsm);
+    padding: 0;
 }
 
 .header__toggle-btn::before {
@@ -548,12 +550,13 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 25%;
+    width: max-content;
     color: var(--bs-white);
     background: var(--orange-color);
     padding: var(--p-xsm) calc(var(--p-md) + .5rem);
     border-radius: calc(var(--border-radius-md) - .5rem);
     transition: background-color .3s ease;
+    margin: var(--m-sm) 0;
 }
 
 .btn__read-more:hover {
@@ -588,6 +591,13 @@ img {
     transform: translateX(-1.5rem);
 }
 
+.post__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
 .post__reactions {
     display: flex;
     justify-content: end;
@@ -616,6 +626,64 @@ img {
 
 .section__one-post:nth-child(even) footer {
     direction: rtl;
+}
+
+@media (max-width: 768px) {
+    .section__one-post {
+        grid-template-rows: max-content max-content;
+        grid-template-columns: 1fr;
+        grid-template-areas: 'content' 'img';
+    }
+
+    .section__one-post--img {
+        height: calc((var(--height-100) * 2) + 50px);
+    }
+
+    .section__title {
+        font-size: 24px;
+    }
+
+    .section__subtitle {
+        font-size: 16px;
+    }
+
+    .post__title {
+        font-size: 20px;
+    }
+
+    .post__subtitle {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section__title {
+        font-size: 20px;
+    }
+
+    .section__subtitle {
+        font-size: 14px;
+    }
+
+    .post__title {
+        font-size: 18px;
+    }
+
+    .post__subtitle {
+        font-size: 12px;
+    }
+
+    .post__footer {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: calc(var(--gap-sm) - .5rem);
+        margin-top: auto;
+    }
+
+    .post__footer .post__reactions {
+        align-self: center;
+    }
 }
 
 .main__subscribe {

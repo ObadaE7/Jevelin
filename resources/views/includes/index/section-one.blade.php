@@ -1,11 +1,11 @@
 <section class="one__waves-up">
-    <img src="{{ asset('assets/img/svg/one-wave-up.svg') }}" alt="">
+    <img src="{{ asset('assets/img/svg/one-wave-up.svg') }}" alt="{{ trans('index.sections.Wave background') }}">
 </section>
 
 <section class="main__section-one" id="explore">
     <div class="main__section-header">
-        <span class="section__title">{{ trans('string.Section one title') }}</span>
-        <span class="section__subtitle">{{ trans('string.Section one subtitle') }}</span>
+        <span class="section__title">{{ trans('index.sections.Section one title') }}</span>
+        <span class="section__subtitle">{{ trans('index.sections.Section one subtitle') }}</span>
     </div>
 
     <div class="section__one-content">
@@ -50,15 +50,15 @@
                         إدارة السجلات الطبية: يمكن للذكاء الاصطناعي تسهيل إدارة السجلات الطبية وتحديثها بشكل
                         أسرع وأكثر دقة.
                     </p>
-
-                    <a href="#" class="btn__read-more">{{ trans('string.Read more') }}</a>
                 </section>
 
-                <footer class="d-flex justify-content-between align-items-center mt-auto">
+                <a href="#" class="btn__read-more">{{ trans('index.sections.Read more') }}</a>
+
+                <footer class="post__footer">
                     <div class="d-flex align-items-center gap-2">
                         <div class="avatar__subtle bg-secondary-subtle text-secondary">OD</div>
-                        <button type="button" class="text-muted" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            {{ trans('string.By') }} عبادة دراغمة
+                        <button type="button" class="text-muted" data-bs-toggle="modal" data-bs-target="#userModal">
+                            {{ trans('index.sections.By') }} عبادة دراغمة
                         </button>
                     </div>
 
@@ -111,15 +111,15 @@
                         إدارة السجلات الطبية: يمكن للذكاء الاصطناعي تسهيل إدارة السجلات الطبية وتحديثها بشكل
                         أسرع وأكثر دقة.
                     </p>
-
-                    <a href="#" class="btn__read-more">{{ trans('string.Read more') }}</a>
                 </section>
 
-                <footer class="d-flex justify-content-between align-items-center mt-auto">
+                <a href="#" class="btn__read-more">{{ trans('index.sections.Read more') }}</a>
+
+                <footer class="post__footer">
                     <div class="d-flex align-items-center gap-2">
                         <div class="avatar__subtle bg-secondary-subtle text-secondary">OD</div>
-                        <button type="button" class="text-muted" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            {{ trans('string.By') }} عبادة دراغمة
+                        <button type="button" class="text-muted" data-bs-toggle="modal" data-bs-target="#userModal">
+                            {{ trans('index.sections.By') }} عبادة دراغمة
                         </button>
                     </div>
 
@@ -172,15 +172,15 @@
                         إدارة السجلات الطبية: يمكن للذكاء الاصطناعي تسهيل إدارة السجلات الطبية وتحديثها بشكل
                         أسرع وأكثر دقة.
                     </p>
-
-                    <a href="#" class="btn__read-more">{{ trans('string.Read more') }}</a>
                 </section>
 
-                <footer class="d-flex justify-content-between align-items-center mt-auto">
+                <a href="#" class="btn__read-more">{{ trans('index.sections.Read more') }}</a>
+
+                <footer class="post__footer">
                     <div class="d-flex align-items-center gap-2">
                         <div class="avatar__subtle bg-secondary-subtle text-secondary">OD</div>
-                        <button type="button" class="text-muted" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            {{ trans('string.By') }} عبادة دراغمة
+                        <button type="button" class="text-muted" data-bs-toggle="modal" data-bs-target="#userModal">
+                            {{ trans('index.sections.By') }} عبادة دراغمة
                         </button>
                     </div>
 
@@ -193,26 +193,24 @@
         </article>
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
+    <div class="user__modal">
+        <x-modal>
+            <x-slot:id>userModal</x-slot:id>
+            <x-slot:title></x-slot:title>
+            <x-slot:body>
+                <form>
+                    UNDER DEVELOPMENT
+                    <x-slot:button>
+                        <button wire:click="resetFields" type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">{{ trans('dashboard.modal.Close') }}
+                        </button>
+                    </x-slot:button>
+                </form>
+            </x-slot:body>
+        </x-modal>
     </div>
 </section>
 
 <section class="one__waves-down">
-    <img src="{{ asset('assets/img/svg/one-wave-down.svg') }}" alt="">
+    <img src="{{ asset('assets/img/svg/one-wave-down.svg') }}" alt="{{ trans('index.sections.Wave background') }}">
 </section>
