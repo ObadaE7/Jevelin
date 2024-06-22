@@ -110,6 +110,7 @@ return [
             'Delete country title' => 'حذف البلد',
             'Delete country warning' => 'هل أنت متأكد أنك تريد حذف هذا البلد؟',
             'Edit country title' => 'تحرير البلد',
+            'Click here' => 'إضغط هنا',
         ],
 
         'categories' => [

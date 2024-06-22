@@ -17,15 +17,18 @@
         <x-table>
             @section('thead')
                 @foreach ($headers as $index => $header)
+                    @php
+                        $headerIgnore =
+                            isset($columns[$index]) &&
+                            $header !== trans('dashboard.table.Actions') &&
+                            $header !== trans('dashboard.table.Image');
+                    @endphp
+
                     <th scope="col"
-                        @if (isset($columns[$index]) &&
-                                $header !== trans('dashboard.table.Actions') &&
-                                $header !== trans('dashboard.table.Image')) wire:click="setOrderBy('{{ $columns[$index] }}')" style="cursor: pointer;" @endif>
+                        @if ($headerIgnore) wire:click="setOrderBy('{{ $columns[$index] }}')" style="cursor: pointer;" @endif>
                         <div class="d-flex align-items-center justify-content-between">
                             <span>{{ ucfirst($header) }}</span>
-                            @if (isset($columns[$index]) &&
-                                    $header !== trans('dashboard.table.Actions') &&
-                                    $header !== trans('dashboard.table.Image'))
+                            @if ($headerIgnore)
                                 <span class="material-icons-outlined">
                                     {{ $orderBy === $columns[$index] ? ($orderDir === 'asc' ? 'expand_less' : 'expand_more') : 'unfold_more' }}
                                 </span>
@@ -39,7 +42,8 @@
                 @forelse ($rows as $row)
                     <tr wire:key="{{ $row->id }}">
                         <td>{{ $row->id }}</td>
-                        <td><img src="{{ asset('storage/' . $row->image) }}" class="img-thumbnail" style="width: 10%; height: 10%;"></td>
+                        <td><img src="{{ asset('storage/' . $row->image) }}" class="img-thumbnail"
+                                style="width: 10%; height: 10%;"></td>
                         <td>{{ $row->name }}</td>
                         <td>{{ $row->slug }}</td>
                         <td>

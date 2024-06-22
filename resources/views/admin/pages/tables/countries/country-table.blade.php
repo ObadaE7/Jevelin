@@ -17,11 +17,18 @@
         <x-table>
             @section('thead')
                 @foreach ($headers as $index => $header)
+                    @php
+                        $headerIgnore =
+                            isset($columns[$index]) &&
+                            $header !== trans('dashboard.table.Actions') &&
+                            $header !== trans('dashboard.table.Flag');
+                    @endphp
+
                     <th scope="col"
-                        @if (isset($columns[$index]) && $header !== trans('dashboard.table.Actions')) wire:click="setOrderBy('{{ $columns[$index] }}')" style="cursor: pointer;" @endif>
+                        @if ($headerIgnore) wire:click="setOrderBy('{{ $columns[$index] }}')" style="cursor: pointer;" @endif>
                         <div class="d-flex align-items-center justify-content-between">
                             <span>{{ ucfirst($header) }}</span>
-                            @if (isset($columns[$index]) && $header !== trans('dashboard.table.Actions'))
+                            @if ($headerIgnore)
                                 <span class="material-icons-outlined">
                                     {{ $orderBy === $columns[$index] ? ($orderDir === 'asc' ? 'expand_less' : 'expand_more') : 'unfold_more' }}
                                 </span>
@@ -36,7 +43,9 @@
                     <tr wire:key="{{ $row->id }}">
                         <td>{{ $row->id }}</td>
                         <td>{{ $row->name }}</td>
-                        <td><img src="{{ asset('storage/' . $row->flag) }}" alt="{{ $row->name }}" style="width: 5%">
+                        <td>
+                            <img src="{{ asset('storage/' . $row->flag) }}" class="table__img-flag"
+                                alt="{{ $row->name }}">
                         </td>
                         <td>
                             <div class="actions__btn">

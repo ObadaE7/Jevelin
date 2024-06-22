@@ -5,10 +5,9 @@ namespace App\Livewire\Admin\Tables;
 use App\Models\Country;
 use Livewire\{Component, WithPagination};
 use App\Traits\{FilterTrait, ModalTrait};
-use Exception;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\{Storage, Log};
 use Livewire\Features\SupportFileUploads\WithFileUploads;
+use Exception;
 
 class CountryTable extends Component
 {
@@ -17,6 +16,7 @@ class CountryTable extends Component
     public $rowId;
     public $name;
     public $flag;
+    public $existingFlag;
 
     public function create()
     {
@@ -42,22 +42,26 @@ class CountryTable extends Component
         $country = Country::findOrFail($id);
         $this->rowId = $country->id;
         $this->name = $country->name;
-        $this->flag = $country->flag;
+        $this->existingFlag = $country->flag;
     }
 
     public function update($id)
     {
         $country = Country::findOrFail($id);
         $validated =   $this->validate([
-            'name' => 'required|string|min:3|max:25|unique:countries,name,' . $country->id,
-            'flag' => 'required|file|image|mimes:jpg,jpeg,png|max:1024',
+            'name' => 'required|string|max:25|unique:countries,name,' . $country->id,
+            'flag' => 'nullable|sometimes|file|image|mimes:jpg,jpeg,png|max:1024',
         ]);
 
         try {
-            if ($country->flag) {
-                Storage::disk('public')->delete($country->flag);
+            if (isset($validated['flag'])) {
+                if ($country->flag) {
+                    Storage::disk('public')->delete($country->flag);
+                }
+                $validated['flag'] = $validated['flag']->store('flags', 'public');
+            } else {
+                $validated['flag'] = $this->existingFlag;
             }
-            $validated['flag'] = $validated['flag']->store('flags', 'public');
 
             $country->update($validated);
             session()->flash('success', trans('alerts.country.Updated'));

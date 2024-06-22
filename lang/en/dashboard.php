@@ -110,6 +110,7 @@ return [
             'Delete country title' => 'Delete country',
             'Delete country warning' => 'Are you sure you want to delete this country?',
             'Edit country title' => 'Edit country',
+            'Click here' => 'Click here',
         ],
 
         'categories' => [

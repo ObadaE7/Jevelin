@@ -17,8 +17,19 @@
 
             <div class="mb-3">
                 <label for="flag">{{ trans('dashboard.modal.countries.Flag') }}</label>
+                <div class="d-flex justify-content-center">
+                    <label for="flag" class="table__label-flag text-muted">
+                        <div class="position-absolute">
+                            @if ($flag && !$errors->has('flag'))
+                                <img src="{{ asset($flag->temporaryURL()) }}" class="table__img-flag">
+                            @endif
+                        </div>
+                        <span class="material-icons-outlined fs-1">flag</span>
+                        <span>{{ trans('dashboard.modal.countries.Click here') }}</span>
+                    </label>
+                </div>
                 <input wire:model='flag' id="flag" type="file" class="form-control"
-                    accept="image/png, image/jpg, image/jpeg">
+                    accept="image/png, image/jpg, image/jpeg" hidden>
                 <x-error name="flag" />
             </div>
 
