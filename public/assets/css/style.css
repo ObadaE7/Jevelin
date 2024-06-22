@@ -228,7 +228,7 @@ img {
 @media (max-width:992px) {
     .wrapper__header {
         grid-template-rows: 1fr;
-        grid-template-columns: 1fr 3fr 50px;
+        grid-template-columns: 100px 3fr 50px;
         grid-template-areas: 'brand menu offcanvas';
     }
 
@@ -344,6 +344,7 @@ img {
     width: var(--m-width-100);
     height: calc(100vh - 100px);
     overflow: hidden;
+    transition: all .5s ease;
 }
 
 .main__hero-text {
@@ -373,10 +374,12 @@ img {
 
 .main__hero-title {
     font-size: 64px;
+    transition: font-size .5s ease;
 }
 
 .main__hero-subtitle {
     font-size: 24px;
+    transition: font-size .5s ease;
 }
 
 .main__hero-button {
@@ -385,11 +388,47 @@ img {
     padding: calc(var(--p-xsm) + .25rem) var(--p-sm);
     color: var(--bs-white);
     background: var(--orange-color);
-    transition: background-color .3s ease;
+    transition: all .5s ease;
 }
 
 .main__hero-button:hover {
     background-color: var(--orange-color-hover);
+}
+
+@media (max-width: 768px) {
+    .main__hero {
+        height: calc(var(--mvh-height-100) - 40vh);
+    }
+
+    .main__hero-title {
+        font-size: 30px;
+    }
+
+    .main__hero-subtitle {
+        font-size: 18px;
+    }
+
+    .main__hero-button {
+        font-size: 18px;
+        padding: var(--p-xsm);
+    }
+}
+
+@media (max-width: 480px) {
+    .main__hero-title {
+        font-size: 22px;
+    }
+
+    .main__hero-subtitle {
+        padding: 0 var(--p-md);
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .main__hero-button {
+        font-size: 16px;
+        padding: calc(var(--p-xsm) - .25rem);
+    }
 }
 
 .main__section-one {
