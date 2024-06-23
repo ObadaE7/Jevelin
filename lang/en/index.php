@@ -33,6 +33,9 @@ return [
         'Our best writer' => 'Our <span style="color:var(--orange-color)">best</span> writer',
         'Best user quote' => 'Enjoy diving into the worlds of thought and creativity with the articles of our best writer, who is distinguished by his extraordinary creativity and the depth of his exceptional analyses, in which his ability to inspire others and enrich their minds with his masterful and inspiring ideas is evident.',
         'More writers' => 'More writers',
-
+        'Section three title' => 'Browse articles based on your personal interests',
+        'Section three subtitle' => 'Browse and discover our carefully curated articles in a variety of categories that cater to your personal interests and enjoy content tailored specifically to you.',
+        'View article' => 'View Article',
+        'Search placeholder' => 'Search for a category',
     ],
 ];

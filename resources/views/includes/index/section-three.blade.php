@@ -1,17 +1,18 @@
 <div class="three__waves-up">
-    <img src="{{ asset('assets/img/svg/two-wave-up.svg') }}" alt="">
+    <img src="{{ asset('assets/img/svg/two-wave-up.svg') }}" alt="{{ trans('index.sections.Wave background') }}">
 </div>
 
 <section class="main__section-three">
     <div class="main__section-header">
-        <span class="section__title">{{ trans('string.Section three title') }}</span>
-        <span class="section__subtitle">{{ trans('string.Section three subtitle') }}</span>
+        <span class="section__title">{{ trans('index.sections.Section three title') }}</span>
+        <span class="section__subtitle">{{ trans('index.sections.Section three subtitle') }}</span>
     </div>
 
     <div class="section__three-content">
         <div class="section__three-right">
             <div class="nav flex-column gap-2 nav-pills p-0" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <input type="search" class="form-control" placeholder="ابحث عن فئة">
+                <input type="search" class="form-control"
+                    placeholder="{{ trans('index.sections.Search placeholder') }}">
 
                 <a class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home"
                     role="tab" aria-controls="v-pills-home" aria-selected="true">
@@ -82,7 +83,7 @@
                         </span>
                     </div>
                     <div class="post__category-link">
-                        <a href="#" class="text-white">{{ trans('string.View article') }}</a>
+                        <a href="#" class="text-white">{{ trans('index.sections.View article') }}</a>
                     </div>
                 </div>
 
@@ -95,7 +96,7 @@
                         </span>
                     </div>
                     <div class="post__category-link">
-                        <a href="#" class="text-white">{{ trans('string.View article') }}</a>
+                        <a href="#" class="text-white">{{ trans('index.sections.View article') }}</a>
                     </div>
                 </div>
 
@@ -108,7 +109,7 @@
                         </span>
                     </div>
                     <div class="post__category-link">
-                        <a href="#" class="text-white">{{ trans('string.View article') }}</a>
+                        <a href="#" class="text-white">{{ trans('index.sections.View article') }}</a>
                     </div>
                 </div>
 
@@ -121,7 +122,7 @@
                         </span>
                     </div>
                     <div class="post__category-link">
-                        <a href="#" class="text-white">{{ trans('string.View article') }}</a>
+                        <a href="#" class="text-white">{{ trans('index.sections.View article') }}</a>
                     </div>
                 </div>
             </div>
@@ -131,5 +132,6 @@
 </section>
 
 <div class="three__waves-down">
-    <img src="{{ asset('assets/img/svg/three-wave-down.svg') }}" alt="">
+    <img src="{{ asset('assets/img/svg/three-wave-down.svg') }}"
+        alt="{{ trans('index.sections.Wave background') }}">
 </div>
