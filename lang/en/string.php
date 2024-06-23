@@ -45,23 +45,5 @@ return [
 
 
 
-    'ALL Notification' => 'ALL Notification',
-    'All Messages' => 'All Messages',
-    'Settings' => 'Settings',
-    'Profile' => 'Profile',
-    'Analysis' => 'Analysis',
-    'Create' => 'Create',
-    'Main' => 'Main',
-    'Roles' => 'Roles',
-    'Countries' => 'Countries',
-    'Tags' => 'Tags',
-    'Users' => 'Users',
-    'Logout' => 'Logout',
-    'Table' => 'Table',
-    'Basic tables' => 'Basic tables',
-    'Secondary tables' => 'Secondary tables',
-    'My Profile' => 'My Profile',
-    'Site Settings' => 'Site Settings',
-    'Articles section' => 'Articles section',
-    'Show' => 'Show',
+
 ];

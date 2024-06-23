@@ -21,7 +21,6 @@
                     </ul>
                 </div>
             </li>
-
             <li>
                 <div class="dropdown">
                     <button class="li__btn notifications" type="button" data-bs-toggle="dropdown"
@@ -29,7 +28,8 @@
                     <span class="li__btn-badge notifications">0</span>
                     <ul class="dropdown-menu dropdown-menu-end text-end drop-notify">
                         <li>
-                            <span class="dropdown-item text-center">{{ trans('string.ALL Notification') }}</span>
+                            <span
+                                class="dropdown-item text-center">{{ trans('dashboard.aside.ALL Notification') }}</span>
                         </li>
                         <li>
                             <div class="dropdown-divider"></div>
@@ -37,7 +37,6 @@
                     </ul>
                 </div>
             </li>
-
             <li>
                 <div class="dropdown">
                     <button class="li__btn messages" type="button" data-bs-toggle="dropdown"
@@ -45,7 +44,7 @@
                     <span class="li__btn-badge messages">0</span>
                     <ul class="dropdown-menu dropdown-menu-end text-end drop-msg">
                         <li>
-                            <span class="dropdown-item text-center">{{ trans('string.All Messages') }}</span>
+                            <span class="dropdown-item text-center">{{ trans('dashboard.aside.All Messages') }}</span>
                         </li>
                         <li>
                             <div class="dropdown-divider"></div>
@@ -53,7 +52,6 @@
                     </ul>
                 </div>
             </li>
-
             <li>
                 <div class="dropdown">
                     <button class="li__btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,15 +59,16 @@
                             src="{{ isset(auth()->user()->avatar) ? asset('storage/' . auth()->user()->avatar) : asset('assets/img/others/avatar.jpg') }}">
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end text-end">
-                        <li><a class="dropdown-item" href="#">{{ trans('string.Profile') }}</a></li>
-                        <li><a class="dropdown-item" href="#">{{ trans('string.Settings') }}</a></li>
+                        <li><a class="dropdown-item" href="#">{{ trans('dashboard.aside.Profile') }}</a></li>
+                        <li><a class="dropdown-item" href="#">{{ trans('dashboard.aside.Settings') }}</a></li>
                         <li>
                             <div class="dropdown-divider"></div>
                         </li>
                         <li>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit" class="dropdown-item">{{ trans('string.Logout') }}</button>
+                                <button type="submit"
+                                    class="dropdown-item">{{ trans('dashboard.aside.Logout') }}</button>
                             </form>
                         </li>
                     </ul>

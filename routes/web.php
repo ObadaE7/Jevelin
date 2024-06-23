@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('under-dev');
 });
+
 Route::get('/index', Index::class)->name('index');
 
 #.....{ Dashboard Page }.....#
