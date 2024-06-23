@@ -80,6 +80,7 @@ class Profile extends Component
     {
         $id = auth()->user()->id;
         $this->validateOnly('uname', ['uname' => 'required|size:8|string|unique:users,uname|unique:admins,uname,' . $id],);
+
         try {
             Admin::findOrFail($id)->update(['uname' => $this->uname]);
             session()->flash('uname', trans('alerts.profile.Updated'));
@@ -94,6 +95,7 @@ class Profile extends Component
     {
         $id = auth()->user()->id;
         $this->validateOnly('country_id', ['country_id' => 'required|numeric|exists:countries,id'],);
+
         try {
             Admin::findOrFail($id)->update(['country_id' => $this->country_id]);
             session()->flash('country_id', trans('alerts.profile.Updated'));
@@ -108,6 +110,7 @@ class Profile extends Component
     {
         $id = auth()->user()->id;
         $this->validateOnly('role_id', ['role_id' => 'required|numeric|exists:roles,id'],);
+
         try {
             Admin::findOrFail($id)->update(['role_id' => $this->role_id]);
             session()->flash('role_id', trans('alerts.profile.Updated'));
@@ -122,6 +125,7 @@ class Profile extends Component
     {
         $id = auth()->user()->id;
         $this->validateOnly('bio', ['bio' => 'nullable|sometimes|min:10|string|max:500']);
+
         try {
             Admin::findOrFail($id)->update(['bio' => $this->bio]);
             session()->flash('bio', trans('alerts.profile.Updated'));
@@ -136,6 +140,7 @@ class Profile extends Component
     {
         $id = auth()->user()->id;
         $this->validateOnly('phone', ['phone' => 'nullable|sometimes|numeric|digits:10|unique:users,phone|unique:admins,phone,' . $id]);
+
         try {
             Admin::findOrFail($id)->update(['phone' => $this->phone]);
             session()->flash('phone', trans('alerts.profile.Updated'));
@@ -150,6 +155,7 @@ class Profile extends Component
     {
         $id = auth()->user()->id;
         $this->validateOnly('birthday', ['birthday' => 'nullable|sometimes|date']);
+
         try {
             Admin::findOrFail($id)->update(['birthday' => $this->birthday]);
             session()->flash('birthday', trans('alerts.profile.Updated'));
@@ -228,10 +234,10 @@ class Profile extends Component
         $validated =  $this->validateOnly('avatar', ['avatar' => 'required|file|image|mimes:jpg,jpeg,png|max:1024']);
 
         try {
-            $avatar = $validated['avatar']->store('avatars', 'public');
             if ($user->avatar) {
                 Storage::disk('public')->delete($user->avatar);
             }
+            $avatar = $validated['avatar']->store('avatars', 'public');
             Admin::findOrFail($user->id)->update(['avatar' => $avatar]);
             session()->flash('avatar', trans('alerts.profile.Updated'));
             $this->dispatch('resetSuccessMessage', field: 'avatar');
