@@ -12,7 +12,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 #.....{ Main Page }.....#
-Route::get('/', Index::class)->name('index');
+Route::get('/', function () {
+    return view('under-dev');
+});
+Route::get('/index', Index::class)->name('index');
 
 #.....{ Dashboard Page }.....#
 Route::prefix('dashboard')

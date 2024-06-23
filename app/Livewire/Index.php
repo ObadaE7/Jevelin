@@ -21,7 +21,7 @@ class Index extends Component
 
     public function topPosts()
     {
-        return Post::withCount('users')->orderByDesc('users_count')->limit(3)->skip(1)->get();
+        return Post::withCount('users')->orderByDesc('users_count')->take(2)->skip(1)->get();
     }
 
     public function subscribe()
