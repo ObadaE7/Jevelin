@@ -972,10 +972,10 @@ img {
 }
 
 .more__user {
-    margin-top: 1rem;
     display: flex;
     align-items: center;
     color: var(--muted-color);
+    margin-top: calc(var(--m-sm) - .5rem);
     gap: var(--gap-xsm);
 }
 
@@ -1009,6 +1009,52 @@ img {
 
 .more__user a:hover {
     color: var(--bs-primary);
+}
+
+@media (max-width: 1024px) {
+    .best__user-content {
+        font-size: 18px;
+        width: var(--m-width-100);
+    }
+
+    .best__user-content .avatar {
+        width: calc(var(--width-100) + 15px);
+        height: calc(var(--height-100) + 15px);
+    }
+
+    .best__user-quote {
+        width: calc(var(--m-width-100) - 10%);
+    }
+
+    .more__user {
+        gap: var(--gap-sm);
+    }
+}
+
+@media (max-width: 768px) {
+    .best__user-content {
+        font-size: 16px;
+    }
+
+    .best__user-content .avatar {
+        width: calc(var(--width-100) + 10px);
+        height: calc(var(--height-100) + 10px);
+    }
+
+    .best__user-quote {
+        width: calc(var(--m-width-100) - 20%);
+    }
+}
+
+@media (max-width: 480px) {
+    .best__user-content {
+        font-size: 14px;
+    }
+
+    .best__user-content .avatar {
+        width: calc(var(--width-100) - 20px);
+        height: calc(var(--height-100) - 20px);
+    }
 }
 
 .one__waves-up {

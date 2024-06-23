@@ -30,6 +30,9 @@ return [
         'Section two title' => 'Find out the most read articles',
         'Section two subtitle' => 'Enjoy reading the articles that achieved the highest reading rates and were admired by many readers, and benefit from the valuable ideas and information they provide',
         'Most liked' => 'Most liked',
+        'Our best writer' => 'Our <span style="color:var(--orange-color)">best</span> writer',
+        'Best user quote' => 'Enjoy diving into the worlds of thought and creativity with the articles of our best writer, who is distinguished by his extraordinary creativity and the depth of his exceptional analyses, in which his ability to inspire others and enrich their minds with his masterful and inspiring ideas is evident.',
+        'More writers' => 'More writers',
 
     ],
 ];
