@@ -17,16 +17,16 @@ class TagFactory extends Factory
     public function definition(): array
     {
         $tags = [
-            'Tech News',
-            'Fashion Trends',
-            'Science Facts',
-            'Healthy Living',
-            'Travel Tips',
-            'Foodie Friday',
-            'Gardening',
-            'Fitness Motivation',
-            'Business Tips',
-            'Artistic Expression',
+            "أخبار التكنولوجيا",
+            "اتجاهات الموضة",
+            "حقائق علمية",
+            "الحياة الصحية",
+            'نصائح سفر',
+            "جمعة عشاق الطعام",
+            'الحدائق',
+            "تحفيز اللياقة البدنية",
+            "نصائح الأعمال",
+            'تعبير فني',
         ];
 
         $name = $this->faker->unique()->randomElement($tags);

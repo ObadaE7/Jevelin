@@ -9,188 +9,70 @@
     </div>
 
     <div class="section__one-content">
-        <article class="section__one-post">
-            <figure class="section__one-post--img flash-animation">
-                <img src="{{ asset('assets/img/others/Sustainable Style.jpg') }}" alt="Sustainable Style">
-            </figure>
+        @forelse ($latestArticles as $article)
+            <article class="section__one-post">
+                <figure class="section__one-post--img flash-animation">
+                    <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->slug }}">
+                </figure>
 
-            <div class="section__one-post--content">
-                <header class="d-flex justify-content-between align-items-center">
-                    <a href="#" class="post__badge bg-danger-subtle text-danger">أفضل الاطباق</a>
-                    <time datetime="2024-05-16" class="d-flex align-items-center gap-2 muted-color">
-                        <span>May 16, 2024</span>
-                        <span class="material-icons-outlined">today</span>
-                    </time>
-                </header>
+                <div class="section__one-post--content">
+                    <header class="d-flex justify-content-between align-items-center">
+                        <a href="#" class="post__badge bg-danger-subtle text-danger">
+                            @foreach ($article->tags->take(1) as $tag)
+                                {{ $tag->name }}
+                            @endforeach
+                        </a>
+                        <time datetime="2024-05-16" class="d-flex align-items-center gap-2 muted-color">
+                            <span>{{ $article->getDateForHuman() }}</span>
+                            <span class="material-icons-outlined">today</span>
+                        </time>
+                    </header>
 
-                <div class="d-flex flex-column mb-4">
-                    <a href="#" class="post__title underline__hover">
-                        كيف يمكن للذكاء الاصطناعي تحسين خدمات الرعاية الصحية؟
-                    </a>
-                    <p class="post__subtitle">
-                        الذكاء الاصطناعي ومستقبل الطب: تحسين الرعاية الصحية بالتكنولوجيا
-                    </p>
+                    <div class="d-flex flex-column mb-4">
+                        <a href="#" class="post__title underline__hover">{{ $article->title }}</a>
+                        <p class="post__subtitle">{{ $article->suntitle }}</p>
+                    </div>
+
+                    <section class="post__content">
+                        <p class="m-0">{{ $article->content }}</p>
+                    </section>
+
+                    <a href="#" class="btn__read-more">{{ trans('index.sections.Read more') }}</a>
+
+                    <footer class="post__footer">
+                        <div class="d-flex align-items-center gap-2">
+                            @if (empty($article->owner->avatar))
+                                <div class="avatar__subtle bg-secondary-subtle text-secondary">
+                                    {{ Str::ucfirst(Str::substr($article->owner->fname, 0, 1) . Str::substr($article->owner->lname, 0, 1)) }}
+                                </div>
+                            @else
+                                <img src="{{ asset('storage/' . $article->owner->avatar) }}" class="avatar"
+                                    alt="{{ $article->owner->uname }}">
+                            @endif
+                            <button type="button" class="text-muted" data-bs-toggle="modal"
+                                data-bs-target="#userModal">
+                                {{ trans('index.sections.By') }}
+                                {{ $article->owner->fname . ' ' . $article->owner->lname }}
+                            </button>
+                        </div>
+
+                        <div class="post__reactions">
+                            <button class="like">
+                                <span class="muted-color">{{ $article->likes_count }}</span>
+                            </button>
+                            <button class="dislike">
+                                <span class="muted-color">{{ $article->dislikes_count }}</span>
+                            </button>
+                        </div>
+                    </footer>
                 </div>
-
-                <section class="post__content">
-                    <p class="m-0">
-                        مقدمة:
-                        تشهد صناعة الرعاية الصحية تحولات كبيرة بفضل التطورات السريعة في مجال الذكاء
-                        الاصطناعي.
-                        يعد الذكاء الاصطناعي من أبرز التقنيات التي تعد بتحسين جودة الخدمات الصحية وتحويل
-                        طريقة
-                        تقديم الرعاية الطبية. في هذا المقال، سنلقي نظرة على كيفية تأثير الذكاء الاصطناعي على
-                        الرعاية الصحية وكيف يمكن له تحسين خدمات الرعاية الصحية بشكل عام.
-                        فوائد الذكاء الاصطناعي في الرعاية الصحية:
-                        تشخيص دقيق: يمكن للذكاء الاصطناعي تحسين دقة عمليات التشخيص الطبي، مما يساعد في تحديد
-                        الأمراض والحالات الصحية بشكل أسرع وأدق.
-                        تحسين العلاج: من خلال تحليل البيانات الطبية، يمكن للذكاء الاصطناعي تقديم خيارات
-                        علاجية
-                        محسّنة وفعّالة للمرضى.
-                        إدارة السجلات الطبية: يمكن للذكاء الاصطناعي تسهيل إدارة السجلات الطبية وتحديثها بشكل
-                        أسرع وأكثر دقة.
-                    </p>
-                </section>
-
-                <a href="#" class="btn__read-more">{{ trans('index.sections.Read more') }}</a>
-
-                <footer class="post__footer">
-                    <div class="d-flex align-items-center gap-2">
-                        <div class="avatar__subtle bg-secondary-subtle text-secondary">OD</div>
-                        <button type="button" class="text-muted" data-bs-toggle="modal" data-bs-target="#userModal">
-                            {{ trans('index.sections.By') }} عبادة دراغمة
-                        </button>
-                    </div>
-
-                    <div class="post__reactions">
-                        <button class="like"><span class="muted-color">10</span></button>
-                        <button class="dislike"><span class="muted-color">3</span></button>
-                    </div>
-                </footer>
+            </article>
+        @empty
+            <div class="d-flex flex-column align-items-center">
+                <span class="fs-3">{{ trans('index.sections.Empty line one') }}</span>
+                <span class="fs-4">{{ trans('index.sections.Empty line two') }}</span>
             </div>
-        </article>
-
-        <article class="section__one-post">
-            <figure class="section__one-post--img flash-animation">
-                <img src="{{ asset('assets/img/others/Sustainable Style.jpg') }}" alt="Sustainable Style">
-            </figure>
-
-            <div class="section__one-post--content">
-                <header class="d-flex justify-content-between align-items-center">
-                    <a href="#" class="post__badge bg-danger-subtle text-danger">أفضل الاطباق</a>
-                    <time datetime="2024-05-16" class="d-flex align-items-center gap-2 muted-color">
-                        <span>May 16, 2024</span>
-                        <span class="material-icons-outlined">today</span>
-                    </time>
-                </header>
-
-                <div class="d-flex flex-column mb-4">
-                    <a href="#" class="post__title underline__hover">
-                        كيف يمكن للذكاء الاصطناعي تحسين خدمات الرعاية الصحية؟
-                    </a>
-                    <p class="post__subtitle">
-                        الذكاء الاصطناعي ومستقبل الطب: تحسين الرعاية الصحية بالتكنولوجيا
-                    </p>
-                </div>
-
-                <section class="post__content">
-                    <p class="m-0">
-                        مقدمة:
-                        تشهد صناعة الرعاية الصحية تحولات كبيرة بفضل التطورات السريعة في مجال الذكاء
-                        الاصطناعي.
-                        يعد الذكاء الاصطناعي من أبرز التقنيات التي تعد بتحسين جودة الخدمات الصحية وتحويل
-                        طريقة
-                        تقديم الرعاية الطبية. في هذا المقال، سنلقي نظرة على كيفية تأثير الذكاء الاصطناعي على
-                        الرعاية الصحية وكيف يمكن له تحسين خدمات الرعاية الصحية بشكل عام.
-                        فوائد الذكاء الاصطناعي في الرعاية الصحية:
-                        تشخيص دقيق: يمكن للذكاء الاصطناعي تحسين دقة عمليات التشخيص الطبي، مما يساعد في تحديد
-                        الأمراض والحالات الصحية بشكل أسرع وأدق.
-                        تحسين العلاج: من خلال تحليل البيانات الطبية، يمكن للذكاء الاصطناعي تقديم خيارات
-                        علاجية
-                        محسّنة وفعّالة للمرضى.
-                        إدارة السجلات الطبية: يمكن للذكاء الاصطناعي تسهيل إدارة السجلات الطبية وتحديثها بشكل
-                        أسرع وأكثر دقة.
-                    </p>
-                </section>
-
-                <a href="#" class="btn__read-more">{{ trans('index.sections.Read more') }}</a>
-
-                <footer class="post__footer">
-                    <div class="d-flex align-items-center gap-2">
-                        <div class="avatar__subtle bg-secondary-subtle text-secondary">OD</div>
-                        <button type="button" class="text-muted" data-bs-toggle="modal" data-bs-target="#userModal">
-                            {{ trans('index.sections.By') }} عبادة دراغمة
-                        </button>
-                    </div>
-
-                    <div class="post__reactions">
-                        <button class="like"><span class="muted-color">10</span></button>
-                        <button class="dislike"><span class="muted-color">3</span></button>
-                    </div>
-                </footer>
-            </div>
-        </article>
-
-        <article class="section__one-post">
-            <figure class="section__one-post--img flash-animation">
-                <img src="{{ asset('assets/img/others/Sustainable Style.jpg') }}" alt="Sustainable Style">
-            </figure>
-
-            <div class="section__one-post--content">
-                <header class="d-flex justify-content-between align-items-center">
-                    <a href="#" class="post__badge bg-danger-subtle text-danger">أفضل الاطباق</a>
-                    <time datetime="2024-05-16" class="d-flex align-items-center gap-2 muted-color">
-                        <span>May 16, 2024</span>
-                        <span class="material-icons-outlined">today</span>
-                    </time>
-                </header>
-
-                <div class="d-flex flex-column mb-4">
-                    <a href="#" class="post__title underline__hover">
-                        كيف يمكن للذكاء الاصطناعي تحسين خدمات الرعاية الصحية؟
-                    </a>
-                    <p class="post__subtitle">
-                        الذكاء الاصطناعي ومستقبل الطب: تحسين الرعاية الصحية بالتكنولوجيا
-                    </p>
-                </div>
-
-                <section class="post__content">
-                    <p class="m-0">
-                        مقدمة:
-                        تشهد صناعة الرعاية الصحية تحولات كبيرة بفضل التطورات السريعة في مجال الذكاء
-                        الاصطناعي.
-                        يعد الذكاء الاصطناعي من أبرز التقنيات التي تعد بتحسين جودة الخدمات الصحية وتحويل
-                        طريقة
-                        تقديم الرعاية الطبية. في هذا المقال، سنلقي نظرة على كيفية تأثير الذكاء الاصطناعي على
-                        الرعاية الصحية وكيف يمكن له تحسين خدمات الرعاية الصحية بشكل عام.
-                        فوائد الذكاء الاصطناعي في الرعاية الصحية:
-                        تشخيص دقيق: يمكن للذكاء الاصطناعي تحسين دقة عمليات التشخيص الطبي، مما يساعد في تحديد
-                        الأمراض والحالات الصحية بشكل أسرع وأدق.
-                        تحسين العلاج: من خلال تحليل البيانات الطبية، يمكن للذكاء الاصطناعي تقديم خيارات
-                        علاجية
-                        محسّنة وفعّالة للمرضى.
-                        إدارة السجلات الطبية: يمكن للذكاء الاصطناعي تسهيل إدارة السجلات الطبية وتحديثها بشكل
-                        أسرع وأكثر دقة.
-                    </p>
-                </section>
-
-                <a href="#" class="btn__read-more">{{ trans('index.sections.Read more') }}</a>
-
-                <footer class="post__footer">
-                    <div class="d-flex align-items-center gap-2">
-                        <div class="avatar__subtle bg-secondary-subtle text-secondary">OD</div>
-                        <button type="button" class="text-muted" data-bs-toggle="modal" data-bs-target="#userModal">
-                            {{ trans('index.sections.By') }} عبادة دراغمة
-                        </button>
-                    </div>
-
-                    <div class="post__reactions">
-                        <button class="like"><span class="muted-color">10</span></button>
-                        <button class="dislike"><span class="muted-color">3</span></button>
-                    </div>
-                </footer>
-            </div>
-        </article>
+        @endforelse
     </div>
 
     <div class="user__modal">

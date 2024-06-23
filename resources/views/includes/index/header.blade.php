@@ -24,7 +24,7 @@
             </li>
             @auth
                 <li class="li__dashboard">
-                    <a href="{{ route('dashboard') }}" class="{{ Route::is('dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('user.dashboard') }}" class="{{ Route::is('user.dashboard') ? 'active' : '' }}">
                         {{ trans('index.header.Dashboard') }}
                     </a>
                 </li>
@@ -79,7 +79,7 @@
                     </li>
                     @auth
                         <li class="li__dashboard">
-                            <a href="{{ route('dashboard') }}" class="{{ Route::is('dashboard') ? 'active' : '' }}">
+                            <a href="{{ route('user.dashboard') }}" class="{{ Route::is('user.dashboard') ? 'active' : '' }}">
                                 {{ trans('index.header.Dashboard') }}
                             </a>
                         </li>

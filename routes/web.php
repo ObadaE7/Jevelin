@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\IndexController;
+use App\Livewire\Index;
 use App\Livewire\User\{Dashboard, Profile, Analysis, Posts, CreatePost};
 use Illuminate\Support\Facades\Route;
 
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 #.....{ Main Page }.....#
-Route::get('/', IndexController::class)->name('index');
+Route::get('/', Index::class)->name('index');
 
 #.....{ Dashboard Page }.....#
 Route::prefix('dashboard')

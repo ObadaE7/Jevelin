@@ -37,5 +37,7 @@ return [
         'Section three subtitle' => 'Browse and discover our carefully curated articles in a variety of categories that cater to your personal interests and enjoy content tailored specifically to you.',
         'View article' => 'View Article',
         'Search placeholder' => 'Search for a category',
+        'Empty line one' => 'Sorry, there are no articles to display at the moment',
+        'Empty line two' => 'What are you waiting for, publish your first articles!',
     ],
 ];

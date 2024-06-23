@@ -17,16 +17,16 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         $categories = [
-            'Technology',
-            'Fashion',
-            'Health And Wellness',
-            'Travel',
-            'Food And Cooking',
-            'Home And Garden',
-            'Sports And Fitness',
-            'Business And Finance',
-            'Arts And Entertainment',
-            'Science And Nature',
+            'تكنولوجيا',
+            'موضة',
+            'الصحة و العافية',
+            'يسافر',
+            "الطعام والطبخ",
+            "المنزل والحديقة",
+            "الرياضة واللياقة البدنية",
+            'الأعمال التجارية والمالية',
+            'الفنون والترفيه',
+            "العلم والطبيعة",
         ];
 
         $name = $this->faker->unique()->randomElement($categories);

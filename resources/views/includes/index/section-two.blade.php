@@ -10,59 +10,37 @@
 
     <div class="section__two-content">
         <div class="section__two-right">
-            <img src="{{ asset('assets/img/others/Artificial intelligence.jpg') }}" alt="">
+            <img src="{{ asset('storage/' . $topPost->image) }}" alt="{{ $topPost->slug }}">
             <div class="overlay-text"></div>
             <div class="col__right-badge">
                 <a href="#" class="post__badge">{{ trans('index.sections.Most liked') }}</a>
             </div>
 
             <div class="col__content">
-                <a href="#" class="post__title">
-                    كيف يمكن للذكاء الاصطناعي تحسين خدمات الرعاية الصحية؟
-                </a>
-
-                <span class="post__subtitle">
-                    الذكاء الاصطناعي ومستقبل الطب: تحسين الرعاية الصحية بالتكنولوجيا
-                </span>
+                <a href="#" class="post__title">{{ $topPost->title }}</a>
+                <span class="post__subtitle">{{ $topPost->subtitle }}</span>
 
                 <div class="col__right-owner">
                     <div class="d-flex gap-2">
                         <span class="material-icons-outlined">person_3</span>
-                        <span>عبادة دراغمة</span>
+                        <span>{{ $topPost->owner->fname . ' ' . $topPost->owner->lname }}</span>
                     </div>
-                    <span>منذ 6 أيام</span>
+                    <span>{{ $topPost->created_at->diffForHumans() }}</span>
                 </div>
             </div>
         </div>
 
         <div class="section__two-left">
-            <div class="section__two-row">
-                <img src="{{ asset('assets/img/others/Backpacker Guide.jpg') }}" alt="">
-                <div class="overlay-text"></div>
-                <div class="col__content">
-                    <a href="#" class="post__title">
-                        كيف يمكن للذكاء الاصطناعي تحسين خدمات الرعاية الصحية؟
-                    </a>
-
-                    <span class="post__subtitle">
-                        الذكاء الاصطناعي ومستقبل الطب: تحسين الرعاية الصحية بالتكنولوجيا
-                    </span>
+            @foreach ($topPosts as $top)
+                <div class="section__two-row">
+                    <img src="{{ asset('storage/' . $top->image) }}" alt="{{ $top->slug }}">
+                    <div class="overlay-text"></div>
+                    <div class="col__content">
+                        <a href="#" class="post__title">{{ $top->title }}</a>
+                        <span class="post__subtitle">{{ $top->subtitle }}</span>
+                    </div>
                 </div>
-            </div>
-
-            <div class="section__two-row">
-                <img src="{{ asset('assets/img/others/Sustainable Style.jpg') }}" alt="">
-                <div class="overlay-text"></div>
-                <div class="col__content">
-                    <a href="#" class="post__title">
-                        كيف يمكن للذكاء الاصطناعي تحسين خدمات الرعاية الصحية؟
-                    </a>
-
-                    <span class="post__subtitle">
-                        الذكاء الاصطناعي ومستقبل الطب: تحسين الرعاية الصحية بالتكنولوجيا
-                    </span>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
