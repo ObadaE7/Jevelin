@@ -1,11 +1,11 @@
 <div class="two__waves-up">
-    <img src="{{ asset('assets/img/svg/two-wave-up.svg') }}" alt="">
+    <img src="{{ asset('assets/img/svg/two-wave-up.svg') }}" alt="{{ trans('index.sections.Wave background') }}">
 </div>
 
 <section class="main__section-two">
     <div class="main__section-header">
-        <span class="section__title">{{ trans('string.Section two title') }}</span>
-        <span class="section__subtitle">{{ trans('string.Section two subtitle') }}</span>
+        <span class="section__title">{{ trans('index.sections.Section two title') }}</span>
+        <span class="section__subtitle">{{ trans('index.sections.Section two subtitle') }}</span>
     </div>
 
     <div class="section__two-content">
@@ -13,7 +13,7 @@
             <img src="{{ asset('assets/img/others/Artificial intelligence.jpg') }}" alt="">
             <div class="overlay-text"></div>
             <div class="col__right-badge">
-                <a href="#" class="post__badge">{{ trans('string.Most liked') }}</a>
+                <a href="#" class="post__badge">{{ trans('index.sections.Most liked') }}</a>
             </div>
 
             <div class="col__content">
@@ -68,5 +68,5 @@
 </section>
 
 <div class="two__waves-down">
-    <img src="{{ asset('assets/img/svg/two-wave-down.svg') }}" alt="">
+    <img src="{{ asset('assets/img/svg/two-wave-down.svg') }}" alt="{{ trans('index.sections.Wave background') }}">
 </div>

@@ -27,5 +27,9 @@ return [
         'Email placeholder' => 'Enter your email address',
         'Subscribe' => 'Subscribe',
         'Illustration' => 'Illustration',
+        'Section two title' => 'Find out the most read articles',
+        'Section two subtitle' => 'Enjoy reading the articles that achieved the highest reading rates and were admired by many readers, and benefit from the valuable ideas and information they provide',
+        'Most liked' => 'Most liked',
+
     ],
 ];
