@@ -773,6 +773,125 @@ img {
 
 /*............... { END PROFILE PAGE } ...............*/
 
+.analysis__wrapper {
+    display: grid;
+    grid-template-rows: repeat(3, max-content);
+    grid-template-columns: 1fr;
+    grid-template-areas: 'overview' 'highest' 'tracker';
+    gap: var(--gap-sm);
+}
+
+.analysis__overview {
+    grid-area: overview;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap-sm);
+    height: calc(var(--height-100) + 30px);
+}
+
+.overview__col {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr;
+    padding: var(--p-sm);
+    background: var(--bs-white);
+    border-radius: var(--border-radius-xsm);
+    gap: var(--gap-sm);
+}
+
+.overview__col-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-xsm);
+}
+
+.overview__col-1 span {
+    font-size: 40px;
+}
+
+.overview__col-2 {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xsm);
+}
+
+.analysis__highest {
+    grid-area: highest;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xsm);
+    padding: var(--p-sm);
+    background: var(--bs-white);
+    border-radius: var(--border-radius-xsm);
+}
+
+.analysis__ul li {
+    padding: var(--p-xsm) 0;
+    margin: 0 var(--m-sm);
+}
+
+.analysis__ul li::before {
+    content: "•";
+    margin-right: 5px;
+    color: var(--muted-color);
+}
+
+.analysis__ul a {
+    color: var(--bs-dark);
+    transition: color .5s ease;
+}
+
+.analysis__ul a:hover {
+    color: var(--bs-primary);
+}
+
+.analysis__chart {
+    width: calc(var(--width-100) * 4);
+    height: calc(var(--height-100) * 3);
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--border-radius-xsm);
+    padding: var(--p-sm) var(--p-sm) 0 var(--p-sm);
+}
+
+.analysis__tracker {
+    grid-area: tracker;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 'article reactions';
+    gap: var(--gap-sm);
+}
+
+.tracker__articles {
+    grid-area: article;
+    padding: var(--p-sm);
+    background: var(--bs-white);
+    border-radius: var(--border-radius-xsm);
+}
+
+.tracker__reactions {
+    grid-area: reactions;
+    padding: var(--p-sm);
+    background: var(--bs-white);
+    border-radius: var(--border-radius-xsm);
+}
+
+@media (max-width:768px) {
+    .analysis__overview {
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: 1fr;
+        height: max-content;
+    }
+
+    .analysis__tracker {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        grid-template-areas: 'article' 'reactions';
+    }
+}
+
 .create__post-wrapper {
     display: grid;
     grid-template-rows: repeat(2, max-content);
@@ -851,7 +970,6 @@ img {
     grid-template-rows: repeat(2, max-content);
     grid-template-columns: 1fr;
     gap: var(--gap-sm);
-
 }
 
 .create__post-bottom-row {
@@ -922,7 +1040,6 @@ img {
     display: flex;
     justify-self: end;
 }
-
 
 .articles__content {
     grid-area: content;

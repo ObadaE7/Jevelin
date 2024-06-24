@@ -193,4 +193,23 @@ return [
         'Delete' => 'حذف',
         'Created at' => 'تاريخ الإنشاء',
     ],
+
+    'analysis' => [
+        'Analysis' => 'تحليل',
+        'Statistics' => 'إحصائيات',
+        'Total articles' => 'إجمالي المقالات',
+        'Article' => 'مقال',
+        'Total reactions' => 'إجمالي التفاعلات',
+        'Reaction' => 'تفاعل',
+        'Reaction rate' => 'معدل التفاعل',
+        'Reaction article' => 'تفاعل لكل مقال',
+        'Articles highest' => 'المقالات ذات أعلى معدل تفاعل',
+        'Track posting' => 'تتبع حالة النشر اليومية',
+        'Number of likes' => 'عدد الأعجبني',
+        'Number of dislikes' => 'عدد لم يعجبني',
+        'Number of articles' => 'عدد المقالات',
+        'Reactions' => 'ردود الفعل',
+        'Empty line one' => 'عذرًا، لا توجد بيانات لعرضها في الوقت الحالي',
+        'Empty line two' => 'ماذا تنتظر؟ انشر مقالاتك الأولى!',
+    ]
 ];

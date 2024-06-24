@@ -192,6 +192,24 @@ return [
         'Edit' => 'Edit',
         'Delete' => 'Delete',
         'Created at' => 'Created at',
-        // 'Create' => 'Create',
     ],
+
+    'analysis' => [
+        'Analysis' => 'Analysis',
+        'Statistics' => 'Statistics',
+        'Total articles' => 'Total articles',
+        'Article' => 'Article',
+        'Total reactions' => 'Total reactions',
+        'Reaction' => 'Reaction',
+        'Reaction rate' => 'Reaction rate',
+        'Reaction article' => 'Reaction for each article',
+        'Articles highest' => 'Articles with the highest reaction rate',
+        'Track posting' => 'Track daily posting status',
+        'Number of likes' => 'Number of likes',
+        'Number of dislikes' => 'Number of dislikes',
+        'Number of articles' => 'Number of articles',
+        'Reactions' => 'Reactions',
+        'Empty line one' => 'Sorry, there is no data to display at the moment',
+        'Empty line two' => 'what are you waiting for? Publish your first articles!',
+    ]
 ];
