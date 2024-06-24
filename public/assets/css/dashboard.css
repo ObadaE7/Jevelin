@@ -410,6 +410,22 @@ img {
     --bs-dropdown-min-width: 20rem
 }
 
+@media (max-width:768px) {
+    .dashboard__header {
+        grid-template-columns: 1fr;
+        grid-template-areas: 'toggle';
+    }
+
+    .header__menu {
+        display: none !important;
+    }
+
+    .header__menu-ul {
+        display: none !important;
+
+    }
+}
+
 .dashboard__main-container {
     grid-area: content;
     display: grid;

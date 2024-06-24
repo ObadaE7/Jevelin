@@ -1,7 +1,7 @@
 @section('breadcrumb')
     <x-breadcrumb>
-        <li class="breadcrumb-item"><a href="{{ route('user.posts') }}">{{ trans('string.Articles') }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('string.Show') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('user.posts') }}">{{ trans('dashboard.post.Articles') }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('dashboard.post.Show') }}</a></li>
     </x-breadcrumb>
 @endsection
 
@@ -10,18 +10,18 @@
         <div class="filter__search">
             <button class="btn__search" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
             <input wire:model.live='search' type="search" class="form-control input__search"
-                placeholder="{{ trans('dashboard.table.Search here') }}">
+                placeholder="{{ trans('dashboard.post.Search here') }}">
             <ul class="dropdown-menu dropdown-menu-start text-end">
                 <li>
                     <div class="dropdown-item">
-                        <span class="text-muted">{{ trans('dashboard.table.Search by') }}</span>
+                        <span class="text-muted">{{ trans('dashboard.post.Search by') }}</span>
                     </div>
                 </li>
                 @foreach ($columns as $column)
                     <li>
                         <button wire:click="$set('searchBy', '{{ $column }}')"
                             class="dropdown-item {{ $searchBy == $column ? 'active' : '' }}">
-                            {{ trans('dashboard.table.' . ucfirst($column)) }}
+                            {{ trans('dashboard.post.' . ucfirst($column)) }}
                         </button>
                     </li>
                 @endforeach
@@ -30,7 +30,7 @@
 
         <div class="filter__per-page">
             <select wire:model.live='perPage' class="form-select">
-                <option disabled>{{ trans('dashboard.table.Per page') }}</option>
+                <option disabled>{{ trans('dashboard.post.Per page') }}</option>
                 @foreach ($perPages as $item)
                     <option value="{{ $item }}">{{ $item }}</option>
                 @endforeach
@@ -38,16 +38,21 @@
         </div>
 
         <div class="filter__order-by">
-            <button wire:click="$set('orderDir','desc')" class="btn fw-bold">
+            <button wire:click="$set('orderDir','desc')"
+                class="btn {{ $orderDir == 'desc' ? 'btn-primary' : '' }} fw-bold">
                 <div class="d-flex align-items-center gap-2">
                     <span class="material-icons-outlined">sort</span>
-                    <span>الاحدث</span>
+                    <span>{{ trans('dashboard.post.Newest') }}</span>
                 </div>
             </button>
-            <button class="btn fw-bold d-flex align-items-center gap-2">
-                <div wire:click="$set('orderDir','asc')" class="d-flex align-items-center gap-2">
-                    <span class="material-icons-outlined">sort</span>
-                    <span>الاقدم</span>
+
+            <button wire:click="$set('orderDir','asc')"
+                class="btn {{ $orderDir == 'asc' ? 'btn-primary' : '' }} fw-bold">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="material-icons-outlined">sort</span>
+                        <span>{{ trans('dashboard.post.Oldest') }}</span>
+                    </div>
                 </div>
             </button>
         </div>
@@ -70,13 +75,13 @@
 
                 <div class="articles__settings">
                     <div class="d-flex justify-content-between">
-                        <small class="text-muted">لمحه سريعه</small>
+                        <small class="text-muted">{{ trans('dashboard.post.Quick peek') }}</small>
                         <button type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="material-icons-outlined">settings</span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end text-end">
-                            <li><a class="dropdown-item" href="#">تعديل</a></li>
-                            <li><a class="dropdown-item" href="#">حذف</a></li>
+                            <li><a class="dropdown-item" href="#">{{ trans('dashboard.post.Edit') }}</a></li>
+                            <li><a class="dropdown-item" href="#">{{ trans('dashboard.post.Delete') }}</a></li>
                         </ul>
                     </div>
 
@@ -111,7 +116,7 @@
                     </div>
 
                     <div class="d-flex flex-column text-muted">
-                        <span>أنشئ في {{ $article->getDateForHuman() }}</span>
+                        <span>{{ trans('dashboard.post.Created at') }} {{ $article->getDateForHuman() }}</span>
                         <small>{{ $article->created_at->diffForHumans() }}</small>
                     </div>
                 </div>
