@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Index;
+use App\Livewire\Home\Index;
 use App\Livewire\User\{Dashboard, Profile, Analysis, Posts, CreatePost};
 use Illuminate\Support\Facades\Route;
 

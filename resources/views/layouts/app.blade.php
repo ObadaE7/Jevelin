@@ -16,16 +16,15 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/lib/bs-icons/font/bootstrap-icons.min.css') }}">
     @stack('css')
-    <livewire:styles>
+    @livewireStyles
 </head>
 
 <body>
     {{ $slot }}
-
     <script src="{{ asset('assets/lib/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/core.js') }}"></script>
     @stack('scripts')
-    <livewire:scripts>
+    @livewireScripts
 </body>
 
 </html>

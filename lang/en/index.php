@@ -39,5 +39,8 @@ return [
         'Search placeholder' => 'Search for a category',
         'Empty line one' => 'Sorry, there are no articles to display at the moment',
         'Empty line two' => 'What are you waiting for, publish your first articles!',
+        'Category not exist' => 'This category does not exist',
+        'View all' => 'View all',
+        'Empty articles' => 'There are no articles in this category to display',
     ],
 ];

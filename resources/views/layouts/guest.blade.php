@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr' }}">
 
 <head>
     <meta charset="utf-8">
@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     @stack('css')
-    <livewire:styles>
+    @livewireStyles
 </head>
 
 <body>
@@ -24,7 +24,7 @@
     <script src="{{ asset('assets/lib/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/core.js') }}"></script>
     @stack('scripts')
-    <livewire:scripts>
+    @livewireScripts
 </body>
 
 </html>

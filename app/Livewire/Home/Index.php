@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Home;
 
 use App\Models\Post;
 use Livewire\Component;
@@ -34,7 +34,7 @@ class Index extends Component
         $latestArticles = $this->latestArticles();
         $topPost = $this->topPost();
         $topPosts = $this->topPosts();
-        return view('index', compact('latestArticles', 'topPost', 'topPosts'))
-            ->layout('layouts.guest');
+
+        return view('pages.home.index', compact('latestArticles', 'topPost', 'topPosts'))->layout('layouts.guest');
     }
 }
