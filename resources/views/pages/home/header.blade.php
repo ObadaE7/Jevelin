@@ -13,12 +13,12 @@
                 </a>
             </li>
             <li class="li__categories">
-                <a href="" class="{{ Route::is('categories') ? 'active' : '' }}">
+                <a href="{{ route('categories') }}" class="{{ Route::is('categories') ? 'active' : '' }}">
                     @lang('index.header.Categories')
                 </a>
             </li>
             <li class="li__articles">
-                <a href="" class="{{ Route::is('articles') ? 'active' : '' }}">
+                <a href="{{ route('articles') }}" class="{{ Route::is('articles') ? 'active' : '' }}">
                     @lang('index.header.Articles')
                 </a>
             </li>
@@ -68,12 +68,12 @@
                         </a>
                     </li>
                     <li class="li__categories">
-                        <a href="" class="{{ Route::is('categories') ? 'active' : '' }}">
+                        <a href="{{ route('categories') }}" class="{{ Route::is('categories') ? 'active' : '' }}">
                             @lang('index.header.Categories')
                         </a>
                     </li>
                     <li class="li__articles">
-                        <a href="" class="{{ Route::is('articles') ? 'active' : '' }}">
+                        <a href="{{ route('articles') }}" class="{{ Route::is('articles') ? 'active' : '' }}">
                             @lang('index.header.Articles')
                         </a>
                     </li>

@@ -13,7 +13,7 @@
             </div>
 
             <div class="col__content">
-                <a href="#" class="post__title">{{ $topPost->title }}</a>
+                <a href="{{ route('article', $topPost->slug) }}" class="post__title">{{ $topPost->title }}</a>
                 <span class="post__subtitle">{{ $topPost->subtitle }}</span>
 
                 <div class="col__right-owner">
@@ -32,7 +32,7 @@
                     <img src="{{ asset('storage/' . $top->image) }}" alt="{{ $top->slug }}">
                     <div class="overlay-text"></div>
                     <div class="col__content">
-                        <a href="#" class="post__title">{{ $top->title }}</a>
+                        <a href="{{ route('article', $top->slug) }}" class="post__title">{{ $top->title }}</a>
                         <span class="post__subtitle">{{ $top->subtitle }}</span>
                     </div>
                 </div>

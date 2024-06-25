@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Home\Index;
+use App\Livewire\Home\Pages\{Articles, Article, ArticlesByCategory, ArticlesByTag, Categories, Writers};
 use App\Livewire\User\{Dashboard, Profile, Analysis, Posts, CreatePost};
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,12 @@ Route::get('/', function () {
 });
 
 Route::get('/index', Index::class)->name('index');
+Route::get('articles', Articles::class)->name('articles');
+Route::get('article/{slug}', Article::class)->name('article');
+Route::get('articles-tagged/{slug}', ArticlesByTag::class)->name('articles.tagged');
+Route::get('categories', Categories::class)->name('categories');
+Route::get('articles-category/{slug}', ArticlesByCategory::class)->name('articles.category');
+Route::get('writers', Writers::class)->name('writers');
 
 #.....{ Dashboard Page }.....#
 Route::prefix('dashboard')

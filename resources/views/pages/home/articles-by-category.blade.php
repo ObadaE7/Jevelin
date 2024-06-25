@@ -26,8 +26,8 @@
                         </div>
                     </a>
                 @endforelse
-                <a class="nav-link" id="pills-settings-tab" data-bs-toggle="pill" href="#pills-settings"
-                    role="tab" aria-controls="pills-settings" aria-selected="false">
+                <a href="{{ route('categories') }}" class="nav-link" id="pills-settings-tab" data-bs-toggle="pill"
+                    href="#pills-settings" role="tab" aria-controls="pills-settings" aria-selected="false">
                     <div class="d-flex justify-content-between">
                         <span>@lang('index.sections.View all')</span>
                         <span class="nav__link-badge">{{ $totalCategories }}</span>
@@ -48,7 +48,9 @@
                                 <span>{{ $post->title }}</span>
                             </div>
                             <div class="post__category-link">
-                                <a href="#" class="text-white">@lang('index.sections.View article')</a>
+                                <a href="{{ route('article', $post->slug) }}" class="text-white">
+                                    @lang('index.sections.View article')
+                                </a>
                             </div>
                         </div>
                     @empty

@@ -13,11 +13,12 @@
 
                 <div class="section__one-post--content">
                     <header class="d-flex justify-content-between align-items-center">
-                        <a href="#" class="post__badge bg-danger-subtle text-danger">
-                            @foreach ($article->tags->take(1) as $tag)
+                        @foreach ($article->tags->take(1) as $tag)
+                            <a href="{{ route('articles.tagged', $tag->slug) }}"
+                                class="post__badge bg-danger-subtle text-danger">
                                 {{ $tag->name }}
-                            @endforeach
-                        </a>
+                            </a>
+                        @endforeach
                         <time datetime="2024-05-16" class="d-flex align-items-center gap-2 muted-color">
                             <span>{{ $article->getDateForHuman() }}</span>
                             <span class="material-icons-outlined">today</span>
@@ -25,15 +26,17 @@
                     </header>
 
                     <div class="d-flex flex-column mb-4">
-                        <a href="#" class="post__title underline__hover">{{ $article->title }}</a>
-                        <p class="post__subtitle">{{ $article->suntitle }}</p>
+                        <a href="{{ route('article', $article->slug) }}" class="post__title underline__hover">
+                            {{ $article->title }}
+                        </a>
+                        <p class="post__subtitle">{{ $article->subtitle }}</p>
                     </div>
 
                     <section class="post__content">
                         <p class="m-0">{{ $article->content }}</p>
                     </section>
 
-                    <a href="#" class="btn__read-more">@lang('index.sections.Read more')</a>
+                    <a href="{{ route('article', $article->slug) }}" class="btn__read-more">@lang('index.sections.Read more')</a>
 
                     <footer class="post__footer">
                         <div class="d-flex align-items-center gap-2">
