@@ -8,9 +8,9 @@
             <img src="{{ asset('assets/img/others/avatar.jpg') }}" class="avatar" alt="">
         </div>
         <span class="fs-4">عبادة دراغمة</span>
-        <span class="best__user-quote">{{ trans('index.sections.Best user quote') }}</span>
+        <span class="best__user-quote">@lang('index.sections.Best user quote')</span>
         <span class="material-icons-outlined muted-color">format_quote</span>
-        <div class="more__user"><a href="#">{{ trans('index.sections.More writers') }}</a></div>
+        <div class="more__user"><a href="#">@lang('index.sections.More writers')</a></div>
     </div>
 </section>
 

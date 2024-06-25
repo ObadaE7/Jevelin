@@ -4,10 +4,10 @@ namespace App\Livewire\Home;
 
 use Livewire\Component;
 
-class Index extends Component
+class BestWriter extends Component
 {
     public function render()
     {
-        return view('pages.home.index')->layout('layouts.guest');
+        return view('pages.home.best-writer');
     }
 }

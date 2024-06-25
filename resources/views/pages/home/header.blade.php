@@ -9,29 +9,29 @@
         <ul class="header__menu">
             <li class="li__index">
                 <a href="{{ route('index') }}" class="{{ Route::is('index') ? 'active' : '' }}">
-                    {{ trans('index.header.Homepage') }}
+                    @lang('index.header.Homepage')
                 </a>
             </li>
             <li class="li__categories">
                 <a href="" class="{{ Route::is('categories') ? 'active' : '' }}">
-                    {{ trans('index.header.Categories') }}
+                    @lang('index.header.Categories')
                 </a>
             </li>
             <li class="li__articles">
                 <a href="" class="{{ Route::is('articles') ? 'active' : '' }}">
-                    {{ trans('index.header.Articles') }}
+                    @lang('index.header.Articles')
                 </a>
             </li>
             @auth
                 <li class="li__dashboard">
                     <a href="{{ route('user.dashboard') }}" class="{{ Route::is('user.dashboard') ? 'active' : '' }}">
-                        {{ trans('index.header.Dashboard') }}
+                        @lang('index.header.Dashboard')
                     </a>
                 </li>
             @else
                 <li class="li__login">
                     <a href="{{ route('login') }}" class="{{ Route::is('login') ? 'active' : '' }}">
-                        {{ trans('index.header.Login') }}
+                        @lang('index.header.Login')
                     </a>
                 </li>
             @endauth
@@ -57,36 +57,37 @@
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="headerToggle" aria-labelledby="headerToggleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="headerToggleLabel">{{ trans('index.header.Header menu') }}</h5>
+                <h5 class="offcanvas-title" id="headerToggleLabel">@lang('index.header.Header menu')</h5>
                 <button type="button" class="btn-close m-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="offcanvas__menu">
                     <li class="li__index">
                         <a href="{{ route('index') }}" class="{{ Route::is('index') ? 'active' : '' }}">
-                            {{ trans('index.header.Homepage') }}
+                            @lang('index.header.Homepage')
                         </a>
                     </li>
                     <li class="li__categories">
                         <a href="" class="{{ Route::is('categories') ? 'active' : '' }}">
-                            {{ trans('index.header.Categories') }}
+                            @lang('index.header.Categories')
                         </a>
                     </li>
                     <li class="li__articles">
                         <a href="" class="{{ Route::is('articles') ? 'active' : '' }}">
-                            {{ trans('index.header.Articles') }}
+                            @lang('index.header.Articles')
                         </a>
                     </li>
                     @auth
                         <li class="li__dashboard">
-                            <a href="{{ route('user.dashboard') }}" class="{{ Route::is('user.dashboard') ? 'active' : '' }}">
-                                {{ trans('index.header.Dashboard') }}
+                            <a href="{{ route('user.dashboard') }}"
+                                class="{{ Route::is('user.dashboard') ? 'active' : '' }}">
+                                @lang('index.header.Dashboard')
                             </a>
                         </li>
                     @else
                         <li class="li__login">
                             <a href="{{ route('login') }}" class="{{ Route::is('login') ? 'active' : '' }}">
-                                {{ trans('index.header.Login') }}
+                                @lang('index.header.Login')
                             </a>
                         </li>
                     @endauth

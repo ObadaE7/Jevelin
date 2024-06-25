@@ -1,11 +1,7 @@
-<section class="one__waves-up">
-    <img src="{{ asset('assets/img/svg/one-wave-up.svg') }}" alt="{{ trans('index.sections.Wave background') }}">
-</section>
-
 <section class="main__section-one" id="explore">
     <div class="main__section-header">
-        <span class="section__title">{{ trans('index.sections.Section one title') }}</span>
-        <span class="section__subtitle">{{ trans('index.sections.Section one subtitle') }}</span>
+        <span class="section__title">@lang('index.sections.Section one title')</span>
+        <span class="section__subtitle">@lang('index.sections.Section one subtitle')</span>
     </div>
 
     <div class="section__one-content">
@@ -37,7 +33,7 @@
                         <p class="m-0">{{ $article->content }}</p>
                     </section>
 
-                    <a href="#" class="btn__read-more">{{ trans('index.sections.Read more') }}</a>
+                    <a href="#" class="btn__read-more">@lang('index.sections.Read more')</a>
 
                     <footer class="post__footer">
                         <div class="d-flex align-items-center gap-2">
@@ -51,7 +47,7 @@
                             @endif
                             <button type="button" class="text-muted" data-bs-toggle="modal"
                                 data-bs-target="#userModal">
-                                {{ trans('index.sections.By') }}
+                                @lang('index.sections.By')
                                 {{ $article->owner->fname . ' ' . $article->owner->lname }}
                             </button>
                         </div>
@@ -69,8 +65,8 @@
             </article>
         @empty
             <div class="d-flex flex-column align-items-center">
-                <span class="fs-3">{{ trans('index.sections.Empty line one') }}</span>
-                <span class="fs-4">{{ trans('index.sections.Empty line two') }}</span>
+                <span class="fs-3">@lang('index.sections.Empty line one')</span>
+                <span class="fs-4">@lang('index.sections.Empty line two')</span>
             </div>
         @endforelse
     </div>
@@ -84,15 +80,11 @@
                     UNDER DEVELOPMENT
                     <x-slot:button>
                         <button wire:click="resetFields" type="button" class="btn btn-secondary"
-                            data-bs-dismiss="modal">{{ trans('dashboard.modal.Close') }}
+                            data-bs-dismiss="modal">@lang('dashboard.modal.Close')
                         </button>
                     </x-slot:button>
                 </form>
             </x-slot:body>
         </x-modal>
     </div>
-</section>
-
-<section class="one__waves-down">
-    <img src="{{ asset('assets/img/svg/one-wave-down.svg') }}" alt="{{ trans('index.sections.Wave background') }}">
 </section>
