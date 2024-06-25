@@ -1,3 +1,3 @@
 <div>
-    {{-- In work, do what you enjoy. --}}
+    صفحة المقالات المتعلقة بموضوع معين
 </div>

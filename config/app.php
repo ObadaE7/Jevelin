@@ -20,6 +20,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Support
+    |--------------------------------------------------------------------------
+    |
+    | This section contains the contact details for application support.
+    | The 'support_email' is used for receiving support-related queries via email,
+    | and the 'support_phone' is used for receiving support-related queries via phone.
+    | The values can be set using environment variables.
+    |
+    */
+
+    'support_email' => env('SUPPORT_EMAIL', 'default@example.com'),
+    'support_phone' => env('SUPPORT_PHONE', '0000000000'),
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |

@@ -1,3 +1,9 @@
 <div>
-    {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
+    @forelse ($articles as $article)
+        {{ $article->title }} <br>
+    @empty
+        لا يوجد اي مقال بعد
+    @endforelse
+
+    {{ $articles->links() }}
 </div>

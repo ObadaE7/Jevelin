@@ -8,6 +8,6 @@ class ArticlesByTag extends Component
 {
     public function render()
     {
-        return view('pages.home.pages.articles-by-tag');
+        return view('pages.home.pages.articles-by-tag')->layout('layouts.guest');
     }
 }

@@ -8,6 +8,6 @@ class Article extends Component
 {
     public function render()
     {
-        return view('pages.home.pages.article');
+        return view('pages.home.pages.article')->layout('layouts.guest');
     }
 }

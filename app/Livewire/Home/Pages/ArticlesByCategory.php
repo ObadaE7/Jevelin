@@ -8,6 +8,6 @@ class ArticlesByCategory extends Component
 {
     public function render()
     {
-        return view('pages.home.pages.articles-by-category');
+        return view('pages.home.pages.articles-by-category')->layout('layouts.guest');
     }
 }

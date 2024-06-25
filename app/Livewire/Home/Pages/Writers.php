@@ -8,6 +8,6 @@ class Writers extends Component
 {
     public function render()
     {
-        return view('pages.home.pages.writers');
+        return view('pages.home.pages.writers')->layout('layouts.guest');
     }
 }

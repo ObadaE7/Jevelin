@@ -8,6 +8,6 @@ class Categories extends Component
 {
     public function render()
     {
-        return view('pages.home.pages.categories');
+        return view('pages.home.pages.categories')->layout('layouts.guest');
     }
 }
