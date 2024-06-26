@@ -2,10 +2,12 @@
     <div class="main__subscribe-form">
         <span class="subscribe__text">@lang('index.sections.Subscribe text')</span>
         <form class="subscribe__form">
-            <div class="d-flex flex-column w-100 text-end">
+            <div class="d-flex flex-column w-100 align-items-center">
                 <input wire:model='email' type="email" id="email" class="form-control" placeholder="@lang('index.sections.Email placeholder')">
-                <x-error name="email" />
-                <x-success name="success" />
+                <div class="align-self-start">
+                    <x-error name="email" />
+                    <x-success name="success" />
+                </div>
             </div>
             <button wire:click.prevent='subscribe' class="main__hero-button">
                 @lang('index.sections.Subscribe')
