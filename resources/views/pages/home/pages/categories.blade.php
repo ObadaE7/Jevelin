@@ -1,8 +1,8 @@
 <section class="wrapper">
     @livewire('home.header')
 
-    <main class="categories__wrapper">
-        <div class="categories__header">
+    <main class="pages__wrapper">
+        <div class="pages__header">
             <div class="d-flex align-items-center gap-2">
                 <span class="material-icons-outlined">category</span>
                 <span class="fs-4">@lang('index.pages.Categories')</span>
@@ -10,7 +10,7 @@
             <span class="text-muted">@lang('index.pages.Category placeholder')</span>
         </div>
 
-        <div class="categories__main">
+        <div class="pages__main categories">
             @forelse ($categories as $category)
                 <div class="card">
                     <img src="{{ asset('storage/' . $category->image) }}" class="card-img-top"
@@ -33,7 +33,9 @@
             @endforelse
         </div>
 
-        <div class="paginate__section">{{ $categories->links() }}</div>
+        @if ($categories->total() > 4)
+            <div class="pages__paginate">{{ $categories->links() }}</div>
+        @endif
     </main>
 
     @livewire('home.footer')

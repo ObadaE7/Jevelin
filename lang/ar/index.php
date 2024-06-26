@@ -49,6 +49,9 @@ return [
         'Category placeholder' => 'استكشف الفئات المختلفة واكتشف المحتوى المذهل.',
         'View articles' => 'عرض المقالات',
         'Empty category' => 'لا توجد فئة لعرضها',
-
+        'Category type' => 'الفئات - الفئة <span style="color: var(--orange-color)">:category</span>',
+        'Category placeholder type' => 'استكشف المقالات المختلفة واكتشف المحتوى المنشور في الفئة :category',
+        'Read more' => 'اقرأ المزيد',
+        'Empty category type' => 'لا توجد مقالات لعرضها في هذه الفئة!',
     ]
 ];

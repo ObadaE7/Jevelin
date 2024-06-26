@@ -1397,7 +1397,7 @@ img {
     }
 }
 
-.categories__wrapper {
+.pages__wrapper {
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-areas: 'header' 'main' 'paginate';
@@ -1406,7 +1406,7 @@ img {
     gap: var(--gap-sm);
 }
 
-.categories__header {
+.pages__header {
     grid-area: header;
     display: flex;
     flex-direction: column;
@@ -1415,35 +1415,32 @@ img {
     border-radius: var(--border-radius-xsm);
 }
 
-.categories__main {
+.pages__main {
     grid-area: main;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: var(--gap-sm);
 }
 
-.categories__main .card {
+.pages__main .card {
     transition: all .5s ease;
     cursor: pointer;
 }
 
-.categories__main .card:hover {
+.pages__main .card:hover {
     filter: drop-shadow(1px 5px 15px #E6B9A6);
     transform: scale(1.02);
 }
 
-.categories__main img {
+.pages__main img {
     width: var(--m-width-100);
     height: calc(var(--height-100) * 2);
 }
 
-.categories__main a {
+.pages__main a {
     color: var(--bs-white);
     background: var(--orange-color);
     border-radius: var(--border-radius-xsm);
 }
 
-.categories__main a:hover {
+.pages__main a:hover {
     color: var(--bs-white);
     background: var(--orange-color-hover);
 }
@@ -1455,23 +1452,41 @@ img {
     border-radius: var(--border-radius-xsm);
 }
 
-.paginate__section {
+.pages__paginate {
     grid-area: paginate;
     padding: var(--p-sm);
     background: var(--bs-white);
     border-radius: var(--border-radius-xsm);
 }
 
-.paginate__section .pagination {
+.pages__paginate .pagination {
     margin: 0;
 }
 
-.paginate__section .small.text-muted {
+.pages__paginate .small.text-muted {
     margin: 0;
+}
+
+.pages__main.categories {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--gap-sm);
+}
+
+.pages__main.articles-by-category {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-sm);
 }
 
 @media (max-width:768px) {
-    .categories__wrapper {
+    .pages__wrapper {
         padding: var(--wrapper-p-sm);
+    }
+
+    .pages__main.articles-by-category {
+        grid-template-columns: 1fr;
     }
 }

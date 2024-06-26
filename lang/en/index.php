@@ -49,6 +49,9 @@ return [
         'Category placeholder' => 'Explore the different categories and discover amazing content.',
         'View articles' => 'View articles',
         'Empty category' => 'There is no category to display',
-
+        'Category type' => 'Categories - category <span style="color: var(--orange-color)">:category</span>',
+        'Category placeholder type' => 'Explore different articles and discover content published in a category :category',
+        'Read more' => 'Read more',
+        'Empty category type' => 'There are no articles to display in this category!',
     ]
 ];
