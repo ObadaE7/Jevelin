@@ -1507,6 +1507,14 @@ img {
     -webkit-line-clamp: 4;
 }
 
+.pages__main.article img{
+    width: 300px;
+    height: 300px;
+    border-radius: var(--border-radius-xsm);
+    float: right;
+    margin-left: var(--m-sm);
+}
+
 @media (max-width:768px) {
     .pages__wrapper {
         padding: var(--wrapper-p-sm);
