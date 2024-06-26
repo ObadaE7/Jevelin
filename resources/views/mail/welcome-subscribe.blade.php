@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr' }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زينون | رسالة تأكيد الإشتراك</title>
+    <title>{{ config('app.name') }} | @lang('mail.subscribe.Title') </title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -74,24 +74,24 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <span>شكرا لك على الاشتراك!🥳</span>
+                <span>@lang('mail.subscribe.Thank you')</span>
             </div>
 
             <div class="card-body">
-                شكراً لك على الاشتراك في النشرة الإخبارية لمدونة {{ config('app.name') }}! نحن متحمسون لأن تكون جزءاً من
-                مجتمعنا. من خلال
-                هذه النشرة الإخبارية، ستصلك أحدث الأخبار والمقالات المميزة التي نقدمها. سنحرص على أن نطلعك على كل ما هو
-                جديد ومفيد، بالإضافة إلى تقديم نصائح ومعلومات قيمة تعزز معرفتك. ابقَ على تواصل دائم معنا للاستفادة من كل
-                المحتويات الشيقة التي نقوم بنشرها. نتمنى لك قراءة ممتعة وإثراء مستمر!
+                @lang('mail.subscribe.Subscribe message')
             </div>
 
             <div class="card-footer">
-                <span>{{ config('app.name') }}، جميع الحقوق محفوظة. &copy; {{ Date('Y') }}</span>
-                <span>P509 حي الحديقة، طوباس، فلسطين</span>
-                <span>البريد الإلكتروني: {{ config('app.support_email') }} | الهاتف:
-                    {{ config('app.support_phone') }}</span>
-                <span>أنت تتلقى هذا البريد الإلكتروني لأنك اشتركت في النشرة الإخبارية لدينا</span>
-                <a href="#">إلغاء الاشتراك</a>
+                <span>{{ config('app.name') }}، @lang('mail.default.Copyright') &copy; {{ Date('Y') }}</span>
+                <span>
+                    P509 @lang('mail.subscribe.Neighborhood')، @lang('mail.subscribe.Tubas')، @lang('mail.subscribe.Palestine')
+                </span>
+                <span>
+                    @lang('mail.subscribe.Email'): {{ config('app.support_email') }} |
+                    @lang('mail.subscribe.Phone'): {{ config('app.support_phone') }}
+                </span>
+                <span>@lang('mail.subscribe.Receiving email hint')</span>
+                <a href="#">@lang('mail.subscribe.Unsubscribe')</a>
             </div>
         </div>
     </div>

@@ -21,11 +21,11 @@ class Subscribe extends Component
         try {
             Subscribers::create($validated);
             Mail::to($validated['email'])->send(new WelcomeSubscribe());
-            session()->flash('success', 'You have successfully subscribed to the newsletter!');
+            session()->flash('success', trans('alerts.subscribe.Created'));
             $this->reset('email');
         } catch (Exception $e) {
             Log::error('[subscribe]: ' . $e->getMessage());
-            session()->flash('error', 'Failed to subscribe');
+            session()->flash('error', trans('alerts.subscribe.Failed create'));
         }
     }
 

@@ -75,4 +75,9 @@ return [
         'Deleted' => 'Your account has been successfully deleted permanently',
         'Failed delete account' => 'Failed to delete account',
     ],
+
+    'subscribe' => [
+        'Created' => 'You have been subscribed to the newsletter!',
+        'Failed create' => 'Failed to subscribe',
+    ]
 ];

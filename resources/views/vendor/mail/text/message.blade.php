@@ -21,7 +21,7 @@
     {{-- Footer --}}
     <x-slot:footer>
         <x-mail::footer>
-            &copy; {{ date('Y') }} {{ config('app.name') }}. @lang('mail.default.All rights reserved')
+            &copy; {{ date('Y') }} {{ config('app.name') }}. @lang('mail.default.Copyright')
         </x-mail::footer>
     </x-slot:footer>
 </x-mail::layout>

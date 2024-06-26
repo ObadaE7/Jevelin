@@ -75,4 +75,9 @@ return [
         'Deleted' => 'تم حذف حسابك بنجاح بشكل دائم',
         'Failed delete account' => 'فشل في حذف الحساب',
     ],
+
+    'subscribe' => [
+        'Created' => 'لقد تم اشتراكك في النشرة الإخبارية!',
+        'Failed create' => 'فشل الاشتراك',
+    ]
 ];
