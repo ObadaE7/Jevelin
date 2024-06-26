@@ -53,5 +53,8 @@ return [
         'Category placeholder type' => 'استكشف المقالات المختلفة واكتشف المحتوى المنشور في الفئة :category',
         'Read more' => 'اقرأ المزيد',
         'Empty category type' => 'لا توجد مقالات لعرضها في هذه الفئة!',
+        'Articles' => 'المقالات',
+        'Articles placeholder' => 'استكشف أحدث المقالات واحصل على المزيد من المعرفة.',
+        'Empty article' => 'لا يوجد مقال لعرضه',
     ]
 ];

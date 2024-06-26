@@ -592,8 +592,8 @@ img {
 }
 
 .avatar {
-    width: calc(var(--width-100) - 60px);
-    height: var(--height-100) - 60px;
+    width: calc(var(--width-100) - 60px) !important;
+    height: calc(var(--height-100) - 60px) !important;
     border-radius: 50%;
 }
 

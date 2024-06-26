@@ -53,5 +53,8 @@ return [
         'Category placeholder type' => 'Explore different articles and discover content published in a category :category',
         'Read more' => 'Read more',
         'Empty category type' => 'There are no articles to display in this category!',
+        'Articles' => 'Articles',
+        'Articles placeholder' => 'Explore the latest articles and get more knowledge',
+        'Empty article' => 'There is no article to display',
     ]
 ];
