@@ -1,6 +1,5 @@
 <section class="wrapper">
-    @include('pages.home.header')
-
+    @livewire('home.header')
     <main class="wrapper__main">
         @include('pages.home.hero')
 
@@ -42,6 +41,5 @@
                 alt="{{ trans('index.sections.Wave background') }}">
         </div>
     </main>
-
-    @include('pages.home.footer')
+    @livewire('home.footer')
 </section>

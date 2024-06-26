@@ -43,4 +43,12 @@ return [
         'View all' => 'View all',
         'Empty articles' => 'There are no articles in this category to display',
     ],
+
+    'pages' => [
+        'Categories' => 'Categories',
+        'Category placeholder' => 'Explore the different categories and discover amazing content.',
+        'View articles' => 'View articles',
+        'Empty category' => 'There is no category to display',
+
+    ]
 ];

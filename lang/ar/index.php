@@ -43,4 +43,12 @@ return [
         'View all' => 'عرض الكل',
         'Empty articles' => 'لا توجد مقالات في هذه الفئة لعرضها',
     ],
+
+    'pages' => [
+        'Categories' => 'الفئات',
+        'Category placeholder' => 'استكشف الفئات المختلفة واكتشف المحتوى المذهل.',
+        'View articles' => 'عرض المقالات',
+        'Empty category' => 'لا توجد فئة لعرضها',
+
+    ]
 ];
