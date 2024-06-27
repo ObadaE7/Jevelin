@@ -4,14 +4,14 @@ namespace App\Livewire\Admin\Tables;
 
 use App\Models\Category;
 use Livewire\{Component, WithPagination};
-use App\Traits\{FilterTrait, ModalTrait};
+use App\Traits\{FilterTrait, ImageProcessTrait, ModalTrait};
 use Illuminate\Support\Facades\{Storage, Log};
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Exception;
 
 class CategoryTable extends Component
 {
-    use WithPagination, WithFileUploads, FilterTrait, ModalTrait;
+    use WithPagination, WithFileUploads, FilterTrait, ModalTrait, ImageProcessTrait;
 
     public $rowId;
     public $name;
@@ -34,7 +34,8 @@ class CategoryTable extends Component
         ]);
 
         try {
-            $validated['image'] = $validated['image']->store('categories', 'public');
+            $validated['image'] = $this->coverImage($validated['image'], 300, 300, 'categories/public');
+
             Category::create($validated);
             session()->flash('success', trans('alerts.category.Created'));
             $this->resetFields();
@@ -68,7 +69,8 @@ class CategoryTable extends Component
             if ($category->image) {
                 Storage::disk('public')->delete($category->image);
             }
-            $validated['image'] = $validated['image']->store('categories', 'public');
+
+            $validated['image'] = $this->coverImage($validated['image'], 300, 300, 'categories/public');
 
             $category->update($validated);
             session()->flash('success', trans('alerts.category.Updated'));
