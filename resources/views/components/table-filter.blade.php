@@ -7,12 +7,14 @@
             <div class="dropdown-item"><span class="text-muted">{{ trans('dashboard.table.Search by') }}</span></div>
         </li>
         @foreach ($columns as $column)
-            <li>
-                <button wire:click="$set('searchBy', '{{ $column }}')"
-                    class="dropdown-item {{ $searchBy == $column ? 'active' : '' }}">
-                    {{ trans('dashboard.table.' . ucfirst($column)) }}
-                </button>
-            </li>
+            @unless ($column == 'image')
+                <li>
+                    <button wire:click="$set('searchBy', '{{ $column }}')"
+                        class="dropdown-item {{ $searchBy == $column ? 'active' : '' }}">
+                        {{ trans('dashboard.table.' . ucfirst($column)) }}
+                    </button>
+                </li>
+            @endunless
         @endforeach
     </ul>
 </div>

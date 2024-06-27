@@ -2,20 +2,24 @@
     @section('title', 'Dashboard')
     <section class="dashboard__wrapper">
         @if (Request::is('admin/*'))
-            @include('admin.includes.aside')
+            @include('admin.includes.header')
         @else
-            @include('includes.dashboard.aside')
+            @include('includes.dashboard.header')
         @endif
 
         <main class="dashboard__main">
             @if (Request::is('admin/*'))
-                @include('admin.includes.header')
+                @include('admin.includes.aside')
             @else
-                @include('includes.dashboard.header')
+                @include('includes.dashboard.aside')
             @endif
-            <div class="dashboard__main-container">
-                <div class="dashboard__breadcrumb">@yield('breadcrumb')</div>
-                <div class="dashboard__main-content">@yield('content')</div>
+
+            <div class="dashboard__main-content">
+                <div class="dashboard__breadcrumb">
+                    @yield('breadcrumb')
+                </div>
+
+                @yield('content')
             </div>
         </main>
     </section>

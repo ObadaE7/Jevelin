@@ -35,8 +35,7 @@
                 @forelse ($rows as $row)
                     <tr wire:key="{{ $row->id }}">
                         <td>
-                            <img src="{{ asset('storage/' . $row->avatar) }}" class="img-thumbnail"
-                                style="width: 35%; height: 35%;" alt="">
+                            <img src="{{ asset('storage/' . $row->avatar) }}" class="table__img">
                         </td>
                         <td>
                             <div class="d-flex flex-column">

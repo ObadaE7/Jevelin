@@ -1,7 +1,7 @@
 @section('breadcrumb')
     <x-breadcrumb>
-        <li class="breadcrumb-item"><a href="{{ route('admin.categories') }}">{{ trans('dashboard.table.Table') }}</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><a>{{ trans('dashboard.table.Categories') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.categories') }}">@lang('dashboard.table.Table')</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a>@lang('dashboard.table.Categories')</a></li>
     </x-breadcrumb>
 @endsection
 
@@ -25,7 +25,7 @@
                     @endphp
 
                     <th scope="col"
-                        @if ($headerIgnore) wire:click="setOrderBy('{{ $columns[$index] }}')" style="cursor: pointer;" @endif>
+                        @if ($headerIgnore) wire:click="setOrderBy('{{ $columns[$index] }}')" class="cursor-pointer" @endif>
                         <div class="d-flex align-items-center justify-content-between">
                             <span>{{ ucfirst($header) }}</span>
                             @if ($headerIgnore)
@@ -42,29 +42,23 @@
                 @forelse ($rows as $row)
                     <tr wire:key="{{ $row->id }}">
                         <td>{{ $row->id }}</td>
-                        <td><img src="{{ asset('storage/' . $row->image) }}" class="img-thumbnail"
-                                style="width: 10%; height: 10%;"></td>
+                        <td><img src="{{ asset('storage/' . $row->image) }}" class="table__img"></td>
                         <td>{{ $row->name }}</td>
                         <td>{{ $row->slug }}</td>
                         <td>
                             <div class="actions__btn">
                                 <button wire:click="show({{ $row->id }})" class="btn__show" data-bs-toggle="modal"
-                                    data-bs-target="#showModal">
-                                </button>
+                                    data-bs-target="#showModal"></button>
                                 <button wire:click="edit({{ $row->id }})" class="btn__edit" data-bs-toggle="modal"
-                                    data-bs-target="#editModal">
-                                </button>
+                                    data-bs-target="#editModal"></button>
                                 <button wire:click="$set('rowId', {{ $row->id }})" class="btn__delete"
-                                    data-bs-toggle="modal" data-bs-target="#deleteModal">
-                                </button>
+                                    data-bs-toggle="modal" data-bs-target="#deleteModal"></button>
                             </div>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="{{ count($headers) }}" class="text-center">
-                            {{ trans('dashboard.table.No results found') }}
-                        </td>
+                        <td colspan="{{ count($headers) }}" class="text-center">@lang('dashboard.table.No results found')</td>
                     </tr>
                 @endforelse
             @endsection

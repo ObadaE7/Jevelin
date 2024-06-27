@@ -68,16 +68,16 @@ function togglePassword() {
 }
 
 function toggleSidebar() {
-    const dashboardWrapper = document.querySelector(".dashboard__wrapper");
-    const isCollapsed = dashboardWrapper.classList.toggle("collapsed");
+    const dashboardMain = document.querySelector(".dashboard__main");
+    const isCollapsed = dashboardMain.classList.toggle("collapsed");
     localStorage.setItem("sidebarCollapsed", isCollapsed);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     const isCollapsed = localStorage.getItem("sidebarCollapsed") === "true";
-    const dashboardWrapper = document.querySelector(".dashboard__wrapper");
+    const dashboardMain = document.querySelector(".dashboard__main");
     if (isCollapsed) {
-        dashboardWrapper.classList.add("collapsed");
+        dashboardMain.classList.add("collapsed");
     }
 });
 

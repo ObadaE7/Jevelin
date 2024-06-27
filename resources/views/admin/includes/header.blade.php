@@ -1,20 +1,19 @@
 <header class="dashboard__header">
-    <button class="aside__toggle" onclick="toggleSidebar()">
-        <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="40" onclick="this.classList.toggle('active')">
-            <path class="line top"
-                d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
-            <path class="line middle" d="m 30,50 h 40" />
-            <path class="line bottom"
-                d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
-        </svg>
-    </button>
+    <div class="header__brand">
+        <span class="li__icon dashboard"></span>
+        <span class="li__text">{{ trans('string.Dashboard') }}</span>
+    </div>
+
+    <div class="header__toggle" onclick="toggleSidebar()">
+        <button><span class="material-icons-outlined">menu</span></button>
+    </div>
 
     <div class="header__menu">
-        <ul class="header__menu-ul">
+        <ul class="header__ul">
             <li>
                 <div class="dropdown">
-                    <button class="li__btn language" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false"></button>
+                    <button class="li__btn language" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    </button>
                     <ul class="dropdown-menu dropdown-menu-end text-end">
                         <li><a class="dropdown-item" href="#">Arabic</a></li>
                         <li><a class="dropdown-item" href="#">English</a></li>
