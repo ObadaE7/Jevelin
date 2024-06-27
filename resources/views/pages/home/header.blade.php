@@ -1,7 +1,7 @@
 <header class="wrapper__header">
     <div class="wrapper__header-brand">
         <div class="header__brand">
-            <a href="{{ route('index') }}">{{ config('app.name') }}</a>
+            <img src="{{ asset('assets/img/logo/jeveline-logo-dark-v1.png') }}" alt="logo">
         </div>
     </div>
 
