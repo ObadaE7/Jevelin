@@ -9,14 +9,14 @@ class Articles extends Component
 {
     use WithPagination;
 
-    public function articles()
+    public function getArticles()
     {
         return Post::paginate(5);
     }
 
     public function render()
     {
-        $articles = $this->articles();
+        $articles = $this->getArticles();
         return view('pages.home.pages.articles', compact('articles'))->layout('layouts.guest');
     }
 }

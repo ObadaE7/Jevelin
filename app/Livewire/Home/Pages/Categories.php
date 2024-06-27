@@ -3,21 +3,20 @@
 namespace App\Livewire\Home\Pages;
 
 use App\Models\Category;
-use Livewire\Component;
-use Livewire\WithPagination;
+use Livewire\{Component, WithPagination};
 
 class Categories extends Component
 {
     use WithPagination;
 
-    public function categories()
+    public function getCategories()
     {
         return Category::withCount('posts')->paginate(4);
     }
 
     public function render()
     {
-        $categories = $this->categories();
+        $categories = $this->getCategories();
 
         return view('pages.home.pages.categories', compact('categories'))->layout('layouts.guest');
     }

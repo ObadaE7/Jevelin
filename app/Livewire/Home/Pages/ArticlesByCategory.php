@@ -16,7 +16,7 @@ class ArticlesByCategory extends Component
         $this->slug = $slug;
     }
 
-    public function articlesByCategory()
+    public function getArticlesByCategory()
     {
         $category = Category::where('slug', $this->slug)->firstOrFail();
         $articles = $category->posts()->withCount('likes')->paginate(4);
@@ -25,7 +25,7 @@ class ArticlesByCategory extends Component
 
     public function render()
     {
-        $data = $this->articlesByCategory();
+        $data = $this->getArticlesByCategory();
 
         return view('pages.home.pages.articles-by-category', compact('data'))->layout('layouts.guest');
     }

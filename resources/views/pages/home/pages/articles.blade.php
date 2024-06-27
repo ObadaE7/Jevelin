@@ -29,14 +29,14 @@
                                         <small class="text-muted">{{ $article->subtitle }}</small>
                                     </div>
                                     <small class="post__content text-muted">{{ $article->content }}</small>
-                                    <a href="{{ route('article', $article->slug) }}"
-                                        class="btn w-25">@lang('index.pages.Read more')</a>
+                                    <a href="{{ route('article', $article->slug) }}" class="btn w-25">
+                                        @lang('index.pages.Read more')
+                                    </a>
                                 </div>
 
                                 <img src="{{ asset('storage/' . $article->image) }}" class="card-img"
                                     alt="{{ $article->slug }}">
                             </div>
-
                         </div>
                     </div>
                 </div>

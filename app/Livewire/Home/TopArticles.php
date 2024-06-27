@@ -7,20 +7,20 @@ use Livewire\Component;
 
 class TopArticles extends Component
 {
-    public function topPost()
+    public function getTopPost()
     {
         return Post::withCount('users')->orderByDesc('users_count')->first();
     }
 
-    public function topPosts()
+    public function getTopPosts()
     {
         return Post::withCount('users')->orderByDesc('users_count')->take(2)->skip(1)->get();
     }
 
     public function render()
     {
-        $topPost = $this->topPost();
-        $topPosts = $this->topPosts();
+        $topPost = $this->getTopPost();
+        $topPosts = $this->getTopPosts();
 
         return view('pages.home.top-articles', compact('topPost', 'topPosts'));
     }

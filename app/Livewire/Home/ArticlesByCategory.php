@@ -9,7 +9,7 @@ class ArticlesByCategory extends Component
 {
     public $categorySearch;
 
-    public function articlesByCategory()
+    public function getArticlesByCategory()
     {
         return Category::withCount('posts')
             ->where('name', 'like', "%{$this->categorySearch}%")
@@ -18,15 +18,15 @@ class ArticlesByCategory extends Component
             ->get();
     }
 
-    public function totalCategories()
+    public function getTotalCategories()
     {
         return Category::count();
     }
 
     public function render()
     {
-        $articlesByCategory = $this->articlesByCategory();
-        $totalCategories = $this->totalCategories();
+        $articlesByCategory = $this->getArticlesByCategory();
+        $totalCategories = $this->getTotalCategories();
 
         return view('pages.home.articles-by-category', compact('totalCategories', 'articlesByCategory'));
     }

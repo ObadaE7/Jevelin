@@ -56,5 +56,6 @@ return [
         'Articles' => 'Articles',
         'Articles placeholder' => 'Explore the latest articles and get more knowledge',
         'Empty article' => 'There is no article to display',
+        'Role' => 'Role not specified',
     ]
 ];
