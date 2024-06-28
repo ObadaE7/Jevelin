@@ -2,17 +2,15 @@
 
 namespace App\Livewire\User;
 
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\Tag;
+use App\Models\{Post, Category, Tag};
+use App\Traits\ImageProcessTrait;
 use Exception;
 use Illuminate\Support\Facades\Log;
-use Livewire\Component;
-use Livewire\WithFileUploads;
+use Livewire\{Component, WithFileUploads};
 
 class CreatePost extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, ImageProcessTrait;
     public $image;
     public $title;
     public $subtitle;
@@ -24,21 +22,16 @@ class CreatePost extends Component
 
     public function updatedTitle()
     {
-        $this->slug = str()->slug($this->title);
-    }
-
-    private function handleImageUpload($image)
-    {
-        return $image ? $image->store('posts', 'public') : null;
+        $this->slug = $this->makeSlug($this->title);
     }
 
     public function create()
     {
         $validated = $this->validate([
-            'title' => 'required|string|min:5|max:100',
-            'subtitle' => 'required|string|min:5|max:150',
-            'slug' => 'required|string|alpha_dash|min:5|max:120|unique:posts,slug',
-            'content' => 'required|string|min:10|max:10000',
+            'title' => 'required|string|max:100',
+            'subtitle' => 'required|string|max:150',
+            'slug' => 'required|string|alpha_dash|max:120|unique:posts,slug',
+            'content' => 'required|string|max:10000',
             'image' => 'required|file|image|max:1024|mimes:jpeg,png,jpg',
             'category_id' => 'required|integer|exists:categories,id',
             'tag_ids' => 'required|array|exists:tags,id',
@@ -47,7 +40,7 @@ class CreatePost extends Component
 
         $userId = auth()->user()->id;
         $validated['user_id'] = $userId;
-        $validated['image'] = $this->handleImageUpload($validated['image'] ?? null);
+        $validated['image'] = $this->coverImage($validated['image'], 800, 800, 'posts');
         try {
             $post = Post::create($validated);
             $post->categories()->attach($this->category_id);
@@ -62,28 +55,20 @@ class CreatePost extends Component
         }
     }
 
+    protected function makeSlug($string, $separator = '-')
+    {
+        $string = mb_strtolower($string, 'UTF-8');
+        $string = preg_replace('/\s+/', $separator, $string);
+        $string = preg_replace('/[^\p{L}\p{N}]+/u', $separator, $string);
+        $string = preg_replace('/' . preg_quote($separator) . '+/', $separator, $string);
+        $string = trim($string, $separator);
+        return $string;
+    }
+
     public function resetFields()
     {
-        // dd('reset');
-        $this->title = '';
-        $this->subtitle = '';
-        $this->slug = '';
-        $this->content = '';
-        $this->image = null;
-        $this->category_id = null;
-        $this->tag_ids = [];
-        $this->status = '';
-
-        Log::info('Post creation form reset: ', [
-            'title' => $this->title,
-            'subtitle' => $this->subtitle,
-            'slug' => $this->slug,
-            'content' => $this->content,
-            'image' => $this->image,
-            'category_id' => $this->category_id,
-            'tag_ids' => $this->tag_ids,
-            'status' => $this->status,
-        ]);
+        $this->reset();
+        $this->resetValidation();
     }
 
     public function render()

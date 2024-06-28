@@ -1141,3 +1141,16 @@ img {
     color: var(--muted-color);
     cursor: pointer;
 }
+
+.avatar__subtle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--width-100) - 50px);
+    height: calc(var(--height-100) - 50px);
+    border-radius: var(--border-radius-xsm);
+    color: var(--bs-danger);
+    background: var(--bs-danger-bg-subtle);
+    cursor: pointer;
+}

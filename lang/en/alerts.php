@@ -58,6 +58,16 @@ return [
         'Not found' => 'User not found',
     ],
 
+    'post' => [
+        'Created' => 'The post has been created successfully',
+        'Failed create' => 'Failed to create post',
+        'Updated' => 'The post has been updated successfully',
+        'Failed update' => 'Failed to update post',
+        'Deleted' => 'The post has been deleted successfully',
+        'Failed delete' => 'Failed to delete post',
+        'Not found' => 'Post not found',
+    ],
+
     'profile' => [
         'Updated' => 'Updated!',
         'Failed update fname' => 'Failed to update first name',

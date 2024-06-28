@@ -83,6 +83,10 @@ return [
         'Avatar' => 'Avatar',
         'Email' => 'Email',
         'Users' => 'Users',
+        'Title' => 'Title',
+        'Subtitle' => 'Subtitle',
+        'Category' => 'Category',
+        'Status' => 'Status',
     ],
 
     'modal' => [
@@ -136,6 +140,17 @@ return [
             'Slug placeholder' => 'Enter the slug',
             'Delete tag title' => 'Delete tag',
             'Delete tag warning' => 'Are you sure you want to delete this tag?',
+            'Edit tag title' => 'Edit tag',
+        ],
+
+        'posts' => [
+            'Create tag title' => 'Create a new tag',
+            'Name' => 'Name',
+            'Name placeholder' => 'Enter the tag name',
+            'Slug' => 'Slug',
+            'Slug placeholder' => 'Enter the slug',
+            'Delete post title' => 'Delete post',
+            'Delete post warning' => 'Are you sure you want to delete this post?',
             'Edit tag title' => 'Edit tag',
         ],
     ],

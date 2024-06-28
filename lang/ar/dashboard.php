@@ -83,6 +83,10 @@ return [
         'Avatar' => 'الصورة الشخصية',
         'Email' => 'الإيميل',
         'Users' => 'المستخدمين',
+        'Title' => 'العنوان',
+        'Subtitle' => 'العنوان الفرعي',
+        'Category' => 'الفئة',
+        'Status' => 'الحالة',
     ],
 
     'modal' => [
@@ -137,6 +141,17 @@ return [
             'Delete tag title' => 'حذف الوسم',
             'Delete tag warning' => 'هل أنت متأكد أنك تريد حذف هذا الوسم؟',
             'Edit tag title' => 'تحرير الوسم',
+        ],
+
+        'posts' => [
+            'Create post title' => 'Create a new post',
+            'Name' => 'Name',
+            'Name placeholder' => 'Enter the tag name',
+            'Slug' => 'Slug',
+            'Slug placeholder' => 'Enter the slug',
+            'Delete post title' => 'حذف المقال',
+            'Delete post warning' => 'هل أنت متأكد أنك تريد حذف هذا المقال؟',
+            'Edit tag title' => 'Edit tag',
         ],
     ],
 

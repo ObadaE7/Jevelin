@@ -88,8 +88,10 @@
                     <div class="d-flex flex-column gap-3">
                         @php
                             $totalReactions = $article->likes_count + $article->dislikes_count;
-                            $likes_percentage = ($article->likes_count / $totalReactions) * 100;
-                            $dislikes_percentage = ($article->dislikes_count / $totalReactions) * 100;
+                            $likes_percentage =
+                                $article->likes_count > 0 ? ($article->likes_count / $totalReactions) * 100 : 0;
+                            $dislikes_percentage =
+                                $article->dislikes_count > 0 ? ($article->dislikes_count / $totalReactions) * 100 : 0;
                         @endphp
 
                         <div class="d-flex justify-content-between">
