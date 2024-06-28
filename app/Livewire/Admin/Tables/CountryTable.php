@@ -105,7 +105,7 @@ class CountryTable extends Component
     public function render()
     {
         $columns = ['id', 'name', 'flag'];
-        $headers = [trans('dashboard.table.Id'), trans('dashboard.table.Name'), trans('dashboard.table.Flag'), trans('dashboard.table.Actions')];
+        $headers = [trans('dashboard.table.Id'), trans('dashboard.table.Flag'), trans('dashboard.table.Name'), trans('dashboard.table.Actions')];
         $perPages = [5, 10, 20, 50];
         $rows = Country::where($this->searchBy, 'like', "%{$this->search}%")
             ->orderBy($this->orderBy, $this->orderDir)
