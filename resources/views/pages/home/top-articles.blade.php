@@ -5,7 +5,7 @@
     </div>
 
     <div class="section__two-content">
-        @isset($topPost)
+        @if ($topPost)
             <div class="section__two-right">
                 <img src="{{ asset('storage/' . $topPost->image) }}" alt="{{ $topPost->slug }}">
                 <div class="overlay-text"></div>
@@ -26,14 +26,14 @@
                     </div>
                 </div>
             </div>
-        @endisset
+        @else
+            <div class="d-flex flex-column align-items-center">
+                <span class="fs-3">@lang('index.sections.Empty line one')</span>
+                <span class="fs-4">@lang('index.sections.Empty line two')</span>
+            </div>
+        @endif
 
-        <div class="d-flex flex-column align-items-center">
-            <span class="fs-3">@lang('index.sections.Empty line one')</span>
-            <span class="fs-4">@lang('index.sections.Empty line two')</span>
-        </div>
-
-        @isset($topPosts)
+        @if ($topPosts)
             <div class="section__two-left">
                 @foreach ($topPosts as $top)
                     <div class="section__two-row">
@@ -46,6 +46,11 @@
                     </div>
                 @endforeach
             </div>
-        @endisset
+        @else
+            <div class="d-flex flex-column align-items-center">
+                <span class="fs-3">@lang('index.sections.Empty line one')</span>
+                <span class="fs-4">@lang('index.sections.Empty line two')</span>
+            </div>
+        @endif
     </div>
 </section>

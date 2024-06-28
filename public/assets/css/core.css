@@ -5489,6 +5489,28 @@ fieldset:disabled .btn {
     --bs-pagination-border-radius: var(--bs-border-radius-sm)
 }
 
+[dir="rtl"] .pagination {
+    padding-right: 0;
+}
+
+[dir="rtl"] .page-item:not(:first-child) .page-link {
+    margin-right: calc(var(--bs-border-width) * -1)
+}
+
+[dir="rtl"] .page-item:first-child .page-link {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: var(--bs-pagination-border-radius);
+    border-bottom-right-radius: var(--bs-pagination-border-radius)
+}
+
+[dir="rtl"] .page-item:last-child .page-link {
+    border-top-left-radius: var(--bs-pagination-border-radius);
+    border-bottom-left-radius: var(--bs-pagination-border-radius);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
 .badge {
     --bs-badge-padding-x: 0.65em;
     --bs-badge-padding-y: 0.35em;
