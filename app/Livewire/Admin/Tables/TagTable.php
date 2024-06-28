@@ -4,9 +4,9 @@ namespace App\Livewire\Admin\Tables;
 
 use App\Models\Tag;
 use App\Traits\{FilterTrait, ModalTrait};
-use Exception;
-use Illuminate\Support\Facades\Log;
 use Livewire\{Component, WithPagination};
+use Illuminate\Support\Facades\Log;
+use Exception;
 
 class TagTable extends Component
 {
@@ -18,13 +18,13 @@ class TagTable extends Component
 
     public function updatedName()
     {
-        $this->slug = str()->slug($this->name);
+        $this->slug = $this->makeSlug($this->name);
     }
 
     public function create()
     {
         $validated =   $this->validate([
-            'name' => 'required|string|min:3|max:25|unique:tags,name,',
+            'name' => 'required|string|max:25|unique:tags,name,',
             'slug' => 'required|string|unique:tags,slug,',
         ]);
 
@@ -51,7 +51,7 @@ class TagTable extends Component
     {
         $tag = Tag::findOrFail($id);
         $validated =   $this->validate([
-            'name' => 'required|string|min:3|max:25|unique:tags,name,' . $tag->id,
+            'name' => 'required|string|max:25|unique:tags,name,' . $tag->id,
             'slug' => 'required|string|unique:tags,slug,' . $tag->id,
         ]);
 
@@ -81,6 +81,17 @@ class TagTable extends Component
             Log::error('[deleteTag]: ' . $e->getMessage());
             session()->flash('error', trans('alerts.tag.Failed delete'));
         }
+    }
+
+    protected function makeSlug($string, $separator = '-')
+    {
+        $string = mb_strtolower($string, 'UTF-8');
+        $string = preg_replace('/\s+/', $separator, $string);
+        $string = preg_replace('/[^\p{L}\p{N}]+/u', $separator, $string);
+        $string = preg_replace('/' . preg_quote($separator) . '+/', $separator, $string);
+        $string = trim($string, $separator);
+
+        return $string;
     }
 
     public function resetFields()

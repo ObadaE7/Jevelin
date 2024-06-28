@@ -6,7 +6,7 @@
             <div class="dropdown-item"><span class="text-muted">@lang('dashboard.table.Search by')</span></div>
         </li>
         @foreach ($columns as $column)
-            @unless ($column == 'image' || $column == 'flag')
+            @unless ($column == 'image' || $column == 'flag' || $column == 'posts_count' )
                 <li>
                     <button wire:click="$set('searchBy', '{{ $column }}')"
                         class="dropdown-item {{ $searchBy == $column ? 'active' : '' }}">

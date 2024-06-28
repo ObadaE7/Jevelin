@@ -31,8 +31,8 @@
             </div>
 
             <div class="mb-3">
-                <div class="d-flex flex-column gap-1">
-                    <label for="image">@lang('dashboard.modal.categories.Thumbnail')</label>
+                <label for="image">@lang('dashboard.modal.categories.Thumbnail')</label>
+                <div class="d-flex justify-content-center">
                     <label for="image" class="table__image-preview">
                         @if ($image && !$errors->has('image'))
                             <img src="{{ $image->temporaryURL() }}" class="rounded" alt="@lang('dashboard.modal.categories.Thumbnail')">
