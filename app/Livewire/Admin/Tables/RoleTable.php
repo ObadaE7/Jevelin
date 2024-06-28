@@ -19,7 +19,7 @@ class RoleTable extends Component
     public function create()
     {
         $validated =   $this->validate([
-            'name' => 'required|string|min:3|max:25|unique:roles,name,',
+            'name' => 'required|string|max:25|unique:roles,name,',
             'description' => 'required|string',
         ]);
 
@@ -46,7 +46,7 @@ class RoleTable extends Component
     {
         $role = Role::findOrFail($id);
         $validated =   $this->validate([
-            'name' => 'required|string|min:3|max:25|unique:roles,name,' . $role->id,
+            'name' => 'required|string|max:25|unique:roles,name,' . $role->id,
             'description' => 'required|string',
         ]);
 

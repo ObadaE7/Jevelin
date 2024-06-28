@@ -3,18 +3,18 @@
     <x-slot:title>
         <div class="d-flex align-items-center gap-2">
             <span class="material-icons-outlined">supervisor_account</span>
-            <span>{{ trans('dashboard.modal.roles.Delete role title') }}</span>
+            <span>@lang('dashboard.modal.roles.Delete role title')</span>
         </div>
     </x-slot:title>
-    <x-slot:body>{{ trans('dashboard.modal.roles.Delete role warning') }}</x-slot:body>
+    <x-slot:body>@lang('dashboard.modal.roles.Delete role warning')</x-slot:body>
     <x-slot:button>
         <button wire:click="resetFields" type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            {{ trans('dashboard.modal.Close') }}
+            @lang('dashboard.modal.Close')
         </button>
         <button wire:click='delete({{ $rowId }})' type="button" class="btn btn-danger">
             <div class="d-flex align-items-center gap-2">
                 <span class="material-icons-outlined fs-6">delete</span>
-                <span>{{ trans('dashboard.modal.Delete') }}</span>
+                <span>@lang('dashboard.modal.Delete')</span>
             </div>
         </button>
     </x-slot:button>
