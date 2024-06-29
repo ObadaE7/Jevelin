@@ -57,5 +57,20 @@ return [
         'Articles placeholder' => 'استكشف أحدث المقالات واحصل على المزيد من المعرفة.',
         'Empty article' => 'لا يوجد مقال لعرضه',
         'Role' => 'الدور غير محدد',
-    ]
+        'Comments' => 'التعليقات',
+    ],
+
+    'comments' => [
+        'Write comment' => 'أكتب هنا تعليقك',
+        'Write reply' => 'أكتب هنا ردك',
+        'Login first' => 'سجل الدخول أولاً',
+        'Empty comments' => 'لا توجد تعليقات',
+        'Undefined' => 'غير محدد',
+        'Like' => 'إعجاب',
+        'Reply' => 'رد',
+        'Reply to' => 'الرد على: ',
+        'Remove' => 'حذف',
+        'Cancel' => 'إلغاء',
+    ],
+
 ];

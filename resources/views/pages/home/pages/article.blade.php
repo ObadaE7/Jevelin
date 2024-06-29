@@ -24,10 +24,11 @@
                             <div class="d-flex flex-column">
                                 <span>{{ $article->owner->fname . ' ' . $article->owner->lname }}</span>
                                 <small class="text-muted">
-                                    @isset($article->owner->role_id)
+                                    @if ($article->owner->role_id)
                                         {{ App\Models\Role::where('id', $article->owner->role_id)->first()->name }}
-                                    @endisset
-                                    <span style="font-size: 12px">(@lang('index.pages.Role'))</span>
+                                    @else
+                                        <span style="font-size: 12px">(@lang('index.pages.Role'))</span>
+                                    @endif
                                 </small>
                             </div>
                         </div>
@@ -41,7 +42,15 @@
                 </div>
             </div>
         </div>
-    </main>
 
+        <div class="card">
+            <div class="card-body">
+                <div class="comment__wrapper">
+                    <span class="fs-4">@lang('index.pages.Comments')</span>
+                    <livewire:comments :article="$article" />
+                </div>
+            </div>
+        </div>
+    </main>
     @livewire('home.footer')
 </section>

@@ -203,5 +203,6 @@ return [
         'password' => 'كلمة المرور',
         'password_confirmation' => 'تأكيد كلمة المرور',
         'current_password_account' => 'كلمة المرور الحالية',
+        'comment' => 'التعليق',
     ],
 ];

@@ -63,4 +63,9 @@ class Post extends Model
         return $this->belongsToMany(User::class, 'post_users')
             ->wherePivot('reaction', '=', 'dislike');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Admin::factory(1)->create();
-        // User::factory(10)->create();
+        // Admin::factory(1)->create();
+        User::factory(10)->create();
         // Country::factory(10)->create();
         // Category::factory(10)->create();
         // Tag::factory(10)->create();

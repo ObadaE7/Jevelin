@@ -57,5 +57,20 @@ return [
         'Articles placeholder' => 'Explore the latest articles and get more knowledge',
         'Empty article' => 'There is no article to display',
         'Role' => 'Role not specified',
-    ]
+        'Comments' => 'Comments',
+    ],
+
+    'comments' => [
+        'Write comment' => 'Write your comment here',
+        'Write reply' => 'Write your reply here',
+        'Login first' => 'Login first',
+        'Empty comments' => 'There are no comments',
+        'Undefined' => 'Undefined',
+        'Like' => 'Like',
+        'Reply' => 'Reply',
+        'Reply to' => 'Reply to: ',
+        'Remove' => 'Remove',
+        'Cancel' => 'Cancel',
+    ],
+
 ];

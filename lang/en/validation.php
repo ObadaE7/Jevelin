@@ -204,6 +204,7 @@ return [
         'password' => 'password',
         'password_confirmation' => 'password confirmation',
         'current_password_account' => 'current password',
+        'comment' => 'comment',
     ],
 
 ];
