@@ -1607,11 +1607,6 @@ img {
     .flex-column-md {
         flex-direction: column;
     }
-
-    .btn__send {
-        margin-left: 0;
-        margin-top: .5rem;
-    }
 }
 
 .btn__emoji::before {

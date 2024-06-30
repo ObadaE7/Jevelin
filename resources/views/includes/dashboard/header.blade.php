@@ -23,12 +23,14 @@
             <li>
                 <div class="dropdown">
                     <button class="li__btn notifications" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false"></button>
-                    <span class="li__btn-badge notifications">0</span>
-                    <ul class="dropdown-menu dropdown-menu-end text-end drop-notify">
+                        aria-expanded="false">
+                    </button>
+                    <span class="li__btn-badge notifications count__notify">0</span>
+                    <ul id="notificationDropdown" class="dropdown-menu dropdown-menu-end text-end drop-notify">
                         <li>
-                            <span
-                                class="dropdown-item text-center">{{ trans('dashboard.aside.ALL Notification') }}</span>
+                            <span class="dropdown-item text-center">
+                                {{ trans('dashboard.aside.ALL Notification') }}
+                            </span>
                         </li>
                         <li>
                             <div class="dropdown-divider"></div>

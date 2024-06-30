@@ -191,7 +191,7 @@ img {
 
 .drop-notify,
 .drop-msg {
-    --bs-dropdown-min-width: 15rem
+    --bs-dropdown-min-width: 20rem
 }
 
 @media(max-width:768px) {

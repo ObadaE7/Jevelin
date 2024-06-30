@@ -2,14 +2,17 @@
 
 namespace App\Livewire;
 
-use App\Models\{Post, Comment, CommentLike};
+use App\Events\CommentCreated;
+use App\Models\{Post, Comment, CommentLike, Notification, User};
 use Livewire\Component;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class Comments extends Component
 {
     public $article;
     public $comment;
     public $parent_id = null;
+    protected $listeners = ['comment-created' => 'getComments'];
 
     public function mount(Post $article)
     {
@@ -18,15 +21,28 @@ class Comments extends Component
 
     public function create()
     {
-        $this->validate([
-            'comment' => 'required|string|max:500',
-        ]);
+        $this->validate(['comment' => 'required|string|max:500']);
 
-        Comment::create([
+        $comment = Comment::create([
+            'parent_id' => $this->parent_id,
             'post_id' => $this->article->id,
             'user_id' => auth()->id(),
             'comment' => $this->comment,
-            'parent_id' => $this->parent_id,
+        ]);
+
+        broadcast(new CommentCreated($comment))->toOthers();
+
+        $post = Post::find($comment->post_id);
+
+        Notification::create([
+            'user_id' => auth()->id(),
+            'type' => CommentCreated::class,
+            'notifiable_type' => User::class,
+            'notifiable_id' => $comment->id,
+            'data' => json_encode([
+                'message' => 'قام ' . auth()->user()->fname  . ' ' . auth()->user()->lname . ' بالتعليق على مقالك',
+                'url' => route('article', $post->slug),
+            ]),
         ]);
 
         $this->reset(['comment', 'parent_id']);
@@ -34,7 +50,11 @@ class Comments extends Component
 
     public function delete($id)
     {
-        Comment::findOrFail($id)->delete();
+        $comment = Comment::findOrFail($id);
+
+        if ($comment->user_id === auth()->id()) {
+            $comment->delete();
+        }
     }
 
     public function setParent($id)
@@ -67,7 +87,11 @@ class Comments extends Component
 
     public function getComments()
     {
-        return $this->article->comments()->whereNull('parent_id')->with('user')->latest()->get();
+        return $this->article->comments()
+            ->whereNull('parent_id')
+            ->with('user')
+            ->latest()
+            ->get();
     }
 
     public function render()

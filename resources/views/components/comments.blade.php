@@ -1,7 +1,7 @@
 <section>
     @auth
         <form>
-            <div class="d-flex align-items-center justify-content-end position-relative flex-column-md">
+            <div class="d-flex align-items-center justify-content-end position-relative">
                 <textarea wire:model="comment" class="form-control" placeholder="@lang('index.comments.Write comment')" required></textarea>
                 <div class="position-absolute">
                     <button wire:click.prevent='create' class="btn text-bg-primary btn__send" type="button"></button>
@@ -10,7 +10,7 @@
             <x-error name="comment" />
         </form>
     @else
-        <div class="d-flex align-items-center justify-content-end position-relative flex-column-md">
+        <div class="d-flex align-items-center justify-content-end position-relative">
             <textarea class="form-control" placeholder="@lang('index.comments.Write comment')" disabled></textarea>
             <div class="position-absolute">
                 <a href="{{ route('login') }}" class="btn btn-primary me-3">@lang('index.comments.Login first')</a>
