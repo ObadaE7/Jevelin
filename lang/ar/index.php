@@ -59,6 +59,10 @@ return [
         'Role' => 'الدور غير محدد',
         'Comments' => 'التعليقات',
         'Related articles' => 'مقالات ذات صلة',
+        'Writers' => 'الكتّاب',
+        'Writers placeholder' => 'اكتشف كتّاب المدونة واستمتع بمقالاتهم الرائعة!',
+        'Follow' => 'متابعة',
+        'Message' => 'رسالة',
     ],
 
     'comments' => [

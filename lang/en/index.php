@@ -59,6 +59,11 @@ return [
         'Role' => 'Role not specified',
         'Comments' => 'Comments',
         'Related articles' => 'Related articles',
+        'Writers' => 'Writers',
+        'Writers placeholder' => 'Writers placeholder',
+        'Follow' => 'Follow',
+        'Message' => 'Message',
+        'Empty writers' => 'There is no writers to display',
     ],
 
     'comments' => [

@@ -1356,6 +1356,19 @@ img {
     border-radius: var(--border-radius-sm);
 }
 
+.writers__wrapper {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--gap-sm);
+}
+
+.writers__wrapper .avatar,
+.writers__wrapper .avatar__subtle {
+    width: 100px !important;
+    height: 100px !important;
+}
+
 /*............... { AUTH PAGE } ...............*/
 
 .auth__wrapper {
@@ -1556,7 +1569,6 @@ img {
         grid-template-columns: 1fr;
     }
 }
-
 
 /* COMMENT SECTION */
 .comment__wrapper {
