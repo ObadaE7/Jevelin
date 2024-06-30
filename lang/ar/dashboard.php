@@ -176,6 +176,12 @@ return [
         'Site Settings' => 'إعدادات الموقع',
         'Show' => 'عرض',
         'ALL Notification' => 'كل الإشعارات',
+        'Mark all' => 'تحديد الكل كمقروء',
+        'View article' => 'عرض المقال',
+        'Mark' => 'تحديد كمقروء',
+        'Delete' => 'حذف',
+        'Empty notification' => 'لا توجد إشعارات جديدة',
+        'View all' => 'عرض الكل',
         'All Messages' => 'كل الرسائل',
     ],
 

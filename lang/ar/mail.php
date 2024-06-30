@@ -44,4 +44,8 @@ return [
         'Phone' => 'الهاتف',
         'Unsubscribe' => 'إلغاء الاشتراك',
     ],
+
+    'notifications' =>[
+        'Commented' => 'قام بالتعليق على مقالك',
+    ],
 ];

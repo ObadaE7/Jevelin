@@ -2,9 +2,6 @@
 
 namespace App\Events;
 
-use App\Models\Comment;
-use App\Models\Post;
-use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -17,18 +14,11 @@ class CommentCreated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $comment;
-    public $user;
-    public $post;
-
     /**
      * Create a new event instance.
      */
-    public function __construct(Comment $comment)
+    public function __construct()
     {
-        $this->comment = $comment;
-        $this->user = User::find($comment->user_id);
-        $this->post = Post::find($comment->post_id);
     }
 
     /**

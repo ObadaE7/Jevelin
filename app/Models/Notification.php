@@ -12,9 +12,9 @@ class Notification extends Model
 
     protected $fillable = [
         'user_id',
-        'type',
         'notifiable_id',
         'notifiable_type',
+        'type',
         'data',
         'read_at',
     ];
@@ -22,5 +22,15 @@ class Notification extends Model
     public function notifiable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    protected $casts = [
+        'data' => 'array', // This will automatically decode the JSON data
+    ];
+
+    public function setDataAttribute($data)
+    {
+        $this->attributes['user_id'] = auth()->id();
+        $this->attributes['data'] = json_encode($data, JSON_UNESCAPED_UNICODE);
     }
 }

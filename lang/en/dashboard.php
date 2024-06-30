@@ -176,6 +176,12 @@ return [
         'Site Settings' => 'Site Settings',
         'Show' => 'Show',
         'ALL Notification' => 'ALL Notification',
+        'Mark all' => 'Mark all as read',
+        'View article' => 'View article',
+        'Mark' => 'Mark as read',
+        'Delete' => 'Delete',
+        'Empty notification' => 'There are no new notifications',
+        'View all' => 'View all',
         'All Messages' => 'All Messages',
     ],
 

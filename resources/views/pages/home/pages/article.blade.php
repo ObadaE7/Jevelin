@@ -47,7 +47,7 @@
             <div class="card-body">
                 <div class="comment__wrapper">
                     <span class="fs-4">@lang('index.pages.Comments')</span>
-                    <livewire:comments :article="$article" />
+                    @livewire('home.comments', ['article' => $article])
                 </div>
             </div>
         </div>

@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Home;
 
 use App\Events\CommentCreated;
-use App\Models\{Post, Comment, CommentLike, Notification, User};
+use App\Models\{Post, Comment, CommentLike};
+use App\Notifications\CommentCreatedNotification;
 use Livewire\Component;
-use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Notification;
+use Livewire\Attributes\On;
 
 class Comments extends Component
 {
     public $article;
     public $comment;
     public $parent_id = null;
-    protected $listeners = ['comment-created' => 'getComments'];
 
     public function mount(Post $article)
     {
@@ -22,30 +23,25 @@ class Comments extends Component
     public function create()
     {
         $this->validate(['comment' => 'required|string|max:500']);
-
         $comment = Comment::create([
             'parent_id' => $this->parent_id,
             'post_id' => $this->article->id,
             'user_id' => auth()->id(),
             'comment' => $this->comment,
         ]);
-
-        broadcast(new CommentCreated($comment))->toOthers();
-
         $post = Post::find($comment->post_id);
+        $user = $post->owner;
 
-        Notification::create([
-            'user_id' => auth()->id(),
-            'type' => CommentCreated::class,
-            'notifiable_type' => User::class,
-            'notifiable_id' => $comment->id,
-            'data' => json_encode([
-                'message' => 'قام ' . auth()->user()->fname  . ' ' . auth()->user()->lname . ' بالتعليق على مقالك',
-                'url' => route('article', $post->slug),
-            ]),
-        ]);
+        Notification::send($user, new CommentCreatedNotification($comment));
 
+        $this->dispatch('push-event');
         $this->reset(['comment', 'parent_id']);
+    }
+
+    #[On('push-event')]
+    public function notifyCommentCreated()
+    {
+        event(new CommentCreated());
     }
 
     public function delete($id)

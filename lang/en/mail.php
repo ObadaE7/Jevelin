@@ -44,4 +44,8 @@ return [
         'Phone' => 'Phone',
         'Unsubscribe' => 'Unsubscribe',
     ],
+
+    'notifications' =>[
+        'Commented' => 'He commented on your article',
+    ],
 ];
