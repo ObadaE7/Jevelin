@@ -58,6 +58,7 @@ return [
         'Empty article' => 'There is no article to display',
         'Role' => 'Role not specified',
         'Comments' => 'Comments',
+        'Related articles' => 'Related articles',
     ],
 
     'comments' => [

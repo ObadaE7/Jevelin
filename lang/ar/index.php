@@ -58,6 +58,7 @@ return [
         'Empty article' => 'لا يوجد مقال لعرضه',
         'Role' => 'الدور غير محدد',
         'Comments' => 'التعليقات',
+        'Related articles' => 'مقالات ذات صلة',
     ],
 
     'comments' => [

@@ -51,6 +51,29 @@
                 </div>
             </div>
         </div>
+
+        <span class="divider fs-4">@lang('index.pages.Related articles')</span>
+        <div class="related__articles">
+            @foreach ($relatedArticles as $relatedArticle)
+                <div class="card">
+                    <img src="{{ asset('storage/' . $relatedArticle->image) }}" class="card-img-top"
+                        alt="{{ $relatedArticle->slug }}">
+                    <div class="card-body">
+                        <div class="d-flex flex-column h-100">
+                            <span>{{ $relatedArticle->title }}</span>
+                            <small class="text-muted mb-5">{{ $relatedArticle->subtitle }}</small>
+
+                            <div class="mt-auto">
+                                <a href="{{ route('article', $relatedArticle->slug) }}" class="btn btn-primary px-5">
+                                    @lang('index.pages.Read more')
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </main>
+
     @livewire('home.footer')
 </section>
