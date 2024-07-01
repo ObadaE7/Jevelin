@@ -40,14 +40,18 @@
                                     <span>{{ $user->fname . ' ' . $user->lname }}</span>
                                     <span>
                                         {{ $notification->data['message'] }}
-                                        <a href="{{ $notification->data['url'] }}">@lang('dashboard.aside.View article')</a>
+                                        @isset($notification->data['url'])
+                                            <a href="{{ $notification->data['url'] }}">@lang('dashboard.aside.View article')</a>
+                                        @endisset
                                     </span>
                                 </div>
                             </div>
 
                             <div class="item__top-icon">
                                 <span
-                                    class="material-icons-outlined fs-6 {{ $notification->read_at ?? 'text-primary' }}">message</span>
+                                    class="material-icons-outlined fs-6 {{ $notification->read_at ?? 'text-primary' }}">
+                                    {{ $notification->type === 'App\\Notifications\\CommentCreatedNotification' ? 'message' : 'thumbs_up_down' }}
+                                </span>
                             </div>
                         </div>
 

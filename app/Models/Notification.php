@@ -25,7 +25,7 @@ class Notification extends Model
     }
 
     protected $casts = [
-        'data' => 'array', // This will automatically decode the JSON data
+        'data' => 'array',
     ];
 
     public function setDataAttribute($data)

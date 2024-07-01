@@ -11,12 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('post_users', function (Blueprint $table) {
+        Schema::create('reactions', function (Blueprint $table) {
+            $table->id();
             $table->integer('user_id')->unsigned();
-            $table->integer('post_id')->unsigned();
+            $table->tinyInteger('type')->default(0);
+            $table->morphs('likable');
+            $table->timestamps();
+
+            $table->index('user_id');
+            $table->index('type');
+            $table->index(['likable_id', 'likable_type']);
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->enum('reaction', ['like', 'dislike'])->nullable();
         });
     }
 
@@ -25,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('post_users');
+        Schema::dropIfExists('reactions');
     }
 };

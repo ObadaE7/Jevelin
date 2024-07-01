@@ -73,4 +73,9 @@ class Post extends Model
     {
         return $this->morphMany(Notification::class, 'notifiable');
     }
+
+    public function reactions()
+    {
+        return $this->morphMany(Reaction::class, 'likable');
+    }
 }

@@ -9,12 +9,14 @@ class TopArticles extends Component
 {
     public function getTopPost()
     {
-        return Post::withCount('users')->orderByDesc('users_count')->first();
+        return Post::
+        first();
     }
 
     public function getTopPosts()
     {
-        return Post::withCount('users')->orderByDesc('users_count')->take(2)->skip(1)->get();
+        return Post::
+        take(2)->skip(1)->get();
     }
 
     public function render()

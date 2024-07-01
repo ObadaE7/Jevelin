@@ -56,10 +56,10 @@
                         </div>
 
                         <div class="post__reactions">
-                            <button class="like">
+                            <button wire:click.prevent='like({{ $article->id }})' class="like">
                                 <span class="muted-color">{{ $article->likes_count }}</span>
                             </button>
-                            <button class="dislike">
+                            <button wire:click.prevent='dislike({{ $article->id }})' class="dislike">
                                 <span class="muted-color">{{ $article->dislikes_count }}</span>
                             </button>
                         </div>

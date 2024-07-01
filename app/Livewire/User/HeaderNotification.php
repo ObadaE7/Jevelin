@@ -4,6 +4,7 @@ namespace App\Livewire\User;
 
 use App\Models\Notification;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -50,6 +51,7 @@ class HeaderNotification extends Component
         $this->showAllNotifications = !$this->showAllNotifications;
     }
 
+    #[On('reaction-created')]
     #[On('comment-created')]
     public function updated()
     {
