@@ -9,19 +9,15 @@ class Analysis extends Component
 {
     public function totalArticles()
     {
-        $id = auth()->id();
-        return Post::where('user_id', $id)->count();
+        return Post::where('user_id', auth()->id())->count();
     }
 
     public function totalReactions()
     {
-        $id = auth()->id();
-        $posts = Post::withCount(['likes', 'dislikes'])
-            ->where('user_id', $id)
-            ->get();
-        return $posts->sum(function ($post) {
-            return $post->likes_count + $post->dislikes_count;
-        });
+        return Post::where('user_id', auth()->id())
+            ->withCount('reactions')
+            ->get()
+            ->sum('reactions_count');
     }
 
     public function averageReactionPerArticle()
@@ -33,10 +29,11 @@ class Analysis extends Component
 
     public function topFiveArticles()
     {
-        $id = auth()->id();
-        return Post::withCount('likes')
+        return Post::where('user_id', auth()->id())
+            ->withCount(['reactions as likes_count' => function ($query) {
+                $query->where('type', 1);
+            }])
             ->having('likes_count', '>', 0)
-            ->where('user_id', $id)
             ->orderByDesc('likes_count')
             ->take(5)
             ->get();
@@ -46,15 +43,13 @@ class Analysis extends Component
     {
         $topFiveArticles = $this->topFiveArticles();
         $articleId = $topFiveArticles->pluck('id')->toArray();
-        $likeCounts = $topFiveArticles->pluck('likes_count')->toArray();
-
-        return compact('articleId', 'likeCounts');
+        $likesCount = $topFiveArticles->pluck('likes_count')->toArray();
+        return compact('articleId', 'likesCount');
     }
 
     public function articlesPerDayChart()
     {
-        $id = auth()->id();
-        return Post::where('user_id', $id)
+        return Post::where('user_id', auth()->id())
             ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
             ->groupBy('date')
             ->orderBy('date', 'asc')
@@ -63,11 +58,17 @@ class Analysis extends Component
 
     public function reactionsChart()
     {
-        $id = auth()->id();
-        $posts = Post::withCount(['likes', 'dislikes'])->where('user_id', $id)->get();
+        $posts = Post::where('user_id', auth()->id())
+            ->withCount([
+                'reactions as likes_count' => function ($query) {
+                    $query->where('type', 1);
+                },
+                'reactions as dislikes_count' => function ($query) {
+                    $query->where('type', 0);
+                },
+            ])->get();
         $totalLikes = $posts->sum('likes_count');
         $totalDislikes = $posts->sum('dislikes_count');
-
         return compact('totalLikes', 'totalDislikes');
     }
 

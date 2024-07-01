@@ -1,18 +1,18 @@
 <aside class="aside__wrapper">
     <ul class="aside__ul">
         <li>
-            <a href="{{ route('user.dashboard') }}" class="{{ Route::is('user.dashboard') ? 'active' : '' }}">
-                <div class="li__item">
-                    <span class="li__icon main"></span>
-                    <span class="li__text">{{ trans('dashboard.aside.Main') }}</span>
-                </div>
-            </a>
-        </li>
-        <li>
             <a href="{{ route('user.profile') }}" class="{{ Route::is('user.profile') ? 'active' : '' }}">
                 <div class="li__item">
                     <span class="li__icon profile"></span>
                     <span class="li__text">{{ trans('dashboard.aside.Profile') }}</span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('index') }}"">
+                <div class="li__item">
+                    <span class="li__icon main"></span>
+                    <span class="li__text">{{ trans('dashboard.aside.Main') }}</span>
                 </div>
             </a>
         </li>

@@ -40,7 +40,7 @@
             <div class="overview__col-2">
                 <span>{{ trans('dashboard.analysis.Reaction rate') }}</span>
                 <span>
-                    {{ $averageReactionPerArticle }}
+                    {{ round($averageReactionPerArticle, 2) }}
                     <small class="text-muted">({{ Str::lower(trans('dashboard.analysis.Reaction article')) }})</small>
                 </span>
             </div>
@@ -71,7 +71,7 @@
             </div>
 
             <div class="col d-flex justify-content-center">
-                @if (!empty($topFiveArticlesChart['articleId'] && $topFiveArticlesChart['likeCounts']))
+                @if (!empty($topFiveArticlesChart['articleId'] && $topFiveArticlesChart['likesCount']))
                     <div class="analysis__chart" id="highest-articles"></div>
                 @endif
             </div>
@@ -131,7 +131,7 @@
             series: [{
                 name: @json(trans('dashboard.analysis.Number of likes')),
                 type: 'bar',
-                data: @json($topFiveArticlesChart['likeCounts']),
+                data: @json($topFiveArticlesChart['likesCount']),
                 barWidth: '50%'
             }]
         };

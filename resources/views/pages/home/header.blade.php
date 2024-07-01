@@ -24,8 +24,8 @@
             </li>
             @auth
                 <li class="li__dashboard">
-                    <a href="{{ route('user.dashboard') }}" class="{{ Route::is('user.dashboard') ? 'active' : '' }}">
-                        @lang('index.header.Dashboard')
+                    <a href="{{ route('user.profile') }}" class="{{ Route::is('user.profile') ? 'active' : '' }}">
+                        @lang('index.header.Profile')
                     </a>
                 </li>
             @else
@@ -79,9 +79,9 @@
                     </li>
                     @auth
                         <li class="li__dashboard">
-                            <a href="{{ route('user.dashboard') }}"
-                                class="{{ Route::is('user.dashboard') ? 'active' : '' }}">
-                                @lang('index.header.Dashboard')
+                            <a href="{{ route('user.profile') }}"
+                                class="{{ Route::is('user.profile') ? 'active' : '' }}">
+                                @lang('index.header.Profile')
                             </a>
                         </li>
                     @else

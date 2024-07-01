@@ -52,17 +52,17 @@ class Post extends Model
         return $query->where('status', 'published');
     }
 
-    public function likes(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class, 'post_users')
-            ->wherePivot('reaction', '=', 'like');
-    }
+    // public function likes(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(User::class, 'post_users')
+    //         ->wherePivot('reaction', '=', 'like');
+    // }
 
-    public function dislikes(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class, 'post_users')
-            ->wherePivot('reaction', '=', 'dislike');
-    }
+    // public function dislikes(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(User::class, 'post_users')
+    //         ->wherePivot('reaction', '=', 'dislike');
+    // }
 
     public function comments()
     {

@@ -2,7 +2,7 @@
 
 use App\Livewire\Home\Index;
 use App\Livewire\Home\Pages\{Articles, Article, ArticlesByCategory, ArticlesByTag, Categories, Writers};
-use App\Livewire\User\{Dashboard, Profile, Analysis, Posts, CreatePost};
+use App\Livewire\User\{Profile, Analysis, Posts, CreatePost};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +30,6 @@ Route::prefix('dashboard')
     ->as('user.')
     ->middleware(['auth', 'verified'])
     ->group(function () {
-        Route::get('/', Dashboard::class)->name('dashboard');
         Route::get('profile', Profile::class)->name('profile');
         Route::get('analysis', Analysis::class)->name('analysis');
         Route::get('posts', Posts::class)->name('posts');
