@@ -4,8 +4,7 @@ namespace App\Livewire\User;
 
 use App\Models\Post;
 use App\Traits\FilterTrait;
-use Livewire\Component;
-use Livewire\WithPagination;
+use Livewire\{Component, WithPagination};
 
 class Posts extends Component
 {
@@ -13,8 +12,15 @@ class Posts extends Component
 
     public function getArticles()
     {
-        return Post::withCount(['likes', 'dislikes'])
-            ->where('user_id', auth()->id())
+        return Post::where('user_id', auth()->id())
+            ->withCount([
+                'reactions as likes_count' => function ($query) {
+                    $query->where('type', 1);
+                },
+                'reactions as dislikes_count' => function ($query) {
+                    $query->where('type', 0);
+                },
+            ])
             ->where($this->searchBy, 'like', "%{$this->search}%")
             ->orderBy($this->orderBy, $this->orderDir)
             ->paginate($this->perPage);
