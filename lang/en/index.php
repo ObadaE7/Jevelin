@@ -7,6 +7,7 @@ return [
         'Articles' => 'Articles',
         'Login' => 'Login',
         'Dashboard' => 'Dashboard',
+        'Profile' => 'Profile',
         'Header menu' => 'Header menu',
     ],
 

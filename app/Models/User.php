@@ -11,6 +11,8 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\CustomPasswordResetLinkNotification;
 use App\Notifications\CustomVerifyEmailNotification;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -62,6 +64,26 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class, 'user_id');
+    }
+
+    public function notifications(): MorphMany
+    {
+        return $this->morphMany(Notification::class, 'notifiable');
+    }
+
+    public function reactions(): MorphMany
+    {
+        return $this->morphMany(Reaction::class, 'likable');
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new CustomPasswordResetLinkNotification($token));
@@ -70,25 +92,5 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new CustomVerifyEmailNotification());
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
-
-    public function notifications()
-    {
-        return $this->morphMany(Notification::class, 'notifiable');
-    }
-
-    public function reactions()
-    {
-        return $this->morphMany(Reaction::class, 'likable');
-    }
-
-    public function posts()
-    {
-        return $this->hasMany(Post::class, 'user_id');
     }
 }
