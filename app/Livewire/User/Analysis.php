@@ -82,7 +82,7 @@ class Analysis extends Component
         $reactionsChart = $this->reactionsChart();
         $topFiveArticlesChart = $this->topFiveArticlesChart();
 
-        return view('pages.analysis', compact(
+        return view('pages.dashboard.analysis', compact(
             'totalArticles',
             'totalReactions',
             'averageReactionPerArticle',

@@ -283,6 +283,6 @@ class Profile extends Component
 
     public function render()
     {
-        return view('pages.profile')->extends('layouts.dashboard')->section('content');
+        return view('pages.dashboard.profile')->extends('layouts.dashboard')->section('content');
     }
 }

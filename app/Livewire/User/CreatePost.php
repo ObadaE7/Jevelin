@@ -76,7 +76,7 @@ class CreatePost extends Component
         $categories = Category::all();
         $tags = Tag::all();
 
-        return view('pages.create-post', compact('categories', 'tags'))
+        return view('pages.dashboard.create-post', compact('categories', 'tags'))
             ->extends('layouts.dashboard')
             ->section('content');
     }

@@ -26,7 +26,7 @@ class Posts extends Component
         $columns = ['title', 'subtitle'];
         $perPages = [5, 10];
 
-        return view('pages.posts', compact('articles', 'columns', 'perPages'))
+        return view('pages.dashboard.posts', compact('articles', 'columns', 'perPages'))
             ->extends('layouts.dashboard')
             ->section('content');
     }

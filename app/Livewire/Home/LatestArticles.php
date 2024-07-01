@@ -3,11 +3,9 @@
 namespace App\Livewire\Home;
 
 use App\Events\ArticleReactionEvent;
-use App\Models\Post;
-use App\Models\Reaction;
+use App\Models\{Post, Reaction};
 use App\Notifications\ArticleReactionsNotification;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\{Auth, Notification};
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -15,81 +13,50 @@ class LatestArticles extends Component
 {
     public function getLatestArticles()
     {
-        return Post::latest()
-            ->take(3)
-            ->withCount([
-                'reactions as likes_count' => function ($query) {
-                    $query->where('type', 1);
-                },
-                'reactions as dislikes_count' => function ($query) {
-                    $query->where('type', 0);
-                }
-            ])
-            ->get();
+        return Post::withCount([
+            'reactions as likes_count' => function ($query) {
+                $query->where('type', 1);
+            },
+            'reactions as dislikes_count' => function ($query) {
+                $query->where('type', 0);
+            }
+        ])->latest()->take(3)->get();
     }
 
-    public function like($id)
+    private function toggleReaction($postId, $type)
     {
         if (!Auth::check()) {
             return;
         }
 
         $user = Auth::user();
-        $post = Post::find($id);
+        $post = Post::find($postId);
 
-        $existingLike = Reaction::where('user_id', $user->id)
-            ->where('type', 1)
+        $oppositeType = $type == 1 ? 0 : 1;
+
+        Reaction::where('user_id', $user->id)
+            ->where('type', $oppositeType)
+            ->where('likable_id', $post->id)
+            ->where('likable_type', get_class($post))
+            ->delete();
+
+        $existingReaction = Reaction::where('user_id', $user->id)
+            ->where('type', $type)
             ->where('likable_id', $post->id)
             ->where('likable_type', get_class($post))
             ->first();
 
-        if ($existingLike) {
-            if ($existingLike->type == 1) {
-                $existingLike->delete();
-            } else {
-                $existingLike->update(['type' => 1]);
-            }
+        if ($existingReaction) {
+            $existingReaction->delete();
         } else {
             Reaction::create([
                 'user_id' => $user->id,
-                'type' => 1,
+                'type' => $type,
                 'likable_id' => $post->id,
                 'likable_type' => get_class($post),
             ]);
-            Notification::send($post->owner, new ArticleReactionsNotification($post, 'like'));
-        }
-        $this->dispatch('push-reaction');
-    }
-
-    public function dislike($id)
-    {
-        if (!Auth::check()) {
-            return;
-        }
-
-        $user = Auth::user();
-        $post = Post::find($id);
-
-        $existingLike = Reaction::where('user_id', $user->id)
-            ->where('type', 0)
-            ->where('likable_id', $post->id)
-            ->where('likable_type', get_class($post))
-            ->first();
-
-        if ($existingLike) {
-            if ($existingLike->type == 0) {
-                $existingLike->delete();
-            } else {
-                $existingLike->update(['type' => 0]);
-            }
-        } else {
-            Reaction::create([
-                'user_id' => $user->id,
-                'type' => 0,
-                'likable_id' => $post->id,
-                'likable_type' => get_class($post),
-            ]);
-            Notification::send($post->owner, new ArticleReactionsNotification($post, 'dislike'));
+            $reactionType = $type == 1 ? 'like' : 'dislike';
+            Notification::send($post->owner, new ArticleReactionsNotification($post, $reactionType));
         }
         $this->dispatch('push-reaction');
     }
@@ -100,10 +67,19 @@ class LatestArticles extends Component
         event(new ArticleReactionEvent());
     }
 
+    public function like($id)
+    {
+        $this->toggleReaction($id, 1);
+    }
+
+    public function dislike($id)
+    {
+        $this->toggleReaction($id, 0);
+    }
+
     public function render()
     {
         $latestArticles = $this->getLatestArticles();
-
         return view('pages.home.latest-articles', compact('latestArticles'));
     }
 }

@@ -8,7 +8,7 @@ class Dashboard extends Component
 {
     public function render()
     {
-        return view('pages.dashboard')
+        return view('pages.dashboard.dashboard')
             ->extends('layouts.dashboard')
             ->section('content');
     }
